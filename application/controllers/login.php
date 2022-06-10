@@ -29,13 +29,17 @@ class Login extends CI_Controller {
 		$recaptcha	= $this->input->post('g-recaptcha-response');
 		$response 	= $this->recaptcha->verifyResponse($recaptcha);
 
+		$data = array(
+			'captcha' => $this->recaptcha->getWidget(),
+			'script_captcha'=> $this->recaptcha->getScriptTag()
+    	);
 		
 		if(!isset($response['success']) || $response['success'] <> FALSE)
 		{
 			if($this->form_validation->run() == FALSE)
 			{
 				$this->load->view('templates_admin/header');
-				$this->load->view('form_login');
+				$this->load->view('form_login', $data);
 				$this->load->view('templates_admin/footer');
 			}else{
 				$auth = $this->model_login->cek_login(); 

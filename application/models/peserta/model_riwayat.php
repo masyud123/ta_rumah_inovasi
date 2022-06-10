@@ -8,9 +8,9 @@ class Model_riwayat extends CI_Model{
 		$this->db->select('*');
 		$this->db->from('peserta');
 		$this->db->join('usulan','usulan.id = peserta.id_usulan');
-		$this->db->join('subevent','subevent.subevent = usulan.subevent');
+		$this->db->join('subevent','subevent.id = usulan.id_subevent');
 		$this->db->join('event','event.id = subevent.id_event');
-		$this->db->where('usulan.id_usr', $user);
+		$this->db->where('peserta.id_usr', $user);
 		$query = $this->db->get();
 		return $query->result();
 		

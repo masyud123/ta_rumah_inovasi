@@ -3,8 +3,8 @@
         <div class="card" style="width: 95%;">
         <h3 class="card-header bg-warning text-white text-center"><strong>FORM PENDAFTARAN</strong></h3>
         <div class="card-header" style="height: 10rem; background: lavender;">
-            <div class="group" style="display: ;" id="target1">
-                <table class="table table-borderless" style="margin-top:; display: ;">
+            <div class="group" id="target1">
+                <table class="table table-borderless">
                     <td width="15%"></td>
                     <td>
                         <div class="form-group" align="right" style="position:static; margin-top:30px; ">
@@ -40,7 +40,7 @@
             </div>
 
             <div class="group" style="display: none;" id="target2">
-                <table class="table table-borderless" style="margin-top:; display: ;">
+                <table class="table table-borderless" >
                     <td width="15%"></td>
                     <td>
                         <div class="form-group" align="right" style="position:static; margin-top:30px; ">
@@ -76,7 +76,7 @@
             </div>
 
             <div class="group" style="display: none;" id="target3">
-                <table class="table table-borderless" style="margin-top:; display: ;">
+                <table class="table table-borderless">
                     <td width="15%"></td>
                     <td>
                         <div class="form-group" align="right" style="position:static; margin-top:30px; ">
@@ -226,7 +226,7 @@
                                         
                                             <table class="table">
                                                 
-                                                   <div  id="itemlist" style=""><input type="text" name="nama_anggota[]" id="nama_anggota" style="width: 100%; margin-bottom: 12px; background:whitesmoke;" class="form-control" value=""></input></div>
+                                                   <div  id="itemlist"><input type="text" name="nama_anggota[]" id="nama_anggota" style="width: 100%; margin-bottom: 12px; background:whitesmoke;" class="form-control" value=""></input></div>
                                                    
                                             </table>
                                             <button type="button" class="btn btn-success" style="position: static; margin-top: -10px;" onclick="additem()"><i class="fas fa-plus"></i> Tambah Anggota</button>
@@ -385,7 +385,7 @@
                
             </div>
             <div class="card-footer" style="background: lavender;" >
-                    <table class="table table-borderless" style="display: ;" id="target111">
+                    <table class="table table-borderless" id="target111">
                         <td align="center" width="20%"></td>
                         <td align="center" width="20%"></td> 
                         <td align="center" width="20%"></td>

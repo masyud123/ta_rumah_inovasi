@@ -11,6 +11,7 @@ class Daftar extends CI_Controller{
 														 </div>');
 			redirect('login');
 		}
+		date_default_timezone_set('Asia/Jakarta');
 	}
 
 	public function index()
@@ -38,12 +39,12 @@ class Daftar extends CI_Controller{
 		$data['subevent']	= $this->model_bidang->tampil_subevent($id_subevent);
 		$this->load->view('templates_peserta/header');
 		$this->load->view('templates_peserta/sidebar');
-		$this->load->view('peserta/form_wizard', $data);
-		// $this->load->view('peserta/form_pendaftaran', $data);
+		// $this->load->view('peserta/form_wizard', $data);
+		$this->load->view('peserta/form_pendaftaran', $data);
 		$this->load->view('templates_peserta/footer');
 	}
 
-	public function cek_form_1($id_subevent)
+	public function cek_form_1()
 	{
 		$judul				= $this->input->post('judul');
 		$id_bidang			= $this->input->post('id_bidang');
@@ -56,19 +57,6 @@ class Daftar extends CI_Controller{
 		$alamat_ketua		= $this->input->post('alamat_ketua');
 		$asal_sekolah		= $this->input->post('asal_sekolah');
 		$ktp				= $_FILES['ktp']['name'];
-
-		// $data = [
-		// 	'kategori_peserta'	=>	$kategori_peserta,
-		// 	'interaksi'			=>	$interaksi,
-		// 	'id_subevent'		=>	$id_subevent,
-		// 	'judul'				=>	$judul,
-		// 	'id_bidang'			=>	$id_bidang,
-		// 	'nama_ketua'		=>	$nama_ketua,
-		// 	'email_ketua'		=>	$email_ketua,
-		// 	'no_hp'				=>	$no_hp,
-		// 	'alamat_ketua'		=>	$alamat_ketua,
-		// ];
-		// echo json_encode($data);
 
 		if($kategori_peserta != "" && $interaksi != "" && $judul != "" && $id_bidang != "" && $nama_ketua != "" && $email_ketua != "" && $no_hp != "" && $alamat_ketua != "" ){
 			if(is_numeric($no_hp)){
@@ -86,6 +74,47 @@ class Daftar extends CI_Controller{
 							if($this->upload->check_format('ktp')){
 								$nama_gambar = $this->upload->data()['file_name'];
 								// echo $nama_gambar;
+								if($kategori_peserta == 'umum'){
+									if($interaksi == 'Individu'){
+										echo 180701; // lanjut form 2
+									}elseif($interaksi == 'Kelompok'){
+										if($nama_tim != ""){
+											foreach($_POST['nama_anggota'] as $key => $val){
+												if(empty($_POST['nama_anggota'][$key])){
+													echo 8; // nama anggota kosong
+													return false;
+												}else{
+													$nama_anggota[]=['nama_anggota' => $_POST['nama_anggota'][$key]];
+												}
+											};
+											echo 180701; // lanjut form 2
+										}else{
+											echo 7; // nama tim kosong
+										}
+									}
+								}elseif($kategori_peserta == 'pelajar'){
+									if($asal_sekolah != ""){
+										if($interaksi == 'Individu'){
+											echo 180701; //lanjut form 2
+										}elseif($interaksi == 'Kelompok'){
+											if($nama_tim != ""){
+												foreach($_POST['nama_anggota'] as $key => $val){
+													if(empty($_POST['nama_anggota'][$key])){
+														echo 8; // nama anggota kosong
+														return false;
+													}else{
+														$nama_anggota[]=['nama_anggota' => $_POST['nama_anggota'][$key]];
+													}
+												};
+												echo 180701; // lanjut form 2
+											}else{
+												echo 7; // nama tim kosong
+											}
+										}
+									}else{
+										echo 6; // asal sekolah kosong
+									}
+								}
 							} else {
 								echo 5; // format foto tidak sesuai
 							}
@@ -104,4 +133,71 @@ class Daftar extends CI_Controller{
 		}
 	}
 
+	public function cek_form_2()
+	{
+		$latar_belakang 	= $this->input->post('latar_belakang');
+		$kondisi_sebelumnya = $this->input->post('kondisi_sebelumnya');
+		$sasaran_n_tujuan 	= $this->input->post('sasaran_n_tujuan');
+		$deskripsi 			= $this->input->post('deskripsi');
+		$bahan_baku 		= $this->input->post('bahan_baku');
+		$cara_kerja 		= $this->input->post('cara_kerja');
+		$keunggulan 		= $this->input->post('keunggulan');
+		$hasil_diharapkan	= $this->input->post('hasil_yg_diharapkan');
+		$manfaat 			= $this->input->post('manfaat');
+		$rencana 			= $this->input->post('rencana');
+
+		if($latar_belakang != "" && $kondisi_sebelumnya != "" && $sasaran_n_tujuan != "" && $deskripsi != "" && $bahan_baku != "" && $cara_kerja != "" && $keunggulan != "" && $hasil_diharapkan != "" && $manfaat != "" && $rencana != ""){
+			echo 180701; // lanjut form 3
+		}else{
+			echo 0; // ada form kosong
+		}
+	}
+
+	public function cek_form_3()
+	{
+		$proposal = $_FILES['proposal']['name'];
+		$jurnal = $_FILES['jurnal']['name'];
+		$gambar = $_FILES['gambar']['name'];
+		$link = $this->input->post('link_video');
+
+		if($proposal == "" || $jurnal == "" || $gambar == "" || $link == ""){
+			echo 1; return false; // ada form kosong
+		}
+		
+		$config['upload_path'] 		= './uploads';
+		$config['allowed_types']   	= 'pdf|jpg|jpeg|png';
+		$config['max_size'] 	  	= 5120; // max 5mb
+		$this->load->library('upload', $config);
+
+		if(substr($proposal, -4) == ".pdf"){
+			if(!$this->upload->check_format('proposal')){
+				echo 2; return false; // format proposal tidak sesuai
+			}
+		}else{
+			echo 2; return false; // format proposal tidak sesuai
+		}
+
+		if(substr($jurnal, -4) == ".pdf"){
+			if(!$this->upload->check_format('jurnal')){
+				echo 3;  return false; // format jurnal tidak sesuai
+			}
+		}else{
+			echo 3;  return false; // format jurnal tidak sesuai
+		}
+
+		$format_gb = substr($jurnal, -4);
+		if($format_gb == "jpeg" || ".jpg" || ".png"){
+			if(!$this->upload->check_format('gambar')){
+				echo 4; return false;// format gambar tidak sesuai
+			}
+		}else{
+			echo 4; return false;// format gambar tidak sesuai
+		}
+
+		if (!filter_var($link, FILTER_VALIDATE_URL) === false) {
+			echo 180701;
+		} else {
+			echo 5; // link video tidak valid
+		}
+	}
 }
