@@ -57,7 +57,10 @@
 									<button class="col-10 btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#KirimKonfirmasi<?= $riw->id_usulan?>">
 										<i class="fa fa-save mr-1"></i> Kirim Usulan
 									</button>
-									<button onclick="window.location.href='<?= base_url('peserta/riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="col-10 btn btn-sm btn-warning mb-2">
+									<!-- <button onclick="window.location.href='<?= base_url('peserta/riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="col-10 btn btn-sm btn-warning mb-2">
+										<i class="fa fa-edit mr-1"></i> Detail & Edit
+									</button> -->
+									<button onclick="window.location.href='<?= base_url('peserta/riwayat/detail_riwayat/'.$riw->id_peserta) ?>'" class="col-10 btn btn-sm btn-warning mb-2">
 										<i class="fa fa-edit mr-1"></i> Detail & Edit
 									</button>
 									<button class="col-10 btn btn-sm btn-danger" data-toggle="modal" data-target="#KirimKonfirmasiHapus<?= $riw->id_usulan?>">
@@ -66,11 +69,14 @@
 								</td>
 							<?php elseif ($riw->status == '2' || $riw->status == '3' || $riw->status == '5'): ?>
 								<td align="center">
-									<button onclick="window.location.href='<?= base_url('peserta/riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="btn btn-sm btn-warning col-10 mb-2">
+									<!-- <button onclick="window.location.href='<?= base_url('peserta/riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="btn btn-sm btn-warning col-10 mb-2">
 										<i class="fa fa-search mr-1"></i> View & Detail
-									</button>
+									</button> -->
 									<button disabled class="btn btn-sm btn-primary col-10 mb-2">
 										<i class="fa fa-save"></i> Kirim Data
+									</button>
+									<button onclick="window.location.href='<?= base_url('peserta/riwayat/detail_riwayat/'.$riw->id_peserta) ?>'" class="btn btn-sm btn-warning col-10 mb-2">
+										<i class="fa fa-search mr-1"></i> View & Detail
 									</button>
 									<button disabled class="col-10 btn btn-sm btn-danger">
 										<i class="fa fa-trash mr-1"></i> Hapus Usulan

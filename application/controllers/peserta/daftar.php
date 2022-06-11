@@ -185,8 +185,8 @@ class Daftar extends CI_Controller{
 			echo 3;  return false; // format jurnal tidak sesuai
 		}
 
-		$format_gb = substr($jurnal, -4);
-		if($format_gb == "jpeg" || ".jpg" || ".png"){
+		$format_gb = substr($gambar, -4);
+		if($format_gb == "jpeg" || $format_gb == ".jpg" || $format_gb == ".png"){
 			if(!$this->upload->check_format('gambar')){
 				echo 4; return false;// format gambar tidak sesuai
 			}
