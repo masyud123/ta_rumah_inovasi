@@ -13,6 +13,7 @@ class Data_user extends CI_Controller
 														 </div>');
 			redirect('login');
 		}
+		date_default_timezone_set('Asia/Jakarta');
 	}
 	public function index()
 	{
@@ -28,7 +29,8 @@ class Data_user extends CI_Controller
 	public function edit($id)
 	{
 		$where = array('id_usr' => $id);
-		$data['user'] = $this->model_user->edit_user($where, 'user')->result();
+		$data['data_user'] = $this->model_user->edit_user($where, 'user')->result();
+		// echo json_encode($data); exit;
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/edit_user', $data);
@@ -115,7 +117,8 @@ class Data_user extends CI_Controller
 				'no_wa' 		=> $no_wa,
 				'password' 		=> $password,
 				'hak_akses' 	=> $hak_akses,
-				'status'		=> ('Aktif'),
+				'status'		=> 1,
+				'created_at'	=> date('Y-m-d')
 			);
 
 			$this->model_user->tambah_user($data, 'user');

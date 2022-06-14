@@ -50,7 +50,7 @@
                             <td><?php echo $usr->nama ?></td>
                             <td><?php echo $usr->email ?></td>
                             <td><?php echo $usr->hak_akses ?></td>
-                            <td><?php echo $usr->status ?></td>
+                            <td><?php echo $usr->status == 1 ? "Aktif":"Nonaktif" ?></td>
                             <td class="d-flex justify-content-center">
                                 <div class="d-flex justify-content-around" style="width: 10rem;">
                                     <?php echo anchor('admin/data_user/edit/' . $usr->id_usr, '<div class="btn btn-sm btn-primary btn"><i class="fa fa-edit"></i> Edit</div>') ?>

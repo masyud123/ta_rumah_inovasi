@@ -23,10 +23,14 @@ class Data_bidang extends CI_Controller{
 				'tdk_aktif' 	=> count($this->model_bidang2->get_bidang_tdk_aktif($subev['id'])->result_array()),
 			);
 		endforeach;
-		$data['jumlah'] 	= $jumlah;
-		$data['subevent'] 	= $this->model_bidang2->get_subevent()->result_array();
+		if($subevent != null){
+			$data['jumlah'] 	= $jumlah;
+		}else{
+			$data['jumlah'] 	= [];
+		}
+		$data['subevent'] 	= $subevent;
 		$data['bidang'] 	= $this->model_bidang2->get_bidang()->result_array();
-		//echo "<pre>"; print_r($jumlah); exit;
+		// echo "<pre>"; print_r($data); exit;
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/bidang', $data);

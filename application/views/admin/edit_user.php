@@ -20,33 +20,33 @@
 			<div class="row">
 				<div class="col-md-12">
 					<table class="table">
-						<?php foreach ($user as $usr) : ?>
+						<?php foreach ($data_user as $user) : ?>
 							<form id="update_user_profil" method="post" action="<?php echo base_url() . 'admin/data_user/update' ?>">
 								<div class="row ">
 									<dt for="inputNama" class="col-sm-2 col-form-label">Nama</dt>
 									<div class="col-sm-5 mb-3">
-										<input type="text" name="nama" id="nama" class="form-control" value="<?php echo $usr->nama ?>" onkeypress="return event.charCode < 48 || event.charCode  >57" required>
+										<input type="text" name="nama" id="nama" class="form-control" value="<?=$user->nama ?>" onkeypress="return event.charCode < 48 || event.charCode  >57" required>
 									</div>
 								</div>
 
 								<div class="row">
 									<dt for="inputEmail" class="col-sm-2 col-form-label">Email</dt>
 									<div class="col-sm-5 mb-3">
-										<input type="email" name="email" id="email" class="form-control" value="<?php echo $usr->email ?>" required>
+										<input type="email" name="email" id="email" class="form-control" value="<?=$user->email ?>" required>
 									</div>
 								</div>
 
 								<div class="row">
 									<dt for="inputEmail" class="col-sm-2 col-form-label">Email</dt>
 									<div class="col-sm-5 mb-3">
-										<input type="number" name="no_wa" id="no_wa" class="form-control" value="<?php echo $usr->no_wa ?>" required>
+										<input type="number" name="no_wa" id="no_wa" class="form-control" value="<?= $user->no_wa ?>" required>
 									</div>
 								</div>
 
 								<div class="row">
 									<dt for="inputPassword" class="col-sm-2 col-form-label">Password</dt>
 									<div class="col-sm-5 mb-3">
-										<input type="hidden" name="id_usr" class="form-control" value="<?php echo $usr->id_usr ?>">
+										<input type="hidden" name="id_usr" class="form-control" value="<?php echo $user->id_usr ?>">
 										<div style="display:none;" class="" id="new_pwd">
 											<input type="password" id="password_baru" name="password_baru" placeholder="Password baru" class="form-control mb-2">
 											<div class="row">
@@ -78,9 +78,9 @@
 									<dt for="inputHakAkses" class="col-sm-2 col-form-label">Hak Akses</dt>
 									<div class="col-sm-5 mb-3">
 										<select class="form-control" id="hak" name="hak_akses">
-											<option <?php if ($usr->hak_akses == "Admin_Bappeda"){echo "selected";}?> value="Admin_Bappeda">Admin Bappeda</option>
-											<option <?php if ($usr->hak_akses == "Penilai"){echo "selected";}?> value="Penilai">Penilai</option>
-											<option <?php if ($usr->hak_akses == "Peserta"){echo "selected";}?> value="Peserta">Peserta</option>
+											<option <?php if ($user->hak_akses == "Admin_Bappeda"){echo "selected";}?> value="Admin_Bappeda">Admin Bappeda</option>
+											<option <?php if ($user->hak_akses == "Penilai"){echo "selected";}?> value="Penilai">Penilai</option>
+											<option <?php if ($user->hak_akses == "Peserta"){echo "selected";}?> value="Peserta">Peserta</option>
 										</select>
 									</div>
 								</div>
@@ -88,13 +88,14 @@
 								<div class="row">
 									<dt for="inputStatus" class="col-sm-2 col-form-label">Status</dt>
 									<div class="col-sm-5 mb-3">
-										<select class="form-control" id="status" name="status" value="<?php echo $usr->status ?>">
-											<option ><?php echo $usr->status ?></option>
-											<?php if ($usr->status == "Aktif"): ?>
-											<option value="Nonaktif">Nonaktif</option>
-										<?php else: ?>
-											<option value="Aktif">Aktif</option>
-										<?php endif;?>
+										<select class="form-control" id="status" name="status">
+											<?php if($user->status == 1):?>
+												<option selected value="1">Aktif</option>
+												<option value="0">Nonaktif</option>
+											<?php else: ?>
+												<option selected value="0">Nonaktif</option>
+												<option value="1">Aktif</option>
+											<?php endif; ?>
 										</select>
 									</div>
 								</div>

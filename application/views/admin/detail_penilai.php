@@ -58,43 +58,36 @@
 
 <!-- Modal tambah penilai -->
 <div class="modal fade" id="tambah_penilai" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"  id="exampleModalLabel">Tambah Penilai</h5>
-      </div>
-      <div class="modal-body">
-        <form action="<?php echo base_url(). 'admin/data_penilai/tambah_penilai/'; ?>" method="post" enctype="multipart/form-data" >
-
-          <div class="form-group row ml-4">
-            <dt class="mr-4 text-size 25">Sub Event</dt>
-            <input type="text" name="subevent" style="position: absolute; left: 138px; width: 60%" class="form-control col-sm-8 ml-3" value="<?php echo $subevent->subevent ?>" readonly>
-            <input type="text" name="id_subevent" style="position: absolute; left: 138px; width: 60%" class="form-control col-sm-8 ml-3" value="<?php echo $subevent->id ?>" hidden>
-            
-          </div><br>
-
-          <div class="form-group row ml-4">
-            <dt class="mr-1">Penilai</dt>
-            <select class="form-control col-sm-8 ml-3" name="id_usr" style="position: absolute; left: 138px; width: 60%">
-            <?php foreach($list_penilai as $nilai) : ?>
-							<option value="<?php echo $nilai->id_usr ?>">
-							<?php echo $nilai->nama ?>
-						</option>
-						<?php endforeach; ?>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title"  id="exampleModalLabel">Tambah Penilai</h5>
+			</div>
+			<div class="modal-body">
+				<form action="<?php echo base_url(). 'admin/data_penilai/tambah_penilai/'; ?>" method="post" enctype="multipart/form-data" >
+					<div class="d-md-flex justify-content-between">
+						<dt class="col-md-4">Sub Event</dt>
+						<input type="text" name="subevent" class="form-control col-md-8" value="<?= $subevent->subevent ?>" readonly>
+						<input type="hidden" name="id_subevent" class="form-control" value="<?= $subevent->id ?>" >
+					</div><br>
+					<div class="d-flex justify-content-between">
+						<dt class="col-md-4">Penilai</dt>
+						<select class="form-control col-md-8" name="id_usr">
+							<?php foreach($list_penilai as $nilai) : ?>
+								<option value="<?= $nilai->id_usr ?>">
+									<?= $nilai->nama ?>
+								</option>
+							<?php endforeach; ?>
 						</select>
-          </div><br>
-
-	      </div>
-
-	      <div class="modal-footer">
-	      	
-	        <button type="submit" class="btn btn-primary">Simpan</button>
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-	        
-	      </div>
-      	</form>
-    </div>
-  </div>
+					</div><br>
+					<div class="d-flex justify-content-end">
+						<button type="submit" class="btn btn-primary">Simpan</button>
+						<button type="button" class="btn btn-secondary ml-3" data-dismiss="modal">Batal</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- modal hapus penilai -->

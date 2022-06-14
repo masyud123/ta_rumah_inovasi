@@ -44,8 +44,10 @@
 		</div>
 		<!-- Card Body -->
 		<div class="card-body d-flex">
-			<?php echo $this->session->flashdata('message3');  ?>
-			<?php echo $this->session->flashdata('message');  ?>
+			<div>
+				<?php echo $this->session->flashdata('message3');  ?>
+				<?php echo $this->session->flashdata('message');  ?> 
+			</div>
 			<div style="overflow-y: auto;">
 			<!-- class="table-responsive" -->
 				<table class="table table-bordered table-hover" style="width: 1030px;">

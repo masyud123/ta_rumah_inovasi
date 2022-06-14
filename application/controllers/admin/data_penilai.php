@@ -11,6 +11,7 @@ class Data_penilai extends CI_Controller{
 														 </div>');
 			redirect('login');
 		}
+		date_default_timezone_set('Asia/Jakarta');
 	}
 
 	public function index()
@@ -37,26 +38,25 @@ class Data_penilai extends CI_Controller{
 
 	public function tambah_penilai()
 	{
-		date_default_timezone_set('Asia/Jakarta');
 		$id_subevent		= $this->input->post('id_subevent');
-		$id_usr			= $this->input->post('id_usr');
-		$created_by			= $this->session->userdata('email');
+		$id_usr				= $this->input->post('id_usr');
+		$created_by			= $this->session->userdata('id_usr');
 
 		$sql = $this->db->query("SELECT id_usr FROM setting_penilai where id_usr='$id_usr' AND id_subevent='$id_subevent'");
 			// 	
 		$cek_user = $sql->num_rows();
 		if ( $cek_user > 0 ) {
-		$this->session->set_flashdata('message1','<div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="fas fa-check-circle"></i>
-  				Data penilai sudah ada!
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		    <span aria-hidden="true">&times;</span>
-		  </button>
-		</div>');
-		header('Location: ' . $_SERVER['HTTP_REFERER']);
+			$this->session->set_flashdata('message1','<div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="fas fa-check-circle"></i>
+					Data penilai sudah ada!
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</div>');
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
 		}else{
 		$data = array(
 			'id_subevent' 	=> $id_subevent, 
-			'id_usr' 	=> $id_usr,
+			'id_usr' 		=> $id_usr,
 			'created_date'	=> date('Y-m-d H:i:s'),
 			'created_by'	=> $created_by,
 		);

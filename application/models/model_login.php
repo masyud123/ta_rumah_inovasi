@@ -17,9 +17,8 @@ class Model_login extends CI_Model{
 		{
 			$cek = $this->db->get_where('user',$where)->result_array();
 			foreach($cek as $cek2);
-			if ($cek2['status'] == 'Aktif') {
+			if ($cek2['status'] == 1) {
 				return $result->row();
-				//echo("benar");exit;
 			}else{
 				$this->session->set_flashdata('pesan',
                         '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>

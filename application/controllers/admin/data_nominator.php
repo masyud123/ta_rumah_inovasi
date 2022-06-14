@@ -52,12 +52,11 @@ class Data_nominator extends CI_Controller{
 		);
 
 		$this->model_nominator->tambah_nominator($data, 'indikator_penilaian_pemenang');
-		$this->session->set_flashdata('message3','<div class="alert alert-success alert-dismissible fade show" role="alert"><i class="fas fa-check-circle"></i>
-  				Data berhasil ditambahkan!
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		    <span aria-hidden="true">&times;</span>
-		  </button>
-		</div>');
+		$this->session->set_flashdata('message3',
+			'<script>
+				Swal.fire("Sukses", "Data berhasil diperbarui", "success");
+			</script>'
+		);
 		header('Location: ' . $_SERVER['HTTP_REFERER']);
 	}
 
@@ -65,12 +64,11 @@ class Data_nominator extends CI_Controller{
 	{
 		$where = array('id' => $id);
 		$this->model_nominator->hapus_nominator($where, 'indikator_penilaian_pemenang');
-		$this->session->set_flashdata('message','<div class="alert alert-success alert-dismissible fade show" role="alert"><i class="fas fa-trash-alt"></i>
-  				Data berhasil dihapus!
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		    <span aria-hidden="true">&times;</span>
-		  </button>
-		</div>');
+		$this->session->set_flashdata('message',
+			'<script>
+				Swal.fire("Sukses", "Data berhasil diperbarui", "success");
+			</script>'
+		);
 		header('Location: ' . $_SERVER['HTTP_REFERER']);
 	}
 
@@ -95,15 +93,12 @@ class Data_nominator extends CI_Controller{
 		$nilai_komponen_min			= $this->input->post('nilai_komponen_min');
 		$nilai_komponen_max			= $this->input->post('nilai_komponen_max');
 		$id_subevent				= $this->input->post('id_subevent');
-		
 
 		$data = array(
-
 			'komponen'					=> $komponen,
 			'note' 						=> $note, 
 			'nilai_komponen_min' 		=> $nilai_komponen_min,
 			'nilai_komponen_max' 		=> $nilai_komponen_max
-			
 		);
 
 		$where = array(
@@ -111,12 +106,11 @@ class Data_nominator extends CI_Controller{
 		);
 
 		$this->model_nominator->update_indikator($where,$data, 'indikator_penilaian_pemenang');
-		$this->session->set_flashdata('message','<div class="alert alert-success alert-dismissible fade show" role="alert"><i class="fas fa-check-circle"></i>
-  				Data berhasil diupdate!
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		    <span aria-hidden="true">&times;</span>
-		  </button>
-		</div>');
+		$this->session->set_flashdata('message',
+			'<script>
+				Swal.fire("Sukses", "Data berhasil diperbarui", "success");
+			</script>'
+		);
 		redirect('admin/data_nominator/detail_nominator/'.$id_subevent); 
 	}
 	
