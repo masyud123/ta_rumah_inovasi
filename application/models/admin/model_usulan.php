@@ -64,18 +64,20 @@ class Model_usulan extends CI_Model{
 	}
 
 	public function get_data_tahun($param){
-		$this->db->select('usulan.id, usulan.tahun, usulan.user, usulan.judul, usulan.status, subevent.subevent');
+		$this->db->select('usulan.id, usulan.tahun, usulan.judul, usulan.status, subevent.subevent, peserta.nama_ketua');
 		$this->db->from('usulan');
 		$this->db->join('subevent', 'subevent.id = usulan.id_subevent');
+		$this->db->join('peserta', 'peserta.id_usulan = usulan.id');
 		$this->db->where('usulan.tahun', $param);
 		$this->db->where('usulan.status', '4');
 		return $this->db->get();
 	} 
 
-	public function usulan_terkini($tahun){
-		$this->db->select('usulan.id, usulan.tahun, usulan.user, usulan.judul, usulan.status, subevent.subevent');
+	public function usulan_terkini($tahun){ 
+		$this->db->select('usulan.id, usulan.tahun, usulan.judul, usulan.status, subevent.subevent, peserta.nama_ketua');
 		$this->db->from('usulan');
 		$this->db->join('subevent', 'subevent.id = usulan.id_subevent');
+		$this->db->join('peserta', 'peserta.id_usulan = usulan.id');
 		$this->db->where('usulan.status!=', '1');
 		$this->db->where('usulan.status!=', '4');
 		$this->db->where('usulan.tahun', $tahun);
@@ -84,21 +86,25 @@ class Model_usulan extends CI_Model{
 
 	public function stts_verif($tahun)
 	{
-		$this->db->select('usulan.id, usulan.tahun, usulan.user, usulan.judul, usulan.status, subevent.subevent');
+		$this->db->select('usulan.id, usulan.tahun, usulan.judul, usulan.status, subevent.subevent, peserta.nama_ketua');
 		$this->db->from('usulan');
 		$this->db->join('subevent', 'subevent.id = usulan.id_subevent');
+		$this->db->join('peserta', 'peserta.id_usulan = usulan.id');
 		$this->db->where('usulan.status!=', '1');
 		$this->db->where('usulan.status!=', '5');
+		$this->db->where('usulan.status!=', '4');
 		$this->db->where('usulan.tahun', $tahun);
 		return $this->db->get();
 	}
 
 	public function stts_blm($tahun)
 	{
-		$this->db->select('usulan.id, usulan.tahun, usulan.user, usulan.judul, usulan.status, subevent.subevent');
+		$this->db->select('usulan.id, usulan.tahun, usulan.judul, usulan.status, subevent.subevent, peserta.nama_ketua');
 		$this->db->from('usulan');
 		$this->db->join('subevent', 'subevent.id = usulan.id_subevent');
+		$this->db->join('peserta', 'peserta.id_usulan = usulan.id');
 		$this->db->where('usulan.status', '5');
+		$this->db->where('usulan.status!=', '4');
 		$this->db->where('usulan.tahun', $tahun);
 		return $this->db->get();
 	}

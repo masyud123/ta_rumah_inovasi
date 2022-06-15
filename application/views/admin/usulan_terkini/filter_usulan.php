@@ -40,7 +40,7 @@
                 <td class="text-center align-middle"><?php echo $no++ ?></td>
                 <td class="text-center align-middle"><?php echo $usl->tahun ?></td>
                 <td class="text-center align-middle"><?php echo $usl->subevent ?></td>
-                <td class="text-center align-middle"><?php echo $usl->user ?></td>
+                <td class="text-center align-middle"><?php echo $usl->nama_ketua ?></td>
                 <td style="text-align: justify; text-justify: inter-word;" class="align-middle">
                     <?php echo $usl->judul ?>
                 </td>
@@ -51,9 +51,13 @@
                     elseif ($usl->status == '5')
                     {echo'Belum Diverifikasi';}
                     elseif ($usl->status == '2'){
-                        foreach($pen_pp as $pp){$cek_data_usulan[] = $pp['id_usulan'];}
-                        if (in_array($usl->id,$cek_data_usulan)){
-                            echo 'Sedang Dinilai';
+                        if($pen_pp != null){
+                            foreach($pen_pp as $pp){$cek_data_usulan[] = $pp['id_usulan'];}
+                            if (in_array($usl->id,$cek_data_usulan)){
+                                echo 'Sedang Dinilai';
+                            }else{
+                                echo'Terverifikasi';
+                            }
                         }else{
                             echo'Terverifikasi';
                         }
@@ -67,10 +71,50 @@
                 <td class="align-middle" width="140">
                     <div class="d-flex justify-content-center align-items-center ">
                         <div class="btn btn-sm btn-success btn mr-1 detail-usulan" data-id="<?= $usl->id?>"><i class="fa fa-search"></i> View</div>
-                        <?php foreach($pen_pp as $pp){$cek_data_usulan[] = $pp['id_usulan'];}
-                        if (in_array($usl->id,$cek_data_usulan)):?>
-                            <div class="btn btn-sm btn-secondary disabled btn ml-1"><i class="fa fa-edit"></i> Edit</div>
-                        <?php else: 
+                        <?php 
+                        if($pen_pp != null):
+                            foreach($pen_pp as $pp){$cek_data_usulan[] = $pp['id_usulan'];}
+                            if (in_array($usl->id,$cek_data_usulan)):?>
+                                <div class="btn btn-sm btn-secondary disabled btn ml-1"><i class="fa fa-edit"></i> Edit</div>
+                            <?php else: 
+                                if ($usl->status == '3' || $usl->status == '4'):?>
+                                    <div class="btn btn-sm btn-secondary disabled btn ml-1"><i class="fa fa-edit"></i> Edit</div>
+                                <?php elseif($usl->status == '2' || $usl->status == '5'):?>
+                                    <div class="py-3 d-flex flex-row align-items-center justify-content-between">
+                                        <div class="dropdown no-arrow">
+                                            <a class="dropdown-toggle btn btn-sm btn-warning" href="#" role="button" id="dropdownMenuLink"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-edit mr-1" aria-hidden="true"></i>
+                                                <span>Edit</span>
+                                            </a>
+                                            <style>
+                                                .hover-warning:hover{color: orange;}
+                                                .hover-danger:hover{color: red;}
+                                                .hover-success:hover{color: green;}
+                                                .cursor-pointer{cursor: pointer;}
+                                            </style>
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                aria-labelledby="dropdownMenuLink">
+                                                <h6 class="text-primary d-flex justify-content-center"><b>Edit Status:</b></h6>
+                                                <div class="dropdown-divider"></div>
+                                                <div class="form-check form-check-inline ml-3">
+                                                    <input <?= $usl->status == 2 ? "disabled checked" : ""?> class="form-check-input cursor-pointer status-usulan" name="status" id="radio1<?=$usl->id?>" type="radio" data-idusulan="<?= $usl->id?>" value="2">
+                                                    <label for="radio1<?=$usl->id?>" class="form-check-label cursor-pointer hover-success <?= $usl->status == 2 ? "text-success" : ""?>">Verifikasi</label>
+                                                </div>
+                                                <div class="form-check form-check-inline ml-3">
+                                                    <input <?= $usl->status == 5 ? "disabled checked" : ""?> class="form-check-input cursor-pointer status-usulan" name="status" id="radio2<?=$usl->id?>" type="radio" data-idusulan="<?= $usl->id?>" value="5">
+                                                    <label for="radio2<?=$usl->id?>" class="form-check-label cursor-pointer hover-warning <?= $usl->status == 5 ? "text-warning" : ""?>">Un-verifikasi</label>
+                                                </div>
+                                                <div class="form-check form-check-inline ml-3">
+                                                    <input class="form-check-input cursor-pointer status-usulan" name="status" id="radio3<?=$usl->id?>" type="radio" data-idusulan="<?= $usl->id?>" value="1">
+                                                    <label for="radio3<?=$usl->id?>" class="form-check-label cursor-pointer hover-danger">Melengkapi Data</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif;
+                            endif;
+                        else:
                             if ($usl->status == '3' || $usl->status == '4'):?>
                                 <div class="btn btn-sm btn-secondary disabled btn ml-1"><i class="fa fa-edit"></i> Edit</div>
                             <?php elseif($usl->status == '2' || $usl->status == '5'):?>
@@ -107,7 +151,7 @@
                                     </div>
                                 </div>
                             <?php endif;
-                        endif;?>        
+                        endif;?>   
                     </div>
                 </td>
             </tr>

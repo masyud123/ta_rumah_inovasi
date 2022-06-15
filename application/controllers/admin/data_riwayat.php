@@ -21,42 +21,18 @@ class Data_riwayat extends CI_Controller{
 		$this->load->view('temp_data_table/footer');
 	}	
 
-	public function view($id) // view detail usulan di admin
+	public function view($id_usulan) // view detail usulan di admin
 	{
-		$where = array('id' =>$id);
-		$data['usulan'] = $this->model_usulan->edit_riwayat($where, 'usulan')->result();
+		$peserta = $this->db->get_where('peserta', ['id_usulan' => $id_usulan])->row();
+        $data['anggota']    = $this->db->get_where('anggota_tim', ['id_peserta' => $peserta->id_peserta])->result_array();
+        $data['bidang']     = $this->db->get_where('bidang', ['id' => $peserta->id_bidang])->row();
+        $data['usulan']     = $this->model_usulan->get_detail_usulan($id_usulan)->result_array();
+
+
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/view_riwayat', $data);
 		$this->load->view('templates_admin/footer');
-	}
-
-	public function edit($id) // view edit usulan di admin
-	{
-		$where = array('id' =>$id);
-		$data['usulan'] = $this->model_usulan->edit_riwayat($where, 'usulan')->result();
-		$this->load->view('templates_admin/header');
-		$this->load->view('templates_admin/sidebar');
-		$this->load->view('admin/edit_riwayat', $data);
-		$this->load->view('templates_admin/footer');
-	}
-
-	public function update() // update status usulan oleh admin
-	{ 
-		$id 	= $this->input->post('id');
-		$status	= $this->input->post('status');
-
-		$data	= ['status' => $status];
-		$where	= ['id' => $id];
-
-		$this->model_usulan->update_riwayat($where,$data, 'usulan');
-		$this->session->set_flashdata('message','<div class="alert alert-success alert-dismissible fade show" role="alert"><i class="fas fa-check-circle"></i>
-  				Data berhasil diupdate!
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		    <span aria-hidden="true">&times;</span>
-		  </button>
-		</div>');
-		redirect('admin/data_riwayat'); 
 	}
 
 	public function filter_tahun($param)
@@ -66,5 +42,33 @@ class Data_riwayat extends CI_Controller{
 
 		$this->load->view('admin/riwayat_filter', $data);
 	}
+
+	// public function edit($id) // view edit usulan di admin
+	// {
+	// 	$where = array('id' =>$id);
+	// 	$data['usulan'] = $this->model_usulan->edit_riwayat($where, 'usulan')->result();
+	// 	$this->load->view('templates_admin/header');
+	// 	$this->load->view('templates_admin/sidebar');
+	// 	$this->load->view('admin/edit_riwayat', $data);
+	// 	$this->load->view('templates_admin/footer');
+	// }
+
+	// public function update() // update status usulan oleh admin
+	// { 
+	// 	$id 	= $this->input->post('id');
+	// 	$status	= $this->input->post('status');
+
+	// 	$data	= ['status' => $status];
+	// 	$where	= ['id' => $id];
+
+	// 	$this->model_usulan->update_riwayat($where,$data, 'usulan');
+	// 	$this->session->set_flashdata('message','<div class="alert alert-success alert-dismissible fade show" role="alert"><i class="fas fa-check-circle"></i>
+  	// 			Data berhasil diupdate!
+	// 	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	// 	    <span aria-hidden="true">&times;</span>
+	// 	  </button>
+	// 	</div>');
+	// 	redirect('admin/data_riwayat'); 
+	// }
 }
 ?>

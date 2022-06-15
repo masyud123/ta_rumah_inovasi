@@ -21,9 +21,9 @@
                                 <div class="bg-gray-500 col-4" style="height: 5px;"></div>
                             </div>
                             <div class="col-12 d-flex justify-content-around" style="position: absolute; margin-top: -27px;">
-                                <div class="bg-primary d-flex align-items-center justify-content-center head1" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fa fa-user fa-2x text-light "></i></div>
-                                <div class="bg-gray-500 d-flex align-items-center justify-content-center head2" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fas fa-file-alt fa-2x text-light "></i></div>
-                                <div class="bg-gray-500 d-flex align-items-center justify-content-center head3" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fas fa-file-upload fa-2x text-light "></i></div>
+                                <div class="bg-primary d-flex align-items-center justify-content-center" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fa fa-user fa-2x text-light "></i></div>
+                                <div class="bg-gray-500 d-flex align-items-center justify-content-center" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fas fa-file-alt fa-2x text-light "></i></div>
+                                <div class="bg-gray-500 d-flex align-items-center justify-content-center" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fas fa-file-upload fa-2x text-light "></i></div>
                             </div>
                             <div class="col-12 d-flex justify-content-between" style="position: absolute; margin-top: 35px;">
                                 <div class="col-4 text-center">
@@ -164,9 +164,9 @@
                                 <div class="bg-gray-500 col-4" style="height: 5px;"></div>
                             </div>
                             <div class="col-12 d-flex justify-content-around" style="position: absolute; margin-top: -27px;">
-                                <div class="bg-primary d-flex align-items-center justify-content-center head1" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fa fa-user fa-2x text-light"></i></div>
-                                <div class="bg-primary d-flex align-items-center justify-content-center head2" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fas fa-file-alt fa-2x text-light"></i></div>
-                                <div class="bg-gray-500 d-flex align-items-center justify-content-center head3" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fas fa-file-upload fa-2x text-light"></i></div>
+                                <div class="bg-primary d-flex align-items-center justify-content-center" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fa fa-user fa-2x text-light"></i></div>
+                                <div class="bg-primary d-flex align-items-center justify-content-center" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fas fa-file-alt fa-2x text-light"></i></div>
+                                <div class="bg-gray-500 d-flex align-items-center justify-content-center" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fas fa-file-upload fa-2x text-light"></i></div>
                             </div>
                             <div class="col-12 d-flex justify-content-between" style="position: absolute; margin-top: 35px;">
                                 <div class="col-4 text-center">
@@ -302,9 +302,9 @@
                                 <div class="bg-primary col-4" style="height: 5px;"></div>
                             </div>
                             <div class="col-12 d-flex justify-content-around" style="position: absolute; margin-top: -27px;">
-                                <div class="bg-primary d-flex align-items-center justify-content-center head1" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fa fa-user fa-2x text-light"></i></div>
-                                <div class="bg-primary d-flex align-items-center justify-content-center head2" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fas fa-file-alt fa-2x text-light"></i></div>
-                                <div class="bg-primary d-flex align-items-center justify-content-center head3" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fas fa-file-upload fa-2x text-light"></i></div>
+                                <div class="bg-primary d-flex align-items-center justify-content-center" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fa fa-user fa-2x text-light"></i></div>
+                                <div class="bg-primary d-flex align-items-center justify-content-center" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fas fa-file-alt fa-2x text-light"></i></div>
+                                <div class="bg-primary d-flex align-items-center justify-content-center" style="cursor: pointer; width: 60px; height: 60px; border-radius: 100%;"><i class="fas fa-file-upload fa-2x text-light"></i></div>
                             </div>
                             <div class="col-12 d-flex justify-content-between" style="position: absolute; margin-top: 35px;">
                                 <div class="col-4 text-center">

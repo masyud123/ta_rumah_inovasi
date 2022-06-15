@@ -35,13 +35,24 @@ class Daftar extends CI_Controller{
 
 	public function daftar($id_subevent)
 	{
-		$data['list_bidang'] = $this->model_bidang->tampil_bidang($id_subevent)->result();
-		$data['subevent']	= $this->model_bidang->tampil_subevent($id_subevent);
-		$this->load->view('templates_peserta/header');
-		$this->load->view('templates_peserta/sidebar');
-		// $this->load->view('peserta/form_wizard', $data);
-		$this->load->view('peserta/form_pendaftaran', $data);
-		$this->load->view('templates_peserta/footer');
+		$subevent = $this->model_bidang->tampil_sub($id_subevent)->row();
+		$mulai 	= $subevent->mulai;
+		$akhir 	= $subevent->akhir;
+		$sekarang = date('Y-m-d');
+		if(strtotime($mulai) < strtotime($sekarang) &&
+			strtotime($sekarang) < strtotime($akhir) &&
+			$subevent->status_pendaftaran == 1
+		){
+			$data['list_bidang'] = $this->model_bidang->tampil_bidang($id_subevent)->result();
+			$data['subevent']	= $this->model_bidang->tampil_subevent($id_subevent);
+			$this->load->view('templates_peserta/header');
+			$this->load->view('templates_peserta/sidebar');
+			// $this->load->view('peserta/form_wizard', $data);
+			$this->load->view('peserta/form_pendaftaran', $data);
+			$this->load->view('templates_peserta/footer');
+		}else{
+			redirect('peserta/subevent'.$id_subevent);
+		}
 	}
 
 	public function cek_form_1()
