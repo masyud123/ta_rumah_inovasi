@@ -48,11 +48,16 @@ class Data_verifikasi extends CI_Controller
 		$this->load->view('templates_penilai/footer');
 	}
 
-	public function view($id)
+	public function view($id_usulan)
 	{
-		$where = array('id' => $id);
-		$data['usulan'] = $this->model_usulan->edit_riwayat($where, 'usulan')->result();
-		$data['ulasan'] = $this->model_usulan->get_ulasan($id)->result();
+		// $where = array('id' => $id);
+		// $data['usulan'] = $this->model_usulan->edit_riwayat($where, 'usulan')->result();
+		$peserta = $this->db->get_where('peserta', ['id_usulan' => $id_usulan])->row();
+        $data['anggota']    = $this->db->get_where('anggota_tim', ['id_peserta' => $peserta->id_peserta])->result_array();
+        $data['bidang']     = $this->db->get_where('bidang', ['id' => $peserta->id_bidang])->row();
+        $data['usulan']     = $this->model_usulan->get_detail_usulan($id_usulan)->result_array();
+		$data['ulasan'] 	= $this->model_usulan->get_ulasan($id_usulan)->result();
+		$data['id_usulan']	= $id_usulan;
 		
 		$this->load->view('templates_penilai/header');
 		$this->load->view('templates_penilai/sidebar2');
@@ -77,7 +82,7 @@ class Data_verifikasi extends CI_Controller
 			$this->db->insert('ulasan_usulan', $data);
 			$this->session->set_flashdata('ulasan', 
 				'<script type ="text/JavaScript">  
-					swal("Sukses","Ulasan berhasil ditambahkan","success")  
+					Swal.fire("Sukses","Ulasan berhasil ditambahkan","success")  
 				</script>'  
 			);
 			redirect('penilai/data_verifikasi/view/'.$id_usulan);
@@ -92,7 +97,7 @@ class Data_verifikasi extends CI_Controller
 			$this->db->update('ulasan_usulan', $data, $where);
 			$this->session->set_flashdata('ulasan', 
 				'<script type ="text/JavaScript">  
-					swal("Sukses","Ulasan berhasil diupdate","success")  
+					Swal.fire("Sukses","Ulasan berhasil diupdate","success")  
 				</script>'  
 			);
 			redirect('penilai/data_verifikasi/view/'.$id_usulan);

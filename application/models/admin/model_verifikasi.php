@@ -13,9 +13,11 @@ class Model_verifikasi extends CI_Model{
 
 	public function ambil_usulan()
 	{
-		$this->db->select('*');
+		$this->db->select('subevent.subevent, usulan.id, usulan.id_subevent, usulan.tahun, usulan.judul, peserta.nama_ketua');
 	    $this->db->from('usulan');
-	    $this->db->where('status', '2');
+		$this->db->join('subevent', 'subevent.id = usulan.id_subevent');
+		$this->db->join('peserta', 'peserta.id_usulan = usulan.id');
+	    $this->db->where('usulan.status', '2');
 		//$this->db->like('tahun', $tahun);
 	    return $this->db->get();	
 	}
@@ -79,7 +81,8 @@ class Model_verifikasi extends CI_Model{
 
 	public function ganti_warna(){
 		$id_penilai = $this->session->userdata('id_usr');
-		$this->db->select('id_usulan, judul, id_usr');
+		// $this->db->select('id_usulan, judul, id_usr');
+		$this->db->select('id_usulan, judul, id_penilai');
 		$this->db->from('penilaian_proposal');
 		$this->db->join('usulan', 'usulan.id = penilaian_proposal.id_usulan');
 		$this->db->where('penilaian_proposal.id_penilai', $id_penilai);

@@ -47,7 +47,7 @@
                           <td><?php echo $usl->tahun ?></td>
                           <td><?php echo $usl->subevent ?></td>
                           <td><?php echo $usl->judul ?></td>
-                          <td><?php echo $usl->user ?></td>
+                          <td><?php echo $usl->nama_ketua ?></td>
                           <td align="center" style="width: 50"><?php echo anchor('penilai/data_verifikasi/view/' .$usl->id, '<div class="btn btn-sm btn-warning btn"><i class="fa fa-search-plus"></i> Lihat</div>') ?>
                           </td>
                           <td align="center" style="width: 50">
