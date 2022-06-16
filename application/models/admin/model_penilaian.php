@@ -64,7 +64,12 @@ class Model_penilaian extends CI_Model{
     //data nominator
 	public function ambil_id_usulan($id)
 	{
-		$result = $this->db->where('id', $id)->limit(1)->get('usulan');
+		// $result = $this->db->where('id', $id)->limit(1)->get('usulan');
+		$this->db->select('usulan.id, usulan.judul, peserta.nama_ketua');
+	    $this->db->from('usulan');
+		$this->db->join('peserta', 'peserta.id_usulan = usulan.id');
+		$this->db->where('usulan.id', $id);
+	    $result = $this->db->get();
 		if($result->num_rows() >= 0){
 			return $result->row();
 		}else{

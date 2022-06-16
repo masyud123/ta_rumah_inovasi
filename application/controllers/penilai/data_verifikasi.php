@@ -140,7 +140,7 @@ class Data_verifikasi extends CI_Controller
 			];
 		}
 		$data['indikator_keterangan'] = $var;
-		//echo "<pre>"; print_r($data); exit;
+		// echo "<pre>"; print_r($data); exit;
 		$this->load->view('templates_penilai/header');
 		$this->load->view('templates_penilai/sidebar2');
 		$this->load->view('penilai/nilai_verifikasi', $data);
@@ -152,51 +152,40 @@ class Data_verifikasi extends CI_Controller
 		//NILAI PROPOSAL
 		$nilai_proposal 	= $this->input->post('nilai_proposal');
 		$id_usulan		    = $this->input->post('id_usulan');
-		$user_ids		    = $this->session->userdata('id_usr');
+		$id_penilai		    = $this->session->userdata('id_usr');
 		$data1 = array(
-			'nilai_proposal'      => $nilai_proposal,
-			'id_usulan'  => $id_usulan, 
-			'id_penilai' => $user_ids,
+			'nilai_proposal'	=> $nilai_proposal,
+			'id_usulan'  		=> $id_usulan, 
+			'id_penilai' 		=> $id_penilai,
 		);
 		$this->model_penilaian->simpan_nilai_proposal($data1, 'penilaian_proposal');
 
-
 		//TOTAL NILAI
 		$nilai_verifikasi = $this->input->post('nilai_verifikasi');
-		$id_usulan        = $this->input->post('id_usulan');
-		$created_byy	  = $this->session->userdata('nama');
-		$id_penilai	  	  = $this->session->userdata('id_usr');
-
 		$data2 = array(
 			'nilai_verifikasi'  => $nilai_verifikasi,
 			'id_usulan'         => $id_usulan, 
 			'created_date'      => date('Y-m-d H:i:s'),
-			'created_by'        => $created_byy,
 			'id_penilai'        => $id_penilai,
 		);
 		$this->model_penilaian->simpan_total_nilai($data2, 'total_nilai');
 
 		//PENILAIAN USULAN
-		$created_by			= $this->session->userdata('nama');
-		$user_id			= $this->session->userdata('id_usr');
-		$usulan_id		= $this->input->post('usulan_id');
 		$data = array();
 		foreach ($_POST['nilai'] as $key => $val) {
 			$data[] = array( 				
-				'nilai' => $_POST['nilai'][$key],
-				'id_indikator' => $_POST['indikator'][$key],
-				'id_penilai' => $user_id,
-				'usulan_id' => $usulan_id,
-				'created_date' => date('Y-m-d H:i:s'),
-				'created_by'  => $created_by
+				'nilai' 		=> $_POST['nilai'][$key],
+				'id_indikator' 	=> $_POST['indikator'][$key],
+				'id_penilai' 	=> $id_penilai,
+				'usulan_id' 	=> $id_usulan,
 			);		
 		}		
 		$this->db->insert_batch('penilaian_usulan',$data);
-
+		// exit;
 		$this->session->set_flashdata('message', 
             '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
             <script type ="text/JavaScript">  
-            swal("Sukses","Nilai berhasil disimpan","success")  
+            	Swal.fire("Sukses","Nilai berhasil disimpan","success")  
             </script>'  
         );
 		redirect('penilai/data_verifikasi');
@@ -264,7 +253,6 @@ class Data_verifikasi extends CI_Controller
 		$data3 		= array(
 			'nilai_verifikasi' 	=> $nilai_verifikasi,
 			'updated_date' 		=> date('Y-m-d H:i:s'),
-			'updated_by'  		=> $this->session->userdata('nama'),
 		);
 		$where3 	= array('id' => $id_total_nilai);
 		$this->db->update('total_nilai', $data3, $where3);
@@ -279,8 +267,6 @@ class Data_verifikasi extends CI_Controller
 			$data[] 	= array(
 				'nilai' 		=> $nilai[$i],
 				'id'			=> $id_penilaian_usulan[$i],
-				'updated_date' 	=> date('Y-m-d H:i:s'),
-				'updated_by'  	=> $this->session->userdata('nama'),
 			);
 		}
 		for($i=0; $i<count($data); $i++){

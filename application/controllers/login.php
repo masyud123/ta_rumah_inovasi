@@ -64,7 +64,7 @@ class Login extends CI_Controller {
 							break;
 						case 'Peserta' : redirect('peserta/riwayat'); 
 							break;
-						case 'Penilai' : redirect('penilai/data_verifikasi');
+						case 'Penilai' : redirect('penilai/dashboard');
 							break;
 						default: break;
 					}

@@ -18,9 +18,10 @@ class Dashboard extends CI_Controller{
 
 	public function index()
 	{
+		$data['profil_user'] = $this->db->get_where('user', ['id_usr' => $this->session->userdata('id_usr')])->row(); 
 		$this->load->view('templates_penilai/header');
 		$this->load->view('templates_penilai/sidebar');
-		$this->load->view('penilai/dashboard');
+		$this->load->view('penilai/dashboard', $data);
 		$this->load->view('templates_penilai/footer');
 	}
 	

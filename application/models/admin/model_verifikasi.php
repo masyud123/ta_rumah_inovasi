@@ -361,10 +361,10 @@ class Model_verifikasi extends CI_Model{
 
 	public function ambil_total_nilai($id_usulan)
 	{
-		$id_penilai = $this->session->userdata('nama');
+		$id_penilai = $this->session->userdata('id_usr');
 		$this->db->select('*');
 		$this->db->from('total_nilai');
-		$this->db->where(array('id_usulan'=> $id_usulan, 'created_by'=>$id_penilai));
+		$this->db->where(array('id_usulan'=> $id_usulan, 'id_penilai'=>$id_penilai));
 		return $this->db->get();
 	}
 

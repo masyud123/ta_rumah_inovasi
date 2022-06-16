@@ -1,5 +1,6 @@
 <div class="container-fluid">
-    <td><div class="form-row align-items-center">
+    <!-- <td>
+      <div class="form-row align-items-center">
         <div class="col-auto my-1">
           <select class="custom-select mr-sm-2" name="cari_verifikasi" id="myInput2" onchange="filter_tahun2()">
             <option disabled selected>Filter Tahun</option>
@@ -19,7 +20,7 @@
           </button>
         </div>
       </div>
-    </td>
+    </td> -->
 
     <div class="card shadow">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -28,7 +29,7 @@
         <div class="card-body">
             <?php echo $this->session->flashdata('message');  ?>
             <div class="table-responsive">
-              <table id="myTable2" class="table table-striped table-hover" style="width: 100%">
+              <table id="myTable2" class="table table-striped table-hover table-bordered" style="width: 100%">
                   <tr>
                       <th class="text-center table-secondary">No</th>
                       <th class="table-secondary">Tahun</th>
@@ -48,7 +49,7 @@
                           <td><?php echo $usl->subevent ?></td>
                           <td><?php echo $usl->judul ?></td>
                           <td><?php echo $usl->nama_ketua ?></td>
-                          <td align="center" style="width: 50"><?php echo anchor('penilai/data_verifikasi/view/' .$usl->id, '<div class="btn btn-sm btn-warning btn"><i class="fa fa-search-plus"></i> Lihat</div>') ?>
+                          <td align="center" style="width: 50"><?php echo anchor('penilai/data_verifikasi/view/' .$usl->id, '<div class="btn btn-sm btn-success btn"><i class="fa fa-search-plus"></i> Detail Inovasi</div>') ?>
                           </td>
                           <td align="center" style="width: 50">
                             <?php if ($ganti_warna != null): ?>
@@ -56,7 +57,7 @@
                                   $cekData[] = $g_warna['id_usulan'];
                                 endforeach; ?>
                                 <?php if (in_array($usl->id, $cekData)) :?>
-                                    <button onclick="window.location.href='<?php echo base_url('penilai/data_verifikasi/edit_nilai_verifikasi/' .$usl->id) ?>'" class="btn btn-sm btn-success"><i class="far fa-edit"></i> Edit Nilai</button>
+                                    <button onclick="window.location.href='<?php echo base_url('penilai/data_verifikasi/edit_nilai_verifikasi/' .$usl->id) ?>'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i> Edit Nilai</button>
                                 <?php else :?>
                                     <button onclick="window.location.href='<?php echo base_url('penilai/data_verifikasi/nilai_verifikasi/' .$usl->id) ?>'" class="btn btn-sm btn-primary"><i class="far fa-edit"></i> Beri Nilai</button>
                               <?php endif;?> 

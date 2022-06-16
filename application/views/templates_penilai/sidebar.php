@@ -31,7 +31,7 @@
                 PENILAIAN
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
-            <li <?=$this->uri->segment(2) == 'data_verifikasi' || $this->uri->segment(2) == '' ? 'class="nav-item active"' : 'class="nav-item"'?>>
+            <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('penilai/data_verifikasi') ?>">
                     <i class="fas fa-fw fa-check"></i>
                     <span><strong>Verifikasi</strong></span></a>
