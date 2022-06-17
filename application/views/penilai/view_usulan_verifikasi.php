@@ -2,32 +2,6 @@
   <main>
     <div class="container mt-3">
     <?= $this->session->flashdata('ulasan')?>
-      <!-- <div>
-        <a href="<?php echo base_url('penilai/data_verifikasi/') ?>" class="btn btn-sm btn-warning btn-icon-split mb-2">
-          <span class="icon text-white-50">
-            <i class="fas fa-arrow-left"></i>
-          </span>
-          <span class="text">Kembali</span>
-        </a>
-        <?php if ($ulasan != null): ?>
-            <?php foreach($ulasan as $ulas):?>
-              <a href="#" class="btn btn-sm btn-success btn-icon-split mb-2 ml-2" data-toggle="modal" data-target="#edit_ulasan<?= $ulas->id_usulan?>">
-                <span class="icon text-white-50">
-                  <i class="fas fa-star"></i>
-                </span>
-                <span class="text">Lihat Ulasan</span>
-              </a>
-            <?php endforeach; ?>
-        <?php else: ?>
-              <a href="#" class="btn btn-sm btn-success btn-icon-split mb-2 ml-2" data-toggle="modal" data-target="#beri_ulasan">
-                <span class="icon text-white-50">
-                  <i class="fas fa-star"></i>
-                </span>
-                <span class="text">Beri Ulasan</span>
-              </a>
-        <?php endif;?>
-      </div> -->
-      
       <div class="card">
         <div class="card-header">
           <h5 class="m-0 font-weight-bold text-primary">Detail Inovasi</h5>

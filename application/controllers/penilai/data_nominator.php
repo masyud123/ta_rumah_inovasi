@@ -19,23 +19,29 @@ class Data_nominator extends CI_Controller
 	{
 		$sbevent 	= $this->model_verifikasi->ambil_id_subevent_penilai()->result();
 		foreach($sbevent as $s_event):
-		$data['usulan'] = $this->model_verifikasi->ambil_usulan_nominator($s_event->id_subevent);
-		$data['jumlah_usulan'] = $this->model_verifikasi->jumlah_usulan($s_event->id_subevent);
+			$data['usulan'] = $this->model_verifikasi->ambil_usulan_nominator($s_event->id_subevent);
+			$data['jumlah_usulan'] = $this->model_verifikasi->jumlah_usulan($s_event->id_subevent);
 		endforeach;
 		$data['jumlah_usulan2'] = $this->model_verifikasi->jumlah_usulan2();
 		$data['ganti_warna2'] 	= $this->model_verifikasi->ganti_warna2();
-		//echo "<pre>"; print_r($data); exit;
-		
+		// echo "<pre>"; print_r($data); exit;
 		$this->load->view('templates_penilai/header');
 		$this->load->view('templates_penilai/sidebar', $data);
 		$this->load->view('penilai/nominator', $data);
 		$this->load->view('templates_penilai/footer');
 	}
 
-	public function view($id)
+	public function view($id_usulan)
 	{
-		$where = array('id' => $id);
-		$data['usulan'] = $this->model_usulan->edit_riwayat($where, 'usulan')->result();
+		// $where = array('id' => $id);
+		// $data['usulan'] = $this->model_usulan->edit_riwayat($where, 'usulan')->result();
+		$peserta = $this->db->get_where('peserta', ['id_usulan' => $id_usulan])->row();
+        $data['anggota']    = $this->db->get_where('anggota_tim', ['id_peserta' => $peserta->id_peserta])->result_array();
+        $data['bidang']     = $this->db->get_where('bidang', ['id' => $peserta->id_bidang])->row();
+        $data['usulan']     = $this->model_usulan->get_detail_usulan($id_usulan)->result_array();
+		$data['ulasan'] 	= $this->model_usulan->get_ulasan($id_usulan)->result();
+		$data['id_usulan']	= $id_usulan;
+		
 		$this->load->view('templates_penilai/header');
 		$this->load->view('templates_penilai/sidebar2');
 		$this->load->view('penilai/view_usulan_nominator', $data);
@@ -46,7 +52,7 @@ class Data_nominator extends CI_Controller
 	{
 		$data['usulan']    = $this->model_penilaian->ambil_id_usulan($id);
 		$subevent 	       = $this->model_penilaian->ambil_id_subevent2($id);
-		$data['komponen']         = $this->model_penilaian->ambil_komponen($subevent->id_subevent);
+		$data['komponen']  = $this->model_penilaian->ambil_komponen($subevent->id_subevent);
 		$data['lihat']     = $this->model_verifikasi->ambil_usulan_nominator($subevent->id_subevent);
 		$this->load->view('templates_penilai/header');
 		$this->load->view('templates_penilai/sidebar2');
@@ -57,33 +63,26 @@ class Data_nominator extends CI_Controller
 	public function simpan()
 	{
 		date_default_timezone_set('Asia/Jakarta');
-		//Total Nilai Nominator
+		// Tb Total Nilai Nominator
 		$nilai_nominator 	= $this->input->post('nilai_nominator');
 		$id_usulan        	= $this->input->post('id_usulan');
-		$created_byy		= $this->session->userdata('nama');
 		$penilai		= $this->session->userdata('id_usr');
 		$data = array(
 			'nilai_nominator'   => $nilai_nominator,
 			'id_usulan'         => $id_usulan,
 			'id_penilai' 		=> $penilai,
 			'created_date'      => date('Y-m-d H:i:s'),
-			'created_by'        => $created_byy,
 		);
 		$this->model_penilaian->simpan_total_nilai2($data, 'total_nilai_pemenang');
 
-
-		$created_by	    = $this->session->userdata('nama');
-		$userid			= $this->session->userdata('id_usr');
-		$id_usulan 			= $this->input->post('id_usulan');
+		// Tb Penilaian Pemenang
 		$data = array();
 		foreach ($_POST['nilai'] as $key => $val) {
 			$data[] = array( 				
-				'nilai' => $_POST['nilai'][$key],
-				'id_indikator' => $_POST['indikator'][$key],
+				'nilai' 		=> $_POST['nilai'][$key],
+				'id_indikator' 	=> $_POST['indikator'][$key],
 				'id_usulan'		=> $id_usulan,
-				'id_penilai' => $userid,
-				'created_date' => date('Y-m-d H:i:s'),
-				'created_by'  => $created_by
+				'id_penilai' 	=> $penilai,
 			);		
 		}		
 		$this->db->insert_batch('penilaian_pemenang',$data);
@@ -101,8 +100,7 @@ class Data_nominator extends CI_Controller
 		$subevent 	       				= $this->model_penilaian->ambil_id_subevent2($id);
 		$data['komponen']         		= $this->model_penilaian->ambil_komponen($subevent->id_subevent);
 		$data['lihat']     				= $this->model_verifikasi->ambil_usulan_nominator($subevent->id_subevent);
-
-		$data['penilaian_nominator'] = $this->model_verifikasi->ambil_penilaian_nominator($id)->result_array();
+		$data['penilaian_nominator'] 	= $this->model_verifikasi->ambil_penilaian_nominator($id)->result_array();
 		$data['total_nilai_nominator'] 	= $this->model_verifikasi->ambil_total_nilai_nominator($id)->result_array();
 		
 		$this->load->view('templates_penilai/header');
@@ -114,22 +112,23 @@ class Data_nominator extends CI_Controller
 	public function update_nilai_nominator()
 	{
 		date_default_timezone_set('Asia/Jakarta');
-		// Penilaian nominator
+		// tb Penilaian pemenang
 		foreach ($_POST['nilai'] as $i => $jml) {
 			$data[] = array( 				
-				'nilai' 		=> $_POST['nilai'][$i],
-				'id' 			=> $_POST['id_penilaian_nominator'][$i],
-				'updated_date' 	=> date('Y-m-d H:i:s'),
-				'updated_by'  	=> $this->session->userdata('nama'),
+				'nilai'	=> $_POST['nilai'][$i],
+				'id' 	=> $_POST['id_penilaian_nominator'][$i],
 			);		
 		} 
 		$this->db->update_batch('penilaian_pemenang', $data, 'id');
 
-		// Total nilai nominator
+		// tb Total nilai pemenang
 		$nilai_nominator 			= $this->input->post('nilai_nominator');
 		$id_total_nilai_nominator 	= $this->input->post('id_total_nilai_nominator');
 
-		$data2 = array('nilai_nominator' => $nilai_nominator);
+		$data2 = array(
+			'nilai_nominator' 	=> $nilai_nominator,
+			'updated_date' 		=> date('Y-m-d H:i:s'),
+		);
 		$where2 = array('id_total_nilai_pemenang' => $id_total_nilai_nominator);
 
 		$this->db->update('total_nilai_pemenang', $data2, $where2);

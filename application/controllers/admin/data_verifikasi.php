@@ -51,7 +51,7 @@ class Data_verifikasi extends CI_Controller{
 			$var[] = [
 				'id' => $usl->id,
 				'id_subevent' => $usl->id_subevent,
-				'user' => $usl->user,
+				'user' => $usl->nama_ketua,
 				'judul' => $usl->judul,
 				'tahun' => $usl->tahun,
 				'subevent' => $usl->subevent,
@@ -70,7 +70,7 @@ class Data_verifikasi extends CI_Controller{
 			$var2[] = [
 				'id' => $usl2->id,
 				'id_subevent' => $usl2->id_subevent,
-				'user' => $usl2->user,
+				'user' => $usl2->nama_ketua,
 				'judul' => $usl2->judul,
 				'tahun' => $usl2->tahun,
 				'subevent' => $usl2->subevent,
@@ -87,7 +87,7 @@ class Data_verifikasi extends CI_Controller{
 		$data['nama_penilai']		= $this->model_verifikasi->get_nama_penilai($id_subevent)->result_array();
 		$data['cek_status_pelajar'] = $this->model_verifikasi->get_usulan_pelajar_status_2($id_subevent)->result_array();
 		$data['cek_status_umum'] 	= $this->model_verifikasi->get_usulan_umum_status_2($id_subevent)->result_array();
-		//echo "<pre>"; print_r($data);exit;
+		// echo "<pre>"; print_r($usulan);exit;
 		$this->load->view('templates_rangking/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/verifikasi2', $data);

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <!-- <form action="<?php echo base_url(). 'penilai/data_verifikasi/cari_verifikasi'; ?>" method="post" > -->
+    <!-- <form action="<?php echo base_url(). 'penilai/data_verifikasi/cari_verifikasi'; ?>" method="post" >
         <td><div class="form-row align-items-center">
             <div class="col-auto my-1">
               <select class="custom-select mr-sm-2" name="cari_verifikasi" id="myInput" onchange="filter_tahun()">
@@ -11,17 +11,17 @@
                 <option value="2025">2025</option>
               </select>
             </div>
-            <!-- <div class="col-auto my-1">
+            <div class="col-auto my-1">
               <button type="submit" onclick="filter_tahun()" class="btn btn-sm btn-primary btn-icon-split">
                   <span class="icon text-white-50">
                     <i class="fas fa-search"></i>
                   </span>
                   <span class="text">Filter</span>
               </button>
-            </div> -->
+            </div>
           </div>
         </td>
-     <!--  </form>  -->
+      </form>  -->
 
      <div class="card shadow mb-4">
       <!-- Card Header - Dropdown -->
@@ -52,12 +52,10 @@
             <td><?php echo $usl->tahun ?></td>
             <td><?php echo $usl->subevent ?></td>
             <td><?php echo $usl->judul ?></td>
-            <td><?php echo $usl->user ?></td>
+            <td><?php echo $usl->nama_ketua ?></td>
             <td align="center" style="width: 50"><?php echo anchor('penilai/data_nominator/view/' .$usl->id, '<div class="btn btn-sm btn-warning btn"><i class="fa fa-search-plus"></i> Lihat</div>') ?>
             </td>
             <td align="center" style="width: 50">
-
-
               <?php if ($ganti_warna2 != null): ?>
                   <?php foreach ($ganti_warna2 as $wrn):
                       $gatel[] = $wrn->id_usulan;

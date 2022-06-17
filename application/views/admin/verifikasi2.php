@@ -152,7 +152,6 @@
                                 </tbody>
                             </table>
                         </div>
-                    
                     </div>
                 </form>
             </div>
@@ -244,7 +243,7 @@
                                                 <?php foreach ($nama_penilai as $penilai): ?>
                                                     <td align="center">
                                                         <?php foreach ($value['nilai_verifikasi'] as $key2 => $val): ?>
-                                                            <?php if($val->created_by == $penilai['nama']):?>
+                                                            <?php if($val->id_penilai == $penilai['id_usr']):?>
                                                                 <?= $val->nilai_verifikasi ?>
                                                             <?php endif; ?>
                                                         <?php endforeach ?>

@@ -24,9 +24,11 @@ class Model_verifikasi extends CI_Model{
 
 	public function ambil_usulan_nominator($id_subevent)
 	{
-		$this->db->select('nominator.*,usulan.*');
+		$this->db->select('nominator.*,usulan.*, peserta.*, subevent.*');
 		$this->db->from('nominator');
 		$this->db->join('usulan','usulan.id = nominator.id_usulan');
+		$this->db->join('peserta','peserta.id_usulan = usulan.id');
+		$this->db->join('subevent','subevent.id = usulan.id_subevent');
 		$this->db->where('nominator.id_subevent', $id_subevent);
 		$this->db->where('nominator.status', 1);
 		//$result = $this->db->where('id_subevent', $id_subevent);
@@ -36,9 +38,10 @@ class Model_verifikasi extends CI_Model{
 
 	public function usulan_setelah_verifikasi($id_subevent){
 
-		$this->db->select('peserta.*,usulan.*');
+		$this->db->select('peserta.*,usulan.*, subevent.*');
 		$this->db->from('peserta');
 		$this->db->join('usulan','usulan.id = peserta.id_usulan');
+		$this->db->join('subevent','subevent.id = usulan.id_subevent');
 		$this->db->where('status', '3');
 		$this->db->where('usulan.id_subevent', $id_subevent);
 		$result = $this->db->get();
@@ -91,7 +94,8 @@ class Model_verifikasi extends CI_Model{
 	}
 	public function ganti_warna2(){
 		$id_penilai = $this->session->userdata('id_usr');
-		$this->db->select('id_usulan, judul, id_usr');
+		// $this->db->select('id_usulan, judul, id_usr');
+		$this->db->select('usulan.id, total_nilai_pemenang.id_usulan');
 		$this->db->from('total_nilai_pemenang');
 		$this->db->join('usulan', 'usulan.id = total_nilai_pemenang.id_usulan');
 		$this->db->where('total_nilai_pemenang.id_penilai', $id_penilai);
@@ -122,9 +126,10 @@ class Model_verifikasi extends CI_Model{
 	//tab view
 	public function usulan_verifikasi($id_subevent){
 
-		$this->db->select('peserta.*,usulan.*');
+		$this->db->select('peserta.*,usulan.*, subevent.*');
 		$this->db->from('peserta');
 		$this->db->join('usulan','usulan.id = peserta.id_usulan');
+		$this->db->join('subevent','subevent.id = usulan.id_subevent');
 		$this->db->where('status', '2');
 		$this->db->where('usulan.id_subevent', $id_subevent);
 		$query = $this->db->get();
@@ -370,19 +375,19 @@ class Model_verifikasi extends CI_Model{
 
 	public function ambil_penilaian_nominator($id_usulan)
 	{
-		$nama_penilai = $this->session->userdata('nama');
+		$id_penilai = $this->session->userdata('id_usr');
 		$this->db->select('*');
 		$this->db->from('penilaian_pemenang');
-		$this->db->where(array('id_usulan'=> $id_usulan, 'created_by'=>$nama_penilai));
+		$this->db->where(array('id_usulan'=> $id_usulan, 'id_penilai'=>$id_penilai));
 		return $this->db->get();
 	}
 
 	public function ambil_total_nilai_nominator($id_usulan)
 	{
-		$nama_penilai = $this->session->userdata('nama');
+		$id_penilai = $this->session->userdata('id_usr');
 		$this->db->select('*');
 		$this->db->from('total_nilai_pemenang');
-		$this->db->where(array('id_usulan'=> $id_usulan, 'created_by'=>$nama_penilai));
+		$this->db->where(array('id_usulan'=> $id_usulan, 'id_penilai'=>$id_penilai));
 		return $this->db->get();
 	}
 

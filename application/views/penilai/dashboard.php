@@ -87,10 +87,10 @@
                                 <input type="text" class="form-control form-control-sm" value="<?= $profil_user->hak_akses; ?>" readonly>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-4">
-                                <a href="" data-toggle="modal" data-target="#reset_pwd">Reset password ?</a>
+                                <!-- <a href="" data-toggle="modal" data-target="#reset_pwd">Reset password ?</a>
                                 <button id="edit_profil" class="btn btn-sm btn-warning" type="button">
                                     <i class="fa fa-edit" aria-hidden="true"></i> Edit Profil
-                                </button>
+                                </button> -->
                             </div>
                         </form>    
                     </div>
