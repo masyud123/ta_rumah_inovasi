@@ -46,9 +46,9 @@ class Riwayat extends CI_Controller{
 		$where1 	= array('id'	=>	$id_usulan);
 		$where2 	= array('id_peserta'	=>	$id_peserta);
 
-		$this->db->delete('usulan', $where1);
 		$this->db->delete('anggota_tim', $where2);
 		$this->db->delete('peserta', $where2);
+		$this->db->delete('usulan', $where1);
 
 		$this->session->set_flashdata('pesan1',
 			'<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
@@ -76,36 +76,6 @@ class Riwayat extends CI_Controller{
 	                      </button>
 	                    </div>');
 		redirect('peserta/riwayat/'); 
-	}
-
-	public function edit_riwayat1($id_peserta)
-	{
-		$data['pilih_bidang'] = $this->model_riwayat->pilih_bidang()->result_array();
-		$data['detail_riwayat'] = $this->model_riwayat->tampil_detail_riwayat($id_peserta)->result_array();
-		$data['tampil_bidang'] = $this->model_riwayat->tampil_bidang($id_peserta)->result_array();
-		$data['nama_anggota'] = $this->model_riwayat->tampil_anggota($id_peserta)->result_array();
-		$this->load->view('templates_peserta/header');
-		$this->load->view('templates_peserta/sidebar');
-		$this->load->view('peserta/edit_riwayat1', $data);
-		$this->load->view('templates_peserta/footer');
-	}
-
-	public function edit_riwayat2($id)
-	{
-		$data['detail_riwayat2'] = $this->model_riwayat->tampil_detail_riwayat2($id)->result_array();
-		$this->load->view('templates_peserta/header');
-		$this->load->view('templates_peserta/sidebar');
-		$this->load->view('peserta/edit_riwayat2', $data);
-		$this->load->view('templates_peserta/footer');
-	}
-
-	public function edit_riwayat3($id)
-	{
-		$data['detail_riwayat3'] = $this->model_riwayat->tampil_detail_riwayat2($id)->result_array();
-		$this->load->view('templates_peserta/header');
-		$this->load->view('templates_peserta/sidebar');
-		$this->load->view('peserta/edit_riwayat3', $data);
-		$this->load->view('templates_peserta/footer');
 	}
 
 	public function detail_riwayat($id_peserta)
@@ -332,4 +302,38 @@ class Riwayat extends CI_Controller{
 			echo 5; // link video tidak valid
 		}
 	}
+
+
+
+
+
+	// public function edit_riwayat1($id_peserta)
+	// {
+	// 	$data['pilih_bidang'] = $this->model_riwayat->pilih_bidang()->result_array();
+	// 	$data['detail_riwayat'] = $this->model_riwayat->tampil_detail_riwayat($id_peserta)->result_array();
+	// 	$data['tampil_bidang'] = $this->model_riwayat->tampil_bidang($id_peserta)->result_array();
+	// 	$data['nama_anggota'] = $this->model_riwayat->tampil_anggota($id_peserta)->result_array();
+	// 	$this->load->view('templates_peserta/header');
+	// 	$this->load->view('templates_peserta/sidebar');
+	// 	$this->load->view('peserta/edit_riwayat1', $data);
+	// 	$this->load->view('templates_peserta/footer');
+	// }
+
+	// public function edit_riwayat2($id)
+	// {
+	// 	$data['detail_riwayat2'] = $this->model_riwayat->tampil_detail_riwayat2($id)->result_array();
+	// 	$this->load->view('templates_peserta/header');
+	// 	$this->load->view('templates_peserta/sidebar');
+	// 	$this->load->view('peserta/edit_riwayat2', $data);
+	// 	$this->load->view('templates_peserta/footer');
+	// }
+
+	// public function edit_riwayat3($id)
+	// {
+	// 	$data['detail_riwayat3'] = $this->model_riwayat->tampil_detail_riwayat2($id)->result_array();
+	// 	$this->load->view('templates_peserta/header');
+	// 	$this->load->view('templates_peserta/sidebar');
+	// 	$this->load->view('peserta/edit_riwayat3', $data);
+	// 	$this->load->view('templates_peserta/footer');
+	// }
 }	
