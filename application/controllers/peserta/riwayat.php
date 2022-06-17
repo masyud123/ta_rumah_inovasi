@@ -46,6 +46,14 @@ class Riwayat extends CI_Controller{
 		$where1 	= array('id'	=>	$id_usulan);
 		$where2 	= array('id_peserta'	=>	$id_peserta);
 
+		$peserta 	= $this->db->get_where('peserta', $where2)->row();
+		unlink('./uploads/'.$peserta->ktp);
+
+		$usulan 	= $this->db->get_where('usulan', $where1)->row();
+		unlink('./uploads/'.$usulan->proposal);
+		unlink('./uploads/'.$usulan->jurnal);
+		unlink('./uploads/'.$usulan->gambar);
+		
 		$this->db->delete('anggota_tim', $where2);
 		$this->db->delete('peserta', $where2);
 		$this->db->delete('usulan', $where1);
