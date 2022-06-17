@@ -66,13 +66,41 @@ class Data_inovasi extends CI_Controller{
 
 		$where = array('id_formulasi_nilai' => $id_formulasi);
 
-		$this->db->update('formulasi_nilai', $data, $where);
-		$this->session->set_flashdata('formulasi_nilai',
-			'<script>
-				Swal.fire("Sukses", "Data berhasil diperbarui", "success");
-			</script>'
-		);
-		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		//cek usulan dinilai atau belum
+		$getUsulan = $this->model_inovasi->getUsulan($id_subevent)->result_array();
+		if($getUsulan != null){
+			foreach($getUsulan as $subevent){
+				$get_total_nilai = $this->model_inovasi->getTotalNilai()->result_array();
+				foreach($get_total_nilai as $getTotalNilai){
+					$TotalNilai[] = $getTotalNilai['id_usulan'];
+				}
+				$cek[] = in_array($subevent['id'], $TotalNilai);
+				if($cek[0]){
+					$this->session->set_flashdata('formulasi_nilai',
+						'<script>
+							Swal.fire("Gagal", "Data tidak bisa dirubah. User Penilai sudah melakukan penilaian", "error");
+						</script>'
+					);
+					header('Location: ' . $_SERVER['HTTP_REFERER']);
+				}else{
+					$this->db->update('formulasi_nilai', $data, $where);
+					$this->session->set_flashdata('formulasi_nilai',
+						'<script>
+							Swal.fire("Sukses", "Data berhasil diperbarui", "success");
+						</script>'
+					);
+					header('Location: ' . $_SERVER['HTTP_REFERER']);
+				}
+			}
+		}else{
+			$this->db->update('formulasi_nilai', $data, $where);
+			$this->session->set_flashdata('formulasi_nilai',
+				'<script>
+					Swal.fire("Sukses", "Data berhasil diperbarui", "success");
+				</script>'
+			);
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
+		}
 	}
 
 	//indikator penilaian

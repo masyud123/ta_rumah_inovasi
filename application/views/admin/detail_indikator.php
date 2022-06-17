@@ -1,11 +1,20 @@
 <div class="container-fluid">
 	<div>
-		<a href="#" class="btn btn-primary btn-sm btn-icon-split mb-4 ml-3" data-toggle="modal" data-target="#tambah_nominator">
-			<span class="icon text-white-50">
-				<i class="fas fa-plus"></i>
-			</span>
-			<span class="text">Tambah Keterangan</span>
-		</a> 
+		<?php if ($hasil_cek == "ada") :?>
+			<a href="#" class="btn btn-secondary disabled btn-sm btn-icon-split mb-4 ml-3">
+				<span class="icon text-white-50">
+					<i class="fas fa-plus"></i>
+				</span>
+				<span class="text">Tambah Keterangan</span>
+			</a> 
+		<?php else: ?>
+			<a href="#" class="btn btn-primary btn-sm btn-icon-split mb-4 ml-3" data-toggle="modal" data-target="#tambah_nominator">
+				<span class="icon text-white-50">
+					<i class="fas fa-plus"></i>
+				</span>
+				<span class="text">Tambah Keterangan</span>
+			</a> 
+		<?php endif; ?>
 		<button type="button" class="btn btn-sm btn-warning btn-icon-split mb-4 ml-2" onclick="window.location.href='<?= base_url('admin/data_inovasi/detail_inovasi/'.$id_subevent)?>'">
 			<span class="icon text-white-50">
 				<i class="fas fa-arrow-left"></i>
