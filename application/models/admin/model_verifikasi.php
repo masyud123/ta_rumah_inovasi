@@ -147,7 +147,7 @@ class Model_verifikasi extends CI_Model{
         return $query->result();
 	}
 
-	public function usulan_nominator($id_subevent){
+	public function usulan_nominator($id_subevent){ 
 
 		$this->db->select('peserta.*,nominator.*,usulan.*');
 		$this->db->from('peserta');

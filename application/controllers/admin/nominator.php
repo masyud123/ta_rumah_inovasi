@@ -50,7 +50,7 @@ class Nominator extends CI_Controller{
 			$var[] = [
 				'id_usulan' => $usl->id_usulan,
 				'id_subevent' => $usl->id_subevent,
-				'user' => $usl->user,
+				'user' => $usl->nama_ketua,
 				'judul' => $usl->judul,
 				'tahun' => $usl->tahun,
 				'kategori_peserta' => $usl->kategori_peserta,
@@ -66,7 +66,7 @@ class Nominator extends CI_Controller{
 			$var2[] = [
 				'id_usulan' => $usl2->id_usulan,
 				'id_subevent' => $usl2->id_subevent,
-				'user' => $usl2->user,
+				'user' => $usl2->nama_ketua,
 				'judul' => $usl2->judul,
 				'tahun' => $usl2->tahun,
 				'kategori_peserta' => $usl2->kategori_peserta,
@@ -91,7 +91,7 @@ class Nominator extends CI_Controller{
 	}
 
 	public function simpan_rangking(){
-		$created_by  = $this->session->userdata('nama');	
+		$created_by  = $this->session->userdata('id_usr');	
 		foreach ($_POST['id_usulan'] as $key => $val) {
 				$data[] = array( 				
 					'id_usulan' 	=> $_POST['id_usulan'][$key],
@@ -126,13 +126,15 @@ class Nominator extends CI_Controller{
 		foreach($get_nominator as  $val2){ $data5[] = $val2['id_usulan']; }
 		$data101 = array_diff($data4,$data5);
 
-		foreach($data101 as $key => $val){
-			$data6[] = array( 				
-				'id'	 => $val,
-				'status' => 4,
-				);
+		if($data101 != null){
+			foreach($data101 as $key => $val){
+				$data6[] = array( 				
+					'id'	 => $val,
+					'status' => 4,
+					);
+			}
+			$this->db->update_batch('usulan', $data6, 'id');
 		}
-		$this->db->update_batch('usulan', $data6, 'id');
 
 		$this->session->set_flashdata('rangking_nominator',
 			'<script type="text/JavaScript">  

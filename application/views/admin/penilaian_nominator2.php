@@ -101,7 +101,7 @@
 									<td align="center"><?php echo $no++ ?></td>
 									<td><?= $value['user']?></td>
 									<td><?= $value['judul']?></td>
-									<td align="center"><?= "-"?></td>
+									<td align="center">-</td>
 									<td align="center"><?= $value['total']?></td>
 									<?php foreach ($nama_penilai as $penilai): ?>
 									<td align="center">
@@ -223,7 +223,7 @@
 									<td align="center"><?php echo $no++ ?></td>
 									<td><?= $value['user']?></td>
 									<td><?= $value['judul']?></td>
-									<td align="center"><?php echo "-" ?></td>
+									<td align="center">-</td>
 									<td align="center"><?= $value['total']?></td>
 									<?php foreach ($nama_penilai as $penilai): ?>
 									<td align="center">
