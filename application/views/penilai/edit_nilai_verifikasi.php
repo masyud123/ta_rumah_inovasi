@@ -15,7 +15,7 @@ input[type=number] {
   <main>
     <div class="container mt-3">
       <div>
-        <a href="<?php echo base_url('penilai/data_verifikasi/') ?>" class="btn btn-sm btn-warning btn-icon-split mb-2">
+        <a href="<?php echo base_url('penilai/Data_verifikasi/') ?>" class="btn btn-sm btn-warning btn-icon-split mb-2">
           <span class="icon text-white-50">
             <i class="fas fa-arrow-left"></i>
           </span>
@@ -27,7 +27,7 @@ input[type=number] {
         <h5 class="card-header"><b>Nama Inovasi     : <?php echo $usulan->judul ?><br>Inovator : <?php echo $usulan->nama_ketua ?></b></h5><br>
         <h5 class="card-header"><b>Nilai Verifikasi </b></h5>
         <h5 class="card-header"><b>1. Penilaian Makalah</b></h5>
-        <form method="post" action="<?php echo base_url('penilai/data_verifikasi/update_nilai_verifikasi')?>">
+        <form method="post" action="<?php echo base_url('penilai/Data_verifikasi/update_nilai_verifikasi')?>">
         <div class="card-body">
           <div class="row">
             <div class="col-md-11">

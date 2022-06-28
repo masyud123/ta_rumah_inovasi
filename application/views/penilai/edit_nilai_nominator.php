@@ -16,7 +16,7 @@ input[type=number] {
   <main>
     <div class="container-fluid mt-3">
       <div class="ml-2">
-        <a href="<?php echo base_url('penilai/data_nominator/') ?>" class="btn btn-sm btn-warning btn-icon-split mb-2">
+        <a href="<?php echo base_url('penilai/Data_nominator/') ?>" class="btn btn-sm btn-warning btn-icon-split mb-2">
           <span class="icon text-white-50">
             <i class="fas fa-arrow-left"></i>
           </span>
@@ -30,7 +30,7 @@ input[type=number] {
           <div class="card-body">
               <div class="col">
                 <?php echo $this->session->flashdata('message');  ?>
-                <form method="post" action="<?php echo base_url().'penilai/data_nominator/update_nilai_nominator' ?>">
+                <form method="post" action="<?php echo base_url().'penilai/Data_nominator/update_nilai_nominator' ?>">
                   <div class="table-responsive">
                     <table class="table table-bordered" width="100%">
                         <tr>
@@ -76,7 +76,7 @@ input[type=number] {
                     </table>
                   </div>
                   <div class="d-flex justify-content-end">
-                      <a href="<?= base_url('penilai/data_nominator/') ?>" class="btn btn-sm btn-warning mr-3"><i class="fas fa-arrow-left mr-1"></i> Kembali</a>
+                      <a href="<?= base_url('penilai/Data_nominator/') ?>" class="btn btn-sm btn-warning mr-3"><i class="fas fa-arrow-left mr-1"></i> Kembali</a>
                       <button type="submit" class="btn btn-sm btn-success mr-3"><i class="fa fa-save mr-1"></i> Simpan</button>
                   </div>
                 </form>

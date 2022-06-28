@@ -9,7 +9,7 @@
         <div class="card-body">
           <div class="d-md-flex justify-content-between"> 
               <div class="d-md-flex justify-content-between">
-                <a href="<?php echo base_url('penilai/data_verifikasi/') ?>" class="btn btn-sm btn-warning btn-icon-split mr-md-2 mb-3">
+                <a href="<?php echo base_url('penilai/Data_verifikasi/') ?>" class="btn btn-sm btn-warning btn-icon-split mr-md-2 mb-3">
                   <span class="icon text-white-50"><i class="fas fa-arrow-left"></i></span>
                   <span class="text">Kembali</span>
                 </a>
@@ -240,7 +240,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?= base_url('penilai/data_verifikasi/beri_ulasan/'.$id_usulan)?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('penilai/Data_verifikasi/beri_ulasan/'.$id_usulan)?>" method="post" enctype="multipart/form-data">
           <div class="form-group mb-4">
             <label for="">Ulasan</label>
             <input type="text" name="id_ulasan" value="<?= $ulas->id_ulasan?>" hidden>
@@ -268,7 +268,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?= base_url('penilai/data_verifikasi/beri_ulasan/'.$id_usulan)?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('penilai/Data_verifikasi/beri_ulasan/'.$id_usulan)?>" method="post" enctype="multipart/form-data">
           <div class="form-group mb-4">
             <label for="">Ulasan</label>
             <input type="text" name="id_ulasan" value="" hidden>
