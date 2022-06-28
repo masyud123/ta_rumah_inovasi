@@ -11,7 +11,7 @@ class Data_verifikasi extends CI_Controller
 			$this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  Anda belum Login, silahkan login!
 														 </div>');
-			redirect('login');
+			redirect('Login');
 		}
 		date_default_timezone_set('Asia/Jakarta');
 	}
@@ -23,15 +23,10 @@ class Data_verifikasi extends CI_Controller
         if (!$sql) {
           	redirect('penilai/data_verifikasi/kosong');
         }else {
-			// $sbevent 	= $this->model_verifikasi->ambil_id_subevent();
-			$data['idSubevent'] 	= $this->model_verifikasi->ambil_id_subevent_penilai()->result();
-			
-			// $data['usulan'] = $this->model_verifikasi->ambil_usulan($sbevent->id_subevent);
-			$data['usulan'] = $this->model_verifikasi->ambil_usulan()->result();
-
-			// $data['jumlah_usulan'] = $this->model_verifikasi->jumlah_usulan($sbevent->id_subevent);
-			$data['jumlah_usulan2'] = $this->model_verifikasi->jumlah_usulan2();
-			$data['ganti_warna']	= $this->model_verifikasi->ganti_warna()->result_array();
+			$data['idSubevent'] 	= $this->Model_verifikasi->ambil_id_subevent_penilai()->result();
+			$data['usulan'] 		= $this->Model_verifikasi->ambil_usulan()->result();
+			$data['jumlah_usulan2'] = $this->Model_verifikasi->jumlah_usulan2();
+			$data['ganti_warna']	= $this->Model_verifikasi->ganti_warna()->result_array();
 			
 			$this->load->view('templates_penilai/header');
 			$this->load->view('templates_penilai/sidebar', $data);
@@ -50,13 +45,11 @@ class Data_verifikasi extends CI_Controller
 
 	public function view($id_usulan)
 	{
-		// $where = array('id' => $id);
-		// $data['usulan'] = $this->model_usulan->edit_riwayat($where, 'usulan')->result();
 		$peserta = $this->db->get_where('peserta', ['id_usulan' => $id_usulan])->row();
         $data['anggota']    = $this->db->get_where('anggota_tim', ['id_peserta' => $peserta->id_peserta])->result_array();
         $data['bidang']     = $this->db->get_where('bidang', ['id' => $peserta->id_bidang])->row();
-        $data['usulan']     = $this->model_usulan->get_detail_usulan($id_usulan)->result_array();
-		$data['ulasan'] 	= $this->model_usulan->get_ulasan($id_usulan)->result();
+        $data['usulan']     = $this->Model_usulan->get_detail_usulan($id_usulan)->result_array();
+		$data['ulasan'] 	= $this->Model_usulan->get_ulasan($id_usulan)->result();
 		$data['id_usulan']	= $id_usulan;
 		
 		$this->load->view('templates_penilai/header');
@@ -108,16 +101,15 @@ class Data_verifikasi extends CI_Controller
 	public function nilai_verifikasi($id)
 	{
 	
-		$data['usulan']    = $this->model_penilaian->ambil_id_usulan($id);
-		$subevent 	       = $this->model_penilaian->ambil_id_subevent2($id);
-		
-		$indikator         = $this->model_penilaian->ambil_id_indikator($subevent->id_subevent); //error
+		$data['usulan']    = $this->Model_penilaian->ambil_id_usulan($id);
+		$subevent 	       = $this->Model_penilaian->ambil_id_subevent2($id);
+		$indikator         = $this->Model_penilaian->ambil_id_indikator($subevent->id_subevent); //error
 		
 		//NILAI MAKSIMAL
-		$indikatorPenilaian = $this->model_penilaian->get_IndikatorPenilaian($subevent->id_subevent)->result_array();
+		$indikatorPenilaian = $this->Model_penilaian->get_IndikatorPenilaian($subevent->id_subevent)->result_array();
 		
 		foreach($indikatorPenilaian as $indPenilaian){
-			$max_nilai = $this->model_penilaian->get_KeteranganIndikator($indPenilaian['id_indikator_penilaian'])->result_array();
+			$max_nilai = $this->Model_penilaian->get_KeteranganIndikator($indPenilaian['id_indikator_penilaian'])->result_array();
 				foreach($max_nilai as $nilai_max){
 					$nilai[] = [
 						'nilai_max' 	=> $nilai_max['nilai_max_ind'],
@@ -136,7 +128,7 @@ class Data_verifikasi extends CI_Controller
 			$var[] = [
 				'id' => $idk->id_indikator_penilaian,
 				'label_indikator' => $idk->indikator,
-				'ket' => $this->model_penilaian->ambil_keterangan($idk->id_indikator_penilaian),
+				'ket' => $this->Model_penilaian->ambil_keterangan($idk->id_indikator_penilaian),
 			];
 		}
 		$data['indikator_keterangan'] = $var;
@@ -158,7 +150,7 @@ class Data_verifikasi extends CI_Controller
 			'id_usulan'  		=> $id_usulan, 
 			'id_penilai' 		=> $id_penilai,
 		);
-		$this->model_penilaian->simpan_nilai_proposal($data1, 'penilaian_proposal');
+		$this->Model_penilaian->simpan_nilai_proposal($data1, 'penilaian_proposal');
 
 		//TOTAL NILAI
 		$nilai_verifikasi = $this->input->post('nilai_verifikasi');
@@ -168,7 +160,7 @@ class Data_verifikasi extends CI_Controller
 			'created_date'      => date('Y-m-d H:i:s'),
 			'id_penilai'        => $id_penilai,
 		);
-		$this->model_penilaian->simpan_total_nilai($data2, 'total_nilai');
+		$this->Model_penilaian->simpan_total_nilai($data2, 'total_nilai');
 
 		//PENILAIAN USULAN
 		$data = array();
@@ -193,15 +185,15 @@ class Data_verifikasi extends CI_Controller
 
 	public function edit_nilai_verifikasi($id)
 	{
-		$data['usulan']    = $this->model_penilaian->ambil_id_usulan($id);
-		$subevent 	       = $this->model_penilaian->ambil_id_subevent2($id);
-		$indikator         = $this->model_penilaian->ambil_id_indikator($subevent->id_subevent); //error
+		$data['usulan']    = $this->Model_penilaian->ambil_id_usulan($id);
+		$subevent 	       = $this->Model_penilaian->ambil_id_subevent2($id);
+		$indikator         = $this->Model_penilaian->ambil_id_indikator($subevent->id_subevent); //error
 
 		//NILAI MAKSIMAL
-		$indikatorPenilaian = $this->model_penilaian->get_IndikatorPenilaian($subevent->id_subevent)->result_array();
+		$indikatorPenilaian = $this->Model_penilaian->get_IndikatorPenilaian($subevent->id_subevent)->result_array();
 		
 		foreach($indikatorPenilaian as $indPenilaian){
-			$max_nilai = $this->model_penilaian->get_KeteranganIndikator($indPenilaian['id_indikator_penilaian'])->result_array();
+			$max_nilai = $this->Model_penilaian->get_KeteranganIndikator($indPenilaian['id_indikator_penilaian'])->result_array();
 				foreach($max_nilai as $nilai_max){
 					$nilai[] = [
 						'nilai_max' 	=> $nilai_max['nilai_max_ind'],
@@ -220,14 +212,14 @@ class Data_verifikasi extends CI_Controller
 			$var[] = [
 				'id' => $idk->id_indikator_penilaian,
 				'label_indikator' => $idk->indikator,
-				'ket' => $this->model_penilaian->ambil_keterangan($idk->id_indikator_penilaian),
+				'ket' => $this->Model_penilaian->ambil_keterangan($idk->id_indikator_penilaian),
 			];
 		}
 		$data['indikator_keterangan'] = $var;
 
-		$data['penilaian_proposal'] = $this->model_verifikasi->ambil_nilai_proposal($id)->result_array();
-		$data['penilaian_usulan']	= $this->model_verifikasi->ambil_nilai_usulan($id)->result_array();
-		$data['total_nilai']		= $this->model_verifikasi->ambil_total_nilai($id)->result_array();
+		$data['penilaian_proposal'] = $this->Model_verifikasi->ambil_nilai_proposal($id)->result_array();
+		$data['penilaian_usulan']	= $this->Model_verifikasi->ambil_nilai_usulan($id)->result_array();
+		$data['total_nilai']		= $this->Model_verifikasi->ambil_total_nilai($id)->result_array();
 		
 		$this->load->view('templates_penilai/header');
 		$this->load->view('templates_penilai/sidebar2');

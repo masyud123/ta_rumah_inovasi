@@ -8,7 +8,7 @@ class Tambah_Data extends CI_Controller{
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  Anda belum Login, silahkan login!
 														 </div>');
-			redirect('login');
+			redirect('Login');
 		}
 		date_default_timezone_set('Asia/Jakarta');
 	}

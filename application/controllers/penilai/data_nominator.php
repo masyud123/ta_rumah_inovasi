@@ -11,20 +11,20 @@ class Data_nominator extends CI_Controller
 			$this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  Anda belum Login, silahkan login!
 														 </div>');
-			redirect('login');
+			redirect('Login');
 		}
 	}
 
 	public function index()
 	{
-		$sbevent 	= $this->model_verifikasi->ambil_id_subevent_penilai()->result();
+		$sbevent 	= $this->Model_verifikasi->ambil_id_subevent_penilai()->result();
 		foreach($sbevent as $s_event):
-			$data['usulan'] = $this->model_verifikasi->ambil_usulan_nominator($s_event->id_subevent);
-			$data['jumlah_usulan'] = $this->model_verifikasi->jumlah_usulan($s_event->id_subevent);
+			$data['usulan'] = $this->Model_verifikasi->ambil_usulan_nominator($s_event->id_subevent);
+			$data['jumlah_usulan'] = $this->Model_verifikasi->jumlah_usulan($s_event->id_subevent);
 		endforeach;
-		$data['jumlah_usulan2'] = $this->model_verifikasi->jumlah_usulan2();
-		$data['ganti_warna2'] 	= $this->model_verifikasi->ganti_warna2();
-		// echo "<pre>"; print_r($data); exit;
+		$data['jumlah_usulan2'] = $this->Model_verifikasi->jumlah_usulan2();
+		$data['ganti_warna2'] 	= $this->Model_verifikasi->ganti_warna2();
+		
 		$this->load->view('templates_penilai/header');
 		$this->load->view('templates_penilai/sidebar', $data);
 		$this->load->view('penilai/nominator', $data);
@@ -33,13 +33,11 @@ class Data_nominator extends CI_Controller
 
 	public function view($id_usulan)
 	{
-		// $where = array('id' => $id);
-		// $data['usulan'] = $this->model_usulan->edit_riwayat($where, 'usulan')->result();
 		$peserta = $this->db->get_where('peserta', ['id_usulan' => $id_usulan])->row();
         $data['anggota']    = $this->db->get_where('anggota_tim', ['id_peserta' => $peserta->id_peserta])->result_array();
         $data['bidang']     = $this->db->get_where('bidang', ['id' => $peserta->id_bidang])->row();
-        $data['usulan']     = $this->model_usulan->get_detail_usulan($id_usulan)->result_array();
-		$data['ulasan'] 	= $this->model_usulan->get_ulasan($id_usulan)->result();
+        $data['usulan']     = $this->Model_usulan->get_detail_usulan($id_usulan)->result_array();
+		$data['ulasan'] 	= $this->Model_usulan->get_ulasan($id_usulan)->result();
 		$data['id_usulan']	= $id_usulan;
 		
 		$this->load->view('templates_penilai/header');
@@ -50,10 +48,10 @@ class Data_nominator extends CI_Controller
 
 	public function nilai_nominator($id)
 	{
-		$data['usulan']    = $this->model_penilaian->ambil_id_usulan($id);
-		$subevent 	       = $this->model_penilaian->ambil_id_subevent2($id);
-		$data['komponen']  = $this->model_penilaian->ambil_komponen($subevent->id_subevent);
-		$data['lihat']     = $this->model_verifikasi->ambil_usulan_nominator($subevent->id_subevent);
+		$data['usulan']    = $this->Model_penilaian->ambil_id_usulan($id);
+		$subevent 	       = $this->Model_penilaian->ambil_id_subevent2($id);
+		$data['komponen']  = $this->Model_penilaian->ambil_komponen($subevent->id_subevent);
+		$data['lihat']     = $this->Model_verifikasi->ambil_usulan_nominator($subevent->id_subevent);
 		$this->load->view('templates_penilai/header');
 		$this->load->view('templates_penilai/sidebar2');
 		$this->load->view('penilai/nilai_nominator', $data);
@@ -73,7 +71,7 @@ class Data_nominator extends CI_Controller
 			'id_penilai' 		=> $penilai,
 			'created_date'      => date('Y-m-d H:i:s'),
 		);
-		$this->model_penilaian->simpan_total_nilai2($data, 'total_nilai_pemenang');
+		$this->Model_penilaian->simpan_total_nilai2($data, 'total_nilai_pemenang');
 
 		// Tb Penilaian Pemenang
 		$data = array();
@@ -96,12 +94,12 @@ class Data_nominator extends CI_Controller
 
 	public function edit_nilai_nominator($id)
 	{
-		$data['usulan']    				= $this->model_penilaian->ambil_id_usulan($id);
-		$subevent 	       				= $this->model_penilaian->ambil_id_subevent2($id);
-		$data['komponen']         		= $this->model_penilaian->ambil_komponen($subevent->id_subevent);
-		$data['lihat']     				= $this->model_verifikasi->ambil_usulan_nominator($subevent->id_subevent);
-		$data['penilaian_nominator'] 	= $this->model_verifikasi->ambil_penilaian_nominator($id)->result_array();
-		$data['total_nilai_nominator'] 	= $this->model_verifikasi->ambil_total_nilai_nominator($id)->result_array();
+		$data['usulan']    				= $this->Model_penilaian->ambil_id_usulan($id);
+		$subevent 	       				= $this->Model_penilaian->ambil_id_subevent2($id);
+		$data['komponen']         		= $this->Model_penilaian->ambil_komponen($subevent->id_subevent);
+		$data['lihat']     				= $this->Model_verifikasi->ambil_usulan_nominator($subevent->id_subevent);
+		$data['penilaian_nominator'] 	= $this->Model_verifikasi->ambil_penilaian_nominator($id)->result_array();
+		$data['total_nilai_nominator'] 	= $this->Model_verifikasi->ambil_total_nilai_nominator($id)->result_array();
 		
 		$this->load->view('templates_penilai/header');
 		$this->load->view('templates_penilai/sidebar2');
