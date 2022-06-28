@@ -10,7 +10,7 @@
                                     <h1 class="h4 text-gray-900 mb-4">PENDAFTARAN</h1>
                                 </div>
                                 <?php echo $this->session->flashdata('pesan')?>
-                                <form method="post" action="<?php echo base_url('pendaftaran/index') ?>" class="user">
+                                <form method="post" action="<?php echo base_url('Pendaftaran/index') ?>" class="user">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" placeholder="Nama..." name="nama" onkeypress="return event.charCode < 48 || event.charCode  >57">
                                         <?php echo form_error('nama', '<div class="text-danger small ml-2">', '</div>') ?>
@@ -40,7 +40,7 @@
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="<?php echo base_url('login') ?>">Sudah Punya Akun ? Silahkan Login</a>
+                                    <a class="small" href="<?php echo base_url('Login') ?>">Sudah Punya Akun ? Silahkan Login</a>
                                 </div>
                             </div>
                         </div>

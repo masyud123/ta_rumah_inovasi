@@ -9,7 +9,7 @@
                      <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                            <?php if($sub->status_pendaftaran == 1): ?>
-                              <a href="<?php echo base_url('peserta/daftar/daftar/'.$sub->id)?>">
+                              <a href="<?php echo base_url('peserta/Daftar/daftar/'.$sub->id)?>">
                                  <div class="text-xl font-weight-bold text-primary text-uppercase mb-1">
                                     <?= $sub->subevent ?>
                                  </div>

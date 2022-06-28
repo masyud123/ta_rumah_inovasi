@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div class="col-md-7">
-                        <form id="form_edit_profil" action="<?= base_url('peserta/dashboard/edit_profil/')?>" method="post" enctype="multipart/form-data">
+                        <form id="form_edit_profil" action="<?= base_url('peserta/Dashboard/edit_profil/')?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <span>Nama</span>
                                 <input type="text" name="nama" class="form-control" value="<?= $profil_user->nama; ?>">
@@ -58,7 +58,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('peserta/dashboard/reset_password/')?>" enctype="multipart/form-data" method="POST">
+                <form action="<?= base_url('peserta/Dashboard/reset_password/')?>" enctype="multipart/form-data" method="POST">
                     <div class="text-center" align="center">
                         <p>Silakan masukkan password baru pada form input dibawah ini.</p>
                         <div class="d-flex justify-content-center">

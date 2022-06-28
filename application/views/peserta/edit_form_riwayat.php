@@ -159,14 +159,14 @@
                     </div>
                     <?php if($usulan['status'] == 1):?>
                     <div class="d-flex justify-content-end mt-3">
-                        <a href="<?=base_url('peserta/riwayat/')?>" class="btn btn-sm btn-secondary" type="button"><i class="fas fa-arrow-left mr-1"></i>Batal</a>
+                        <a href="<?=base_url('peserta/Riwayat/')?>" class="btn btn-sm btn-secondary" type="button"><i class="fas fa-arrow-left mr-1"></i>Batal</a>
                         <button id="submit1" class="btn btn-sm btn-primary ml-3" type="submit">Selanjutnya<i class="fas fa-arrow-right ml-1"></i></button>
                     </div>
                     <?php endif;?>
                 </form>
                 <?php if($usulan['status'] != 1):?>
                     <div class="d-flex justify-content-end mt-3">
-                        <a href="<?=base_url('peserta/riwayat/')?>" class="btn btn-sm btn-secondary" type="button"><i class="fas fa-arrow-left mr-1"></i>Kembali</a>
+                        <a href="<?=base_url('peserta/Riwayat/')?>" class="btn btn-sm btn-secondary" type="button"><i class="fas fa-arrow-left mr-1"></i>Kembali</a>
                         <a class="btn btn-sm btn-primary ml-3 head2">Selanjutnya<i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 <?php endif;?>
@@ -492,7 +492,7 @@
                 <?php if($usulan['status'] != 1):?>
                     <div class="d-flex justify-content-end mt-3">
                         <a class="btn btn-sm btn-secondary head2"><i class="fas fa-arrow-left mr-1"></i>Sebelumnya</a>
-                        <a href="<?=base_url('peserta/riwayat')?>" class="btn btn-sm btn-primary ml-3">Selesai<i class="fas fa-arrow-right ml-1"></i></a>
+                        <a href="<?=base_url('peserta/Riwayat')?>" class="btn btn-sm btn-primary ml-3">Selesai<i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 <?php endif;?>
             </div>
@@ -655,7 +655,7 @@
             e.preventDefault();    
             var formData = new FormData(this);
             $.ajax({
-                url: "<?=base_url('peserta/riwayat/cek_riwayat_1/')?>",
+                url: "<?=base_url('peserta/Riwayat/cek_riwayat_1/')?>",
                 type: 'POST',
                 data: formData,
                 success: (hasil) => {
@@ -687,7 +687,7 @@
             e.preventDefault();    
             var formData = new FormData(this);
             $.ajax({
-                url: "<?=base_url('peserta/riwayat/cek_riwayat_2/')?>",
+                url: "<?=base_url('peserta/Riwayat/cek_riwayat_2/')?>",
                 type: 'POST',
                 data: formData,
                 success: (hasil) => {
@@ -711,7 +711,7 @@
             e.preventDefault();    
             var formData = new FormData(this);
             $.ajax({
-                url: "<?=base_url('peserta/riwayat/cek_riwayat_3/')?>",
+                url: "<?=base_url('peserta/Riwayat/cek_riwayat_3/')?>",
                 type: 'POST',
                 data: formData,
                 success: (hasil) => {
@@ -738,7 +738,7 @@
     function submit_3(){
         $.ajax({
             type: "POST",
-            url: "<?=base_url('peserta/edit_riwayat/simpan_riwayat_3/'.$id_usulan)?>",
+            url: "<?=base_url('peserta/Edit_riwayat/simpan_riwayat_3/'.$id_usulan)?>",
             data: new FormData(document.getElementById('form3')),
             success: function(response) {
                 return submit_2();
@@ -752,7 +752,7 @@
     function submit_2(){
         $.ajax({
             type: "POST",
-            url: "<?=base_url('peserta/edit_riwayat/simpan_riwayat_2/'.$id_usulan)?>",
+            url: "<?=base_url('peserta/Edit_riwayat/simpan_riwayat_2/'.$id_usulan)?>",
             data: new FormData(document.getElementById('form2')),
             success: function(response) {
                 return submit_1();
@@ -766,7 +766,7 @@
     function submit_1(){
         $.ajax({
             type: "POST",
-            url: "<?=base_url('peserta/edit_riwayat/simpan_riwayat_1/'.$id_peserta)?>",
+            url: "<?=base_url('peserta/Edit_riwayat/simpan_riwayat_1/'.$id_peserta)?>",
             data: new FormData(document.getElementById('form1')),
             success: function(response) {
                 if(response != 0 && response != 1){
@@ -787,7 +787,7 @@
             confirmButtonText: 'Oke'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?= base_url('peserta/riwayat/')?>";
+                window.location.href = "<?= base_url('peserta/Riwayat/')?>";
             }
         })
     }

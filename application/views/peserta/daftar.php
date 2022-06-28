@@ -7,7 +7,7 @@
             <div class="card-body">
                <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                     <a href="<?php echo base_url('peserta/daftar/subevent/'.$evt->id)?>">
+                     <a href="<?php echo base_url('peserta/Daftar/subevent/'.$evt->id)?>">
                         <div class="text-xl font-weight-bold text-primary text-uppercase mb-1"><?php echo $evt->event ?></div>
                      </a>
                   </div>

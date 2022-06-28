@@ -7,7 +7,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('penilai') ?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('Penilai') ?>">
                 <div class="sidebar-brand-icon">
                      <i class="far fa-lightbulb"></i>
                 </div>
@@ -93,7 +93,7 @@
                                 <div title="Logout" class="btn btn-sm btn-circle btn-outline-primary" data-toggle="modal" data-target="#logout"><i class="fas fa-power-off" ></i></div>
                             </li>
                         <?php } else { ?>
-                            <li><?php echo anchor('login/auth', 'Login'); ?></li>
+                            <li><?php echo anchor('Login/auth', 'Login'); ?></li>
 
                         <?php } ?>
 
@@ -111,7 +111,7 @@
                                     <p>Apakah Anda yakin akan keluar ?</p>
 
                                     <div class="modal-footer">
-                                        <?php echo anchor('login/logout', '<div class="btn btn-primary">Keluar</div>') ?>
+                                        <?php echo anchor('Login/logout', '<div class="btn btn-primary">Keluar</div>') ?>
                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                                     </div>
                                 </div>

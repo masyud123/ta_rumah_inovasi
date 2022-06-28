@@ -7,7 +7,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('penilai') ?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('Penilai') ?>">
                 <div class="sidebar-brand-icon">
                      <i class="far fa-lightbulb"></i>
                 </div>
@@ -32,7 +32,7 @@
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('penilai/data_verifikasi') ?>">
+                <a class="nav-link" href="<?php echo base_url('penilai/Data_verifikasi') ?>">
                     <i class="fas fa-fw fa-check"></i>
                     <span><strong>Verifikasi</strong></span></a>
                     <!-- <?php foreach ($jumlah_usulan as $usl) : ?>
@@ -46,7 +46,7 @@
                      <?php endforeach; ?> -->
             </li>
             <li <?=$this->uri->segment(2) == 'data_nominator' ? 'class="nav-item active"' : 'class="nav-item"'?>>
-                <a class="nav-link" href="<?php echo base_url('penilai/data_nominator') ?>">
+                <a class="nav-link" href="<?php echo base_url('penilai/Data_nominator') ?>">
                     <i class="fas fa-fw fa-trophy"></i>
                     <span><strong>Nominator</strong></span></a>
             </li>
@@ -102,7 +102,7 @@
                                 <div title="Logout" class="btn btn-sm btn-circle btn-outline-primary" data-toggle="modal" data-target="#logouttt"><i class="fas fa-power-off" ></i></div>
                             </li>
                         <?php } else { ?>
-                            <li><?php echo anchor('login/auth', 'Login'); ?></li>
+                            <li><?php echo anchor('Login/auth', 'Login'); ?></li>
 
                         <?php } ?>
 
@@ -120,7 +120,7 @@
                                     <p>Apakah Anda yakin akan keluar ?</p>
 
                                     <div class="modal-footer">
-                                        <?php echo anchor('login/logout', '<div class="btn btn-primary">Keluar</div>') ?>
+                                        <?php echo anchor('Login/logout', '<div class="btn btn-primary">Keluar</div>') ?>
                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                                     </div>
                                 </div>

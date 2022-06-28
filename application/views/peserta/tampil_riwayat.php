@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="d-flex justify-content-end mb-3">
-		<a href="<?= base_url('peserta/daftar') ?>" class="btn btn-sm btn-info btn-icon-split ml-5">
+		<a href="<?= base_url('peserta/Daftar') ?>" class="btn btn-sm btn-info btn-icon-split ml-5">
 			<span class="icon text-white-50">
 			<i class="fas fa-plus mt-1"></i>
 			</span>
@@ -57,10 +57,10 @@
 									<button class="col-10 btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#KirimKonfirmasi<?= $riw->id_usulan?>">
 										<i class="fa fa-save mr-1"></i> Kirim Usulan
 									</button>
-									<!-- <button onclick="window.location.href='<?= base_url('peserta/riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="col-10 btn btn-sm btn-warning mb-2">
+									<!-- <button onclick="window.location.href='<?= base_url('peserta/Riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="col-10 btn btn-sm btn-warning mb-2">
 										<i class="fa fa-edit mr-1"></i> Detail & Edit
 									</button> -->
-									<button onclick="window.location.href='<?= base_url('peserta/riwayat/detail_riwayat/'.$riw->id_peserta) ?>'" class="col-10 btn btn-sm btn-warning mb-2">
+									<button onclick="window.location.href='<?= base_url('peserta/Riwayat/detail_riwayat/'.$riw->id_peserta) ?>'" class="col-10 btn btn-sm btn-warning mb-2">
 										<i class="fa fa-edit mr-1"></i> Detail & Edit
 									</button>
 									<button class="col-10 btn btn-sm btn-danger" data-toggle="modal" data-target="#KirimKonfirmasiHapus<?= $riw->id_usulan?>">
@@ -69,13 +69,13 @@
 								</td>
 							<?php elseif ($riw->status == '2' || $riw->status == '3' || $riw->status == '5'): ?>
 								<td align="center">
-									<!-- <button onclick="window.location.href='<?= base_url('peserta/riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="btn btn-sm btn-warning col-10 mb-2">
+									<!-- <button onclick="window.location.href='<?= base_url('peserta/Riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="btn btn-sm btn-warning col-10 mb-2">
 										<i class="fa fa-search mr-1"></i> View & Detail
 									</button> -->
 									<button disabled class="btn btn-sm btn-primary col-10 mb-2">
 										<i class="fa fa-save"></i> Kirim Data
 									</button>
-									<button onclick="window.location.href='<?= base_url('peserta/riwayat/detail_riwayat/'.$riw->id_peserta) ?>'" class="btn btn-sm btn-warning col-10 mb-2">
+									<button onclick="window.location.href='<?= base_url('peserta/Riwayat/detail_riwayat/'.$riw->id_peserta) ?>'" class="btn btn-sm btn-warning col-10 mb-2">
 										<i class="fa fa-search mr-1"></i> View & Detail
 									</button>
 									<button disabled class="col-10 btn btn-sm btn-danger">
@@ -84,7 +84,7 @@
 								</td>
 							<?php elseif ($riw->status == '4'): ?>
 								<td align="center">
-									<button onclick="window.location.href='<?= base_url('peserta/riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="btn btn-sm btn-warning col-10 mb-2">
+									<button onclick="window.location.href='<?= base_url('peserta/Riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="btn btn-sm btn-warning col-10 mb-2">
 										<i class="fa fa-search mr-1"></i> View & Detail
 									</button>
 									<button class="btn btn-success btn-sm col-10" data-toggle="modal" data-target="#nilai<?= $riw->id_usulan?>">
@@ -111,7 +111,7 @@
 					<button type="button" data-dismiss="modal" class="fas fa-times btn-lg" style="margin-left:90%;margin-top:-5px;position:absolute;background: transparent;border:none;color:white;"></button>
 				</div>
 				<div class="modal-body">
-					<form action="<?= base_url('peserta/riwayat/update_status_usulan') ; ?>" method="post" enctype="multipart/form-data" >
+					<form action="<?= base_url('peserta/Riwayat/update_status_usulan') ; ?>" method="post" enctype="multipart/form-data" >
 						<div class="container">
 							<div class="form-group" align="center">
 								<div class="form-group" hidden >
@@ -140,7 +140,7 @@
 					<button type="button" data-dismiss="modal" class="fas fa-times btn-lg" style="margin-left:90%;margin-top:-5px;position:absolute;background: transparent;border:none;color:white;"></button>
 				</div>
 				<div class="modal-body">
-					<form action="<?= base_url('peserta/riwayat/hapus_usulan') ; ?>" method="post" enctype="multipart/form-data" >
+					<form action="<?= base_url('peserta/Riwayat/hapus_usulan') ; ?>" method="post" enctype="multipart/form-data" >
 						<div class="container">
 							<div class="form-group" align="center">
 								<div class="form-group" hidden >

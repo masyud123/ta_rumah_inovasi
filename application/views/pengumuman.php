@@ -21,7 +21,7 @@
             <div class="service-box blue">
               <i class="ri-information-line icon"></i>
               <h3><?php echo $png->judul_pengumuman ?></h3>
-              <a href="<?php echo base_url('pengumuman/lihat/' .$png->id_pengumuman) ?>" class="read-more">
+              <a href="<?php echo base_url('Pengumuman/lihat/' .$png->id_pengumuman) ?>" class="read-more">
                   <span>Baca Selengkapnya</span> 
                   <i class="bi bi-arrow-right"></i>
               </a>

@@ -13,7 +13,7 @@
                                     </div>
                                     <?= $this->session->flashdata('pesan') ?>
                                     <?= $this->session->flashdata('berhasil_daftar') ?>
-                                    <form action="<?php echo base_url('login/auth') ?>" class="user" method="post">
+                                    <form action="<?php echo base_url('Login/auth') ?>" class="user" method="post">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" name="email" required oninvalid="this.setCustomValidity('Data wajib diisi!')" oninput="setCustomValidity('')">
                                         </div>
@@ -27,13 +27,13 @@
                                         <button type="submit" class="btn btn-primary btn-user btn-block"><i class="fas fa-sign-in-alt"></i> Login</button>
                                     </form><hr>
                                     <div class="text-center">
-                                        <a href="<?= base_url('login/lupa_password') ?>" class="small" href="">Lupa Password ?</a>
+                                        <a href="<?= base_url('Login/lupa_password') ?>" class="small" href="">Lupa Password ?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a href="<?= base_url('pendaftaran') ?>" class="small" href="">Belum Punya Akun ? Silahkan Daftar</a>
+                                        <a href="<?= base_url('Pendaftaran') ?>" class="small" href="">Belum Punya Akun ? Silahkan Daftar</a>
                                     </div>
                                     <div class="text-center">
-                                        <a href="<?= base_url('dashboard') ?>" class="small" href=""><i class="fas fa-arrow-left"></i> Kembali</a>
+                                        <a href="<?= base_url('Dashboard') ?>" class="small" href=""><i class="fas fa-arrow-left"></i> Kembali</a>
                                     </div>
                                 </div>
                             </div>

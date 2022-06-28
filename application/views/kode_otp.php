@@ -12,7 +12,7 @@
                         <h5 style="text-align: justify;">
                             Silahkan masukkan kode yang telah anda terima pada form di bawah ini. Jika belum mendapatkan kode silahkan klik tombol request kode
                         </h5>
-                        <form id="form_kode" action="<?= base_url('pendaftaran/verifikasi_kode/')?>" method="post" enctype="multipart/form-data">
+                        <form id="form_kode" action="<?= base_url('Pendaftaran/verifikasi_kode/')?>" method="post" enctype="multipart/form-data">
                             <div align="center" class="mt-4">
                                 <h4 class="tect-secondary mb-2"><strong id="countdown"></strong></h4>
                                 <input type="text" name="kode_otp" class="form-control col-6 text-center mt-3" placeholder="Masukkan kode disini!" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
@@ -24,7 +24,7 @@
                         </form>
                         <hr>
                         <div class="text-center">
-                            <a class="small" href="<?php echo base_url('login') ?>">Sudah Punya Akun ? Silahkan Login</a>
+                            <a class="small" href="<?php echo base_url('Login') ?>">Sudah Punya Akun ? Silahkan Login</a>
                         </div>
                     </div>
 				</div>

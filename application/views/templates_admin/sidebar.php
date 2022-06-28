@@ -13,7 +13,7 @@
         </script>
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('Admin') ?>">
                 <div class="sidebar-brand-icon ">
                     <i class="far fa-lightbulb fa-2x"></i>
                 </div>
@@ -33,10 +33,10 @@
                 </a>
                 <div id="collapseTwoLomba" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item text-secondary" href="<?= base_url('admin/data_event') ?>">Event</a>
-                        <a class="collapse-item text-secondary" href="<?= base_url('admin/data_subevent') ?>">Sub Event</a>
-                        <a class="collapse-item text-secondary" href="<?= base_url('admin/data_bidang') ?>">Bidang</a>
-                        <a class="collapse-item text-secondary" href="<?= base_url('admin/data_penilai') ?>">User Penilai</a>
+                        <a class="collapse-item text-secondary" href="<?= base_url('admin/Data_event') ?>">Event</a>
+                        <a class="collapse-item text-secondary" href="<?= base_url('admin/Data_subevent') ?>">Sub Event</a>
+                        <a class="collapse-item text-secondary" href="<?= base_url('admin/Data_bidang') ?>">Bidang</a>
+                        <a class="collapse-item text-secondary" href="<?= base_url('admin/Data_penilai') ?>">User Penilai</a>
                     </div>
                 </div>
             </li>
@@ -49,8 +49,8 @@
                 </a>
                 <div id="collapseTwoIndikator" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item text-secondary" href="<?= base_url('admin/data_inovasi') ?>">Verifikasi</a>
-                        <a class="collapse-item text-secondary" href="<?= base_url('admin/data_nominator') ?>">Nominasi</a>
+                        <a class="collapse-item text-secondary" href="<?= base_url('admin/Data_inovasi') ?>">Verifikasi</a>
+                        <a class="collapse-item text-secondary" href="<?= base_url('admin/Data_nominator') ?>">Nominasi</a>
                     </div>
                 </div>
             </li>
@@ -63,8 +63,8 @@
                 </a>
                 <div id="collapseTwoNilai" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item text-secondary" href="<?= base_url('admin/data_verifikasi') ?>">Nilai Verifikasi</a>
-                        <a class="collapse-item text-secondary" href="<?= base_url('admin/nominator') ?>"> Nilai Nominasi</a>
+                        <a class="collapse-item text-secondary" href="<?= base_url('admin/Data_verifikasi') ?>">Nilai Verifikasi</a>
+                        <a class="collapse-item text-secondary" href="<?= base_url('admin/Nominator') ?>"> Nilai Nominasi</a>
                     </div>
                 </div>
             </li>
@@ -75,13 +75,13 @@
             </div>
             
             <li <?=$this->uri->segment(2) == 'usulan_terkini' ? 'class="nav-item active"' : 'class="nav-item"'?>>
-                <a class="nav-link" href="<?php echo base_url('admin/usulan_terkini') ?>">
+                <a class="nav-link" href="<?php echo base_url('admin/Usulan_terkini') ?>">
                     <i class="fas fa-clock"></i>
                     <span><strong>Usulan Terkini</strong></span></a>
             </li>
 
             <li <?=$this->uri->segment(2) == 'data_riwayat' ? 'class="nav-item active"' : 'class="nav-item"'?>>
-                <a class="nav-link" href="<?php echo base_url('admin/data_riwayat') ?>">
+                <a class="nav-link" href="<?php echo base_url('admin/Data_riwayat') ?>">
                     <i class="fas fa-fw fa-history"></i>
                     <span><strong>Riwayat Usulan</strong></span></a>
             </li>
@@ -92,19 +92,19 @@
             </div>
 
             <li <?=$this->uri->segment(2) == 'data_user' ? 'class="nav-item active"' : 'class="nav-item"'?>>
-                <a class="nav-link" href="<?= base_url('admin/data_user') ?>">
+                <a class="nav-link" href="<?= base_url('admin/Data_user') ?>">
                     <i class="fas fa-fw fa-users"></i>
                     <span><strong>Daftar User</strong></span></a>
             </li>
 
             <li <?=$this->uri->segment(2) == 'pengumuman' ? 'class="nav-item active"' : 'class="nav-item"'?>>
-                <a class="nav-link" href="<?= base_url('admin/pengumuman') ?>">
+                <a class="nav-link" href="<?= base_url('admin/Pengumuman') ?>">
                     <i class="fas fa-bullhorn"></i>
                     <span><strong>Pengumuman</strong></span></a>
             </li>
 
             <li <?=$this->uri->segment(2) == 'pesan_masal' ? 'class="nav-item active"' : 'class="nav-item"'?>>
-                <a class="nav-link" href="<?= base_url('admin/pesan_masal') ?>">
+                <a class="nav-link" href="<?= base_url('admin/Pesan_masal') ?>">
                     <i class="fas fa-comment mr-1"></i>
                     <span><strong>Pesan Masal</strong></span></a>
             </li>
@@ -157,7 +157,7 @@
                                         <p>Apakah Anda yakin akan keluar ?</p>
 
                                         <div class="modal-footer">
-                                            <?php echo anchor('login/logout', '<div class="btn btn-primary btn">Keluar</div>') ?>
+                                            <?php echo anchor('Login/logout', '<div class="btn btn-primary btn">Keluar</div>') ?>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                                         </div>
                                     </div>
@@ -168,7 +168,7 @@
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                         <script type="text/javascript">
                             $.ajax({
-                                url: "<?= base_url("admin/pesan_masal/get_session/")?>",
+                                url: "<?= base_url("admin/Pesan_masal/get_session/")?>",
                                 success: function (response) {
                                     if(response == 0){
                                         $('#notif_wa').append(""+

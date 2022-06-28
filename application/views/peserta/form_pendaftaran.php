@@ -139,7 +139,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-3">
-                        <a href="<?=base_url('peserta/riwayat/')?>" class="btn btn-sm btn-secondary" type="button"><i class="fas fa-arrow-left mr-1"></i>Batal</a>
+                        <a href="<?=base_url('peserta/Riwayat/')?>" class="btn btn-sm btn-secondary" type="button"><i class="fas fa-arrow-left mr-1"></i>Batal</a>
                         <button id="submit1" class="btn btn-sm btn-primary ml-3" type="submit">Selanjutnya<i class="fas fa-arrow-right ml-1"></i></button>
                     </div>
                 </form>
@@ -596,7 +596,7 @@
             e.preventDefault();    
             var formData = new FormData(this);
             $.ajax({
-                url: "<?=base_url('peserta/daftar/cek_form_1/')?>",
+                url: "<?=base_url('peserta/Daftar/cek_form_1/')?>",
                 type: 'POST',
                 data: formData,
                 success: (hasil) => {
@@ -628,7 +628,7 @@
             e.preventDefault();    
             var formData = new FormData(this);
             $.ajax({
-                url: "<?=base_url('peserta/daftar/cek_form_2/')?>",
+                url: "<?=base_url('peserta/Daftar/cek_form_2/')?>",
                 type: 'POST',
                 data: formData,
                 success: (hasil) => {
@@ -652,7 +652,7 @@
             e.preventDefault();    
             var formData = new FormData(this);
             $.ajax({
-                url: "<?=base_url('peserta/daftar/cek_form_3/')?>",
+                url: "<?=base_url('peserta/Daftar/cek_form_3/')?>",
                 type: 'POST',
                 data: formData,
                 success: (hasil) => {
@@ -676,7 +676,7 @@
     function submit_3(){
         $.ajax({
             type: "POST",
-            url: "<?=base_url('peserta/tambah_data/submit_3/'.$subevent->id)?>",
+            url: "<?=base_url('peserta/Tambah_data/submit_3/'.$subevent->id)?>",
             data: new FormData(document.getElementById('form3')),
             success: function(response) {
                 return submit_2(response);
@@ -690,7 +690,7 @@
     function submit_2(id_usulan){
         $.ajax({
             type: "POST",
-            url: "<?=base_url('peserta/tambah_data/submit_2/')?>"+id_usulan,
+            url: "<?=base_url('peserta/Tambah_data/submit_2/')?>"+id_usulan,
             data: new FormData(document.getElementById('form2')),
             success: function(response) {
                 return submit_1(response);
@@ -704,7 +704,7 @@
     function submit_1(id_usulan){
         $.ajax({
             type: "POST",
-            url: "<?=base_url('peserta/tambah_data/submit_1/')?>"+id_usulan,
+            url: "<?=base_url('peserta/Tambah_data/submit_1/')?>"+id_usulan,
             data: new FormData(document.getElementById('form1')),
             success: function(response) {
                 if(response != 0 && response != 1){
@@ -725,7 +725,7 @@
             confirmButtonText: 'Oke'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?= base_url('peserta/riwayat/')?>";
+                window.location.href = "<?= base_url('peserta/Riwayat/')?>";
             }
         })
     }

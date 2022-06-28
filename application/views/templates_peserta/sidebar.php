@@ -29,14 +29,14 @@
             </div>
             
             <li <?= $this->uri->segment(2) == 'riwayat' || $this->uri->segment(2) == '' ? 'class="nav-item active"' : 'class="nav-item"'?>>
-                <a class="nav-link" href="<?php echo base_url('peserta/riwayat') ?>">
+                <a class="nav-link" href="<?php echo base_url('peserta/Riwayat') ?>">
                     <i class="fas fa-search"></i>
                     <span>Riwayat Inovasi</span>
                 </a>
             </li>
 
             <li <?= $this->uri->segment(3) == 'profil' || $this->uri->segment(2) == '' ? 'class="nav-item active"' : 'class="nav-item"'?>>
-                <a class="nav-link" href="<?php echo base_url('peserta/dashboard/profil') ?>">
+                <a class="nav-link" href="<?php echo base_url('peserta/Dashboard/profil') ?>">
                 <i class="fas fa-user-alt"></i>
                     <span>Profil User</span>
                 </a>
@@ -94,7 +94,7 @@
                                         <p>Apakah Anda yakin akan keluar ?</p>
 
                                         <div class="modal-footer">
-                                            <?php echo anchor('login/logout', '<div class="btn btn-primary btn">Keluar</div>') ?>
+                                            <?php echo anchor('Login/logout', '<div class="btn btn-primary btn">Keluar</div>') ?>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                                         </div>
                                     </div>

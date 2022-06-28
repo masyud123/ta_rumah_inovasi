@@ -11,7 +11,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">LUPA PASSWORD</h1>
                                     </div>
-                                    <form action="<?= base_url('login/reset_password') ?>" class="user" enctype="multipart/form-data" method="post">
+                                    <form action="<?= base_url('Login/reset_password') ?>" class="user" enctype="multipart/form-data" method="post">
                                         <h6 style="text-align: justify; margin-bottom: 20px;">
                                             Masukkan Pasword baru pada form di bawah ini
                                         </h6>
@@ -24,10 +24,10 @@
                                         <button type="submit" class="btn btn-primary btn-user btn-block"><i class="fa fa-save" aria-hidden="true"></i> Simpan</button>
                                     </form><hr>
                                     <div class="text-center">
-                                        <a href="<?= base_url('pendaftaran') ?>" class="small" href="">Belum Punya Akun ? Silahkan Daftar</a>
+                                        <a href="<?= base_url('Pendaftaran') ?>" class="small" href="">Belum Punya Akun ? Silahkan Daftar</a>
                                     </div>
                                     <div class="text-center">
-                                        <a href="<?= base_url('login') ?>" class="small" href=""><i class="fas fa-arrow-left"></i> Kembali</a>
+                                        <a href="<?= base_url('Login') ?>" class="small" href=""><i class="fas fa-arrow-left"></i> Kembali</a>
                                     </div>
                                 </div>
                             </div>

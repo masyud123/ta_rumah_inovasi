@@ -21,10 +21,10 @@
             <a class="nav-item" href="#dokumentasi_kelitbangan">Dokumentasi Kelitbangan</a>
           </li>
           <li>
-            <a class="nav-item" href="<?php echo site_url('pengumuman') ?>">Pengumuman</a>
+            <a class="nav-item" href="<?php echo site_url('Pengumuman') ?>">Pengumuman</a>
           </li>
           <li>
-            <a class="getstarted scrollto" href="<?php echo base_url('login') ?>">Login</a>
+            <a class="getstarted scrollto" href="<?php echo base_url('Login') ?>">Login</a>
           </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
