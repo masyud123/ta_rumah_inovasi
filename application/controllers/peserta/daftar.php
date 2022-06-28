@@ -9,14 +9,14 @@ class Daftar extends CI_Controller{
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  Anda belum Login, silahkan login!
 														 </div>');
-			redirect('login');
+			redirect('Login');
 		}
 		date_default_timezone_set('Asia/Jakarta');
 	}
 
 	public function index()
 	{
-		$data['event']	= $this->model_bidang->tampil_event()->result();
+		$data['event']	= $this->Model_bidang->tampil_event()->result();
 		$this->load->view('templates_peserta/header');
 		$this->load->view('templates_peserta/sidebar');
 		$this->load->view('peserta/daftar', $data);
@@ -26,7 +26,7 @@ class Daftar extends CI_Controller{
 	public function subevent($id) 
 	{
 	
-		$data['subevent']	= $this->model_bidang->tampil_sub($id)->result();
+		$data['subevent']	= $this->Model_bidang->tampil_sub($id)->result();
 		$this->load->view('templates_peserta/header');
 		$this->load->view('templates_peserta/sidebar');
 		$this->load->view('peserta/subevent', $data);
@@ -35,7 +35,7 @@ class Daftar extends CI_Controller{
 
 	public function daftar($id_subevent)
 	{
-		$subevent = $this->model_bidang->tampil_sub($id_subevent)->row();
+		$subevent = $this->Model_bidang->tampil_sub($id_subevent)->row();
 		$mulai 	= $subevent->mulai;
 		$akhir 	= $subevent->akhir;
 		$sekarang = date('Y-m-d');
@@ -43,15 +43,14 @@ class Daftar extends CI_Controller{
 			strtotime($sekarang) < strtotime($akhir) &&
 			$subevent->status_pendaftaran == 1
 		){
-			$data['list_bidang'] = $this->model_bidang->tampil_bidang($id_subevent)->result();
-			$data['subevent']	= $this->model_bidang->tampil_subevent($id_subevent);
+			$data['list_bidang'] = $this->Model_bidang->tampil_bidang($id_subevent)->result();
+			$data['subevent']	= $this->Model_bidang->tampil_subevent($id_subevent);
 			$this->load->view('templates_peserta/header');
 			$this->load->view('templates_peserta/sidebar');
-			// $this->load->view('peserta/form_wizard', $data);
 			$this->load->view('peserta/form_pendaftaran', $data);
 			$this->load->view('templates_peserta/footer');
 		}else{
-			redirect('peserta/subevent'.$id_subevent);
+			redirect('peserta/Daftar/subevent'.$id_subevent);
 		}
 	}
 

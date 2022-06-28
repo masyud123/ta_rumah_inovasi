@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller{
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  Anda belum Login, silahkan login!
 														 </div>');
-			redirect('login');
+			redirect('Login');
 		}
 	}
 

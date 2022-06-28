@@ -9,13 +9,13 @@ class Riwayat extends CI_Controller{
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  Anda belum Login, silahkan login!
 														 </div>');
-			redirect('login');
+			redirect('Login');
 		}
 	}
  
 	public function index()
 	{
-		$data2 = $this->model_riwayat->tampil_riwayat();
+		$data2 = $this->Model_riwayat->tampil_riwayat();
 		foreach ($data2 as $data3):
 			$var[] = array(
 				'id_usulan' => $data3->id_usulan,
@@ -29,7 +29,7 @@ class Riwayat extends CI_Controller{
 		}else{
 			$data['nilai_ulasan'] = array(); 
 		}
-		$data['riwayat'] = $this->model_riwayat->tampil_riwayat();
+		$data['riwayat'] = $this->Model_riwayat->tampil_riwayat();
 		// echo "<pre>"; print_r($data); exit;
 		$this->load->view('templates_peserta/header');
 		$this->load->view('templates_peserta/sidebar');
@@ -76,7 +76,7 @@ class Riwayat extends CI_Controller{
 
 		$where = array('id'	=>	$id);
 
-		$this->model_riwayat->update_status_riwayat($where,$data, 'usulan');
+		$this->Model_riwayat->update_status_riwayat($where,$data, 'usulan');
 		$this->session->set_flashdata('pesan1','<div class="alert alert-success alert-dismissible fade show" role="alert"><i class="fas fa-check-circle"></i>
 	                      Data berhasil dikirim
 	                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -88,9 +88,9 @@ class Riwayat extends CI_Controller{
 
 	public function detail_riwayat($id_peserta)
 	{
-		$peserta = $this->model_riwayat->tampil_detail_riwayat($id_peserta)->result_array();
+		$peserta = $this->Model_riwayat->tampil_detail_riwayat($id_peserta)->result_array();
 		foreach($peserta as $serta):
-			$data['list_bidang'] 	= $this->model_bidang->tampil_bidang($serta['id_subevent'])->result_array();
+			$data['list_bidang'] 	= $this->Model_bidang->tampil_bidang($serta['id_subevent'])->result_array();
 			$data['list_anggota']	= $this->db->get_where('anggota_tim', ['id_peserta' => $serta['id_peserta']])->result_array();
 			$data['id_peserta']		= $serta['id_peserta'];
 			$data['id_usulan']		= $serta['id_usulan'];
@@ -311,37 +311,4 @@ class Riwayat extends CI_Controller{
 		}
 	}
 
-
-
-
-
-	// public function edit_riwayat1($id_peserta)
-	// {
-	// 	$data['pilih_bidang'] = $this->model_riwayat->pilih_bidang()->result_array();
-	// 	$data['detail_riwayat'] = $this->model_riwayat->tampil_detail_riwayat($id_peserta)->result_array();
-	// 	$data['tampil_bidang'] = $this->model_riwayat->tampil_bidang($id_peserta)->result_array();
-	// 	$data['nama_anggota'] = $this->model_riwayat->tampil_anggota($id_peserta)->result_array();
-	// 	$this->load->view('templates_peserta/header');
-	// 	$this->load->view('templates_peserta/sidebar');
-	// 	$this->load->view('peserta/edit_riwayat1', $data);
-	// 	$this->load->view('templates_peserta/footer');
-	// }
-
-	// public function edit_riwayat2($id)
-	// {
-	// 	$data['detail_riwayat2'] = $this->model_riwayat->tampil_detail_riwayat2($id)->result_array();
-	// 	$this->load->view('templates_peserta/header');
-	// 	$this->load->view('templates_peserta/sidebar');
-	// 	$this->load->view('peserta/edit_riwayat2', $data);
-	// 	$this->load->view('templates_peserta/footer');
-	// }
-
-	// public function edit_riwayat3($id)
-	// {
-	// 	$data['detail_riwayat3'] = $this->model_riwayat->tampil_detail_riwayat2($id)->result_array();
-	// 	$this->load->view('templates_peserta/header');
-	// 	$this->load->view('templates_peserta/sidebar');
-	// 	$this->load->view('peserta/edit_riwayat3', $data);
-	// 	$this->load->view('templates_peserta/footer');
-	// }
 }	

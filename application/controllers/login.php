@@ -40,7 +40,7 @@ class Login extends CI_Controller {
 				$this->load->view('form_login', $data);
 				$this->load->view('templates_admin/footer');
 			}else{
-				$auth = $this->model_login->cek_login(); 
+				$auth = $this->Model_login->cek_login(); 
 
 				if($auth == FALSE)
 				{
