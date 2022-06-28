@@ -2,7 +2,7 @@
     <div class="ml-1 row d-flex align-items-start mb-3">
         <h4><strong>Sub Event :</strong></h4>
         <h4 class="text-info ml-2"><strong><?= $nama_subevent[0]['subevent']?></strong></h4>
-        <a href="<?= base_url('admin/data_verifikasi/')?>" class="btn btn-warning btn-icon-split btn-sm ml-3">
+        <a href="<?= base_url('admin/Data_verifikasi/')?>" class="btn btn-warning btn-icon-split btn-sm ml-3">
             <span class="icon text-light">
                 <i class="fas fa-arrow-left"></i>
             </span>
@@ -23,7 +23,7 @@
     <!-- kategori umum -->
         <div id="umum" class="tab-pane fade show active" role="tabpanel" aria-labelledby="umum-tab">
             <div class="card shadow mb-4">
-                <form id="form_umum" method="post" action="<?php echo base_url('admin/data_verifikasi/list_verifikasi'); ?>" enctype="multipart/form-data">
+                <form id="form_umum" method="post" action="<?php echo base_url('admin/Data_verifikasi/list_verifikasi'); ?>" enctype="multipart/form-data">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary mb-2">Verifikasi Umum</h6>
                         <?php if($cek_status_umum != null):?>
@@ -160,7 +160,7 @@
     <!-- kategori pelajar -->
         <div id="pelajar" class="tab-pane fade" role="tabpanel" aria-labelledby="pelajar-tab">
             <div class="card shadow mb-4">
-                <form id="form_pljr" method="post" action="<?php echo base_url('admin/data_verifikasi/list_verifikasi'); ?>" enctype="multipart/form-data">
+                <form id="form_pljr" method="post" action="<?php echo base_url('admin/Data_verifikasi/list_verifikasi'); ?>" enctype="multipart/form-data">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary mb-2">Verifikasi Pelajar</h6>
                         <?php if($cek_status_pelajar != null):?>

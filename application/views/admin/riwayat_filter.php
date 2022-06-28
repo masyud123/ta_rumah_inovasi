@@ -36,7 +36,7 @@
                 </td>
                 <td class="align-middle" width="140">
                     <div class="d-flex justify-content-center align-items-center ">
-                        <div class="btn btn-sm btn-info btn mr-1" onclick="window.location.href='<?= base_url('admin/data_riwayat/view/'.$usl->id)?>'"><i class="fa fa-search mr-1"></i> Lihat detail</div>
+                        <div class="btn btn-sm btn-info btn mr-1" onclick="window.location.href='<?= base_url('admin/Data_riwayat/view/'.$usl->id)?>'"><i class="fa fa-search mr-1"></i> Lihat detail</div>
                         <!-- <?php foreach($pen_pp as $pp){$data[] = $pp['id_usulan'];}
                         if (in_array($usl->id,$data)):?>
                             <div class="btn btn-sm btn-secondary disabled btn ml-1"><i class="fa fa-edit"></i> Edit</div>
@@ -44,7 +44,7 @@
                             if ($usl->status == '3' || $usl->status == '4'):?>
                                 <div class="btn btn-sm btn-secondary disabled btn ml-1"><i class="fa fa-edit"></i> Edit</div>
                             <?php else:?>
-                                <?php echo anchor('admin/data_riwayat/edit/' .$usl->id, '<div class="btn btn-sm btn-warning btn ml-1"><i class="fa fa-edit"></i> Edit</div>') ?>
+                                <?php echo anchor('admin/Data_riwayat/edit/' .$usl->id, '<div class="btn btn-sm btn-warning btn ml-1"><i class="fa fa-edit"></i> Edit</div>') ?>
                             <?php endif;
                         endif;?> -->
                     </div>

@@ -53,7 +53,7 @@
                             <td><?php echo $usr->status == 1 ? "Aktif":"Nonaktif" ?></td>
                             <td class="d-flex justify-content-center">
                                 <div class="d-flex justify-content-around" style="width: 10rem;">
-                                    <?php echo anchor('admin/data_user/edit/' . $usr->id_usr, '<div class="btn btn-sm btn-primary btn"><i class="fa fa-edit"></i> Edit</div>') ?>
+                                    <?php echo anchor('admin/Data_user/edit/' . $usr->id_usr, '<div class="btn btn-sm btn-primary btn"><i class="fa fa-edit"></i> Edit</div>') ?>
                                     <div class="btn btn-sm btn-danger btn" data-toggle="modal" data-target="#hapus_user<?php echo $usr->id_usr ?>"><i class="fa fa-trash"></i><a> Hapus</a></div>
                                 </div>
                             </td>
@@ -74,13 +74,13 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
         </div>
-        <form action="<?php echo base_url('admin/data_user/hapus/') ?>" enctype="multipart/form-data" method="post">
+        <form action="<?php echo base_url('admin/Data_user/hapus/') ?>" enctype="multipart/form-data" method="post">
           <input hidden value="<?php echo $usr->id_usr ?>" type="text" name="id_usr">
           <div class="modal-body">
             <p>Apakah Anda yakin akan menghapus data ini?</p>
           </div>
           <div class="modal-footer">
-            <!-- <?php echo anchor('admin/data_user/hapus/' . $usr->id_usr, '<div class="btn btn-danger btn">Hapus</div>') ?> -->
+            <!-- <?php echo anchor('admin/Data_user/hapus/' . $usr->id_usr, '<div class="btn btn-danger btn">Hapus</div>') ?> -->
             <button type="submit" class="btn btn-danger">Iya</button>
             <button type="close" class="btn btn-secondary" data-dismiss="modal">Batal</button>
           </div>
@@ -111,7 +111,7 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Tambah User</h5>
       </div>
-      <form action="<?= base_url('admin/data_user/tambah_user')?>" method="post" enctype="multipart/form-data">
+      <form action="<?= base_url('admin/Data_user/tambah_user')?>" method="post" enctype="multipart/form-data">
           <div class="modal-body">
               <div class="ml-3 mr-3">
                   <div class="form-group">

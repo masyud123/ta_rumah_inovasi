@@ -60,7 +60,7 @@
 								        <p>Apakah Anda yakin akan menghapus data ini?</p>
 
 								        <div class="modal-footer">
-								          <?php echo anchor('admin/data_inovasi/hapus_keterangan/' .$ketind->id_keterangan_indikator,   '<div class="btn btn-danger btn">Hapus</div>') ?>
+								          <?php echo anchor('admin/Data_inovasi/hapus_keterangan/' .$ketind->id_keterangan_indikator,   '<div class="btn btn-danger btn">Hapus</div>') ?>
 								          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 								         
 								        </div>

@@ -15,7 +15,7 @@
 				<span class="text">Tambah Keterangan</span>
 			</a> 
 		<?php endif; ?>
-		<button type="button" class="btn btn-sm btn-warning btn-icon-split mb-4 ml-2" onclick="window.location.href='<?= base_url('admin/data_inovasi/detail_inovasi/'.$id_subevent)?>'">
+		<button type="button" class="btn btn-sm btn-warning btn-icon-split mb-4 ml-2" onclick="window.location.href='<?= base_url('admin/Data_inovasi/detail_inovasi/'.$id_subevent)?>'">
 			<span class="icon text-white-50">
 				<i class="fas fa-arrow-left"></i>
 			</span>
@@ -56,7 +56,7 @@
 									<div class="btn btn-sm btn-secondary"><i class="mr-2 fa fa-trash"></i> <a>Hapus</a></div></td>
 							<?php elseif($hasil_cek == "kosong"): ?>
 								<!-- <td align="center" style="width: 50">
-									<?php echo anchor('admin/data_inovasi/edit/' .$ketind->id_keterangan_indikator, '<div class="btn btn-sm btn-primary btn"><i class=" mr-2 fa fa-edit"></i>Edit</div>') ?>
+									<?php echo anchor('admin/Data_inovasi/edit/' .$ketind->id_keterangan_indikator, '<div class="btn btn-sm btn-primary btn"><i class=" mr-2 fa fa-edit"></i>Edit</div>') ?>
 								</td>  -->
 								<td align="center">
 									<div class="btn btn-sm btn-primary btn" data-toggle="modal" data-target="#edit_keterangan_nilai<?php echo $ketind->id_keterangan_indikator ?>"><i class=" mr-2 fa fa-edit"></i><a>Edit</a></div>
@@ -81,7 +81,7 @@
 		<div class="modal-header">
 			<h5 class="modal-title"  id="exampleModalLabel">Tambah Keterangan</h5>
 		</div>
-        <form action="<?php echo base_url(). 'admin/data_inovasi/tambah_keterangan/'; ?>" method="post" enctype="multipart/form-data" >
+        <form action="<?php echo base_url(). 'admin/Data_inovasi/tambah_keterangan/'; ?>" method="post" enctype="multipart/form-data" >
 		<div class="modal-body">
 			<?php foreach ($keterangan_indikator as $ketind) ;?>
 			<div class="form-group row ml-2">
@@ -122,7 +122,7 @@
 			<div class="modal-body">
 				<p>Apakah Anda yakin akan menghapus data ini?</p>
 				<div class="modal-footer">
-					<?php echo anchor('admin/data_inovasi/hapus_keterangan/' .$ketind->id_keterangan_indikator,   '<div class="btn btn-danger btn">Hapus</div>') ?>
+					<?php echo anchor('admin/Data_inovasi/hapus_keterangan/' .$ketind->id_keterangan_indikator,   '<div class="btn btn-danger btn">Hapus</div>') ?>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 				</div>
 			</div>
@@ -138,7 +138,7 @@
 				<h5 class="modal-title"  id="exampleModalLabel">Edit Data</h5>
 			</div>
 			<div class="modal-body">
-				<form method="post" action="<?php echo base_url('admin/data_inovasi/update/'.$ketind->id_keterangan_indikator) ?>">
+				<form method="post" action="<?php echo base_url('admin/Data_inovasi/update/'.$ketind->id_keterangan_indikator) ?>">
 					<div class="row d-flex align-items-center mb-3">
 						<h6 class="col-md-4"><strong>Indikator</strong></h6>	
 						<input type="text" class="form-control col-md-7" value="<?php echo $indikator_penilaian->indikator ?>" disabled>

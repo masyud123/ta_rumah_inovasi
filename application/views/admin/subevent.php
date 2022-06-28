@@ -46,7 +46,7 @@
                             ?>
                           </td>
                           <td class="d-flex justify-content-between" width="150">
-                              <?php echo anchor('admin/data_subevent/edit/' .$sbevt->id, '<div class="btn btn-sm btn-primary btn"><i class="fa fa-edit"></i> Edit</div>') ?>
+                              <?php echo anchor('admin/Data_subevent/edit/' .$sbevt->id, '<div class="btn btn-sm btn-primary btn"><i class="fa fa-edit"></i> Edit</div>') ?>
                               <div class="btn btn-sm btn-danger btn" data-toggle="modal" data-target="#hapus_subevent<?php echo $sbevt->id ?>"><i class="fa fa-trash"></i><a> Hapus</a></div>
                           </td>
                       </tr>
@@ -65,7 +65,7 @@
             <div class="modal-header bg-light">
               <h5 class="modal-title">Tambah Sub Event</h5>
             </div>
-            <form action="<?= base_url('admin/data_subevent/tambah_subevent')?>" method="post" enctype="multipart/form-data" >
+            <form action="<?= base_url('admin/Data_subevent/tambah_subevent')?>" method="post" enctype="multipart/form-data" >
                 <div class="modal-body">
                     <div class="ml-2 mr-2">
                         <div class="form-group">
@@ -125,7 +125,7 @@
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
                 </div>
-                <form action="<?php echo base_url('admin/data_subevent/hapus/') ?>" enctype="multipart/form-data" method="post">
+                <form action="<?php echo base_url('admin/Data_subevent/hapus/') ?>" enctype="multipart/form-data" method="post">
                     <input hidden value="<?php echo $sbevt->id ?>" type="text" name="id">
                     <div class="modal-body">
                       <p>Apakah Anda yakin akan menghapus data ini?</p>

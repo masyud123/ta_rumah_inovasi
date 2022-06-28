@@ -40,7 +40,7 @@ input[type=number] {
 								$data[] = $f_nilai['id_subevent'];
 							}
 							if(in_array($sbevt->id, $data)):?>
-								<td class="text-center align-middle"><?php echo anchor('admin/data_inovasi/detail_inovasi/'.$sbevt->id,'<div class="btn btn-warning btn-sm"><i class="fa fa-search-plus"></i> Detail</div>') ?></td>
+								<td class="text-center align-middle"><?php echo anchor('admin/Data_inovasi/detail_inovasi/'.$sbevt->id,'<div class="btn btn-warning btn-sm"><i class="fa fa-search-plus"></i> Detail</div>') ?></td>
 								<td class="text-center align-middle"><button class="btn btn-sm btn-success" data-toggle="modal" data-target="#edit_formulasi<?= $sbevt->id?>"><i class="fas fa-search-plus mr-1"></i>Detail</button></td>
 							<?php else: ?>
 								<td class="text-center align-middle"><button disabled class="btn btn-sm btn-secondary"><i class="fas fa-search-plus mr-1"></i>Detail</button></td>
@@ -71,7 +71,7 @@ input[type=number] {
 				<h5 class="modal-title"  id="exampleModalLabel">Tambah Formulasi Nilai</h5>
 			</div>
 			<div class="modal-body">
-				<form id="formFormulasiNilai<?= $sbevt->id?>" action="<?php echo base_url('admin/data_inovasi/tambah_formulasi_nilai/'); ?>" method="post" enctype="multipart/form-data" >
+				<form id="formFormulasiNilai<?= $sbevt->id?>" action="<?php echo base_url('admin/Data_inovasi/tambah_formulasi_nilai/'); ?>" method="post" enctype="multipart/form-data" >
 					<div class="input-group d-flex align-items-center row mb-3">
 						<h6 class="col-lg-4 mr-lg-2"><strong>Sub Event</strong></h6>
 						<input type="text" disabled class="form-control bg-light border-1" value="<?= $sbevt->subevent?>">
@@ -120,7 +120,7 @@ input[type=number] {
 			<?php foreach($formulasi_nilai as $f_nilai) : 
 			if($f_nilai['id_subevent'] == $sbevt->id): ?>
 				<div class="modal-body">
-					<form id="formEditFormulasiNilai<?= $sbevt->id?>" action="<?php echo base_url('admin/data_inovasi/edit_formulasi_nilai/'. $f_nilai['id_formulasi_nilai']); ?>" method="post" enctype="multipart/form-data" >
+					<form id="formEditFormulasiNilai<?= $sbevt->id?>" action="<?php echo base_url('admin/Data_inovasi/edit_formulasi_nilai/'. $f_nilai['id_formulasi_nilai']); ?>" method="post" enctype="multipart/form-data" >
 						<div class="input-group d-flex align-items-center row mb-3">
 							<h6 class="col-lg-4 mr-lg-2"><strong>Sub Event</strong></h6>
 							<input type="text" disabled class="form-control bg-light border-1" value="<?= $sbevt->subevent?>">

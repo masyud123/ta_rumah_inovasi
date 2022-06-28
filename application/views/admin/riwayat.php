@@ -34,7 +34,7 @@
         var data = $('#filter-th').val();
         $.ajax({
           type: "GET",
-          url: "<?= base_url('admin/data_riwayat/filter_tahun/')?>"+data,
+          url: "<?= base_url('admin/Data_riwayat/filter_tahun/')?>"+data,
           success: function (response) {
               $('#list-data').html(response);
           }
@@ -44,7 +44,7 @@
             var data = $(this).val();
             $.ajax({
               type: "GET",
-              url: "<?= base_url('admin/data_riwayat/filter_tahun/')?>"+data,
+              url: "<?= base_url('admin/Data_riwayat/filter_tahun/')?>"+data,
               success: function (response) {
                   $('#list-data').html(response);
               }

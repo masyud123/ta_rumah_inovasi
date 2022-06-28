@@ -23,7 +23,7 @@
 			      <tr>
 			        <td align="center"><?php echo $no++ ?></td>
 			     	<td align="center"><?php echo $sbevt->subevent ?></td>
-			        <td align="center"><?php echo anchor('admin/data_nominator/detail_nominator/'.$sbevt->id,'<div class="btn btn-warning btn-sm"><i class="fa fa-search-plus"></i> Detail</div>') ?></td>
+			        <td align="center"><?php echo anchor('admin/Data_nominator/detail_nominator/'.$sbevt->id,'<div class="btn btn-warning btn-sm"><i class="fa fa-search-plus"></i> Detail</div>') ?></td>
 
 			        
 			      </tr>

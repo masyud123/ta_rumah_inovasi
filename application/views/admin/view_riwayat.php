@@ -5,7 +5,7 @@
     </div>
     <div class="card-body">
       <div class="d-md-flex justify-content-between"> 
-          <a href="<?=base_url('admin/data_riwayat')?>" class="btn btn-sm btn-warning btn-icon-split mb-3">
+          <a href="<?=base_url('admin/Data_riwayat')?>" class="btn btn-sm btn-warning btn-icon-split mb-3">
               <span class="icon text-white-50"><i class="fa fa-backward" aria-hidden="true"></i></span>
               <span class="text">Kembali</span>
           </a>

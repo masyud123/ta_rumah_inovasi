@@ -9,7 +9,7 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<form action="<?= base_url('admin/pesan_masal/kirim_pesan')?>" method="post" enctype="multipart/form-data">
+					<form action="<?= base_url('admin/Pesan_masal/kirim_pesan')?>" method="post" enctype="multipart/form-data">
 						<div class="form-group">
 							<label><strong>Nomor WA</strong></label>
 							<textarea id="nomor" name="nomor" class="form-control" placeholder="Masukan nomor WA" oninput="this.value = this.value.replace(/[^0-9,]/g, '');"></textarea>

@@ -16,7 +16,7 @@
 		</a>
 		<?php endif;?>
 		
-		<button type="button" class="btn btn-sm btn-warning btn-icon-split mb-4 ml-2" onclick="window.location.href='<?= base_url('admin/data_inovasi/')?>'">
+		<button type="button" class="btn btn-sm btn-warning btn-icon-split mb-4 ml-2" onclick="window.location.href='<?= base_url('admin/Data_inovasi/')?>'">
 			<span class="icon text-white-50">
 			<i class="fas fa-arrow-left"></i>
 			</span>
@@ -47,7 +47,7 @@
 						<tr>
 							<td align="center"><?php echo $no++ ?></td>
 							<td><?php echo $id_pen->indikator ?></td>
-							<td align="center"><?php echo anchor('admin/data_inovasi/detail_indikator/'.$id_subevent.'/'.$id_pen->id_indikator_penilaian,'<div class="btn btn-warning btn-sm"><i class="fa fa-search-plus mr-2"></i> Detail</div>') ?></td>
+							<td align="center"><?php echo anchor('admin/Data_inovasi/detail_indikator/'.$id_subevent.'/'.$id_pen->id_indikator_penilaian,'<div class="btn btn-warning btn-sm"><i class="fa fa-search-plus mr-2"></i> Detail</div>') ?></td>
 							<?php if ($hasil_cek == "ada") :?>
 								<td align="center" style="width: 50"> <div class="btn btn-sm btn-secondary"><i class="mr-2 fa fa-edit"></i> <a>Edit</a></div></td>
 								<td align="center" style="width: 50"> <div class="btn btn-sm btn-secondary"><i class="mr-2 fa fa-trash"></i> <a>Hapus</a></div></td>
@@ -75,7 +75,7 @@
 			<h5 class="modal-title"  id="exampleModalLabel">Tambah Indikator Inovasi</h5>
 		</div>
       	<div class="modal-body">
-        	<form action="<?php echo base_url(). 'admin/data_inovasi/tambah_inovasi/'; ?>" method="post" enctype="multipart/form-data" >
+        	<form action="<?php echo base_url(). 'admin/Data_inovasi/tambah_inovasi/'; ?>" method="post" enctype="multipart/form-data" >
 				<div class="form-group row ml-2">
 					<dt class="mr-4 text-size 25">Sub Event</dt>
 					<input type="text" name="subevent" style="position: absolute; left: 138px; width: 60%" class="form-control col-sm-8 ml-3" value="<?php echo $subevent->subevent ?>" readonly>
@@ -110,7 +110,7 @@
 				<p>Apakah Anda yakin akan menghapus data ini?</p>
 			</div>
 			<div class="modal-footer">
-				<?php echo anchor('admin/data_inovasi/hapus/' .$id_pen->id_indikator_penilaian, '<div class="btn btn-danger btn">Hapus</div>') ?>
+				<?php echo anchor('admin/Data_inovasi/hapus/' .$id_pen->id_indikator_penilaian, '<div class="btn btn-danger btn">Hapus</div>') ?>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 			</div>
 		</div>
@@ -125,7 +125,7 @@
 				<h5 class="modal-title"  id="exampleModalLabel">Edit Indikator Penilaian</h5>
 			</div>
 			<div class="modal-body">
-				<form method="post" action="<?= base_url('admin/data_inovasi/update_indikator/'.$id_pen->id_indikator_penilaian) ?>">
+				<form method="post" action="<?= base_url('admin/Data_inovasi/update_indikator/'.$id_pen->id_indikator_penilaian) ?>">
 					<div class="form-group d-flex align-items-center row">
 						<h6 class="col-lg-4"><strong>Sub Event</strong></h6>
 						<input type="text" class="form-control col-lg-7" value="<?php echo $subevent->subevent ?>" disabled required>

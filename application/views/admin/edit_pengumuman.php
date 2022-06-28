@@ -6,7 +6,7 @@
             <div class="col-md-12">
 					<table class="table">
 						<?php foreach ($pengumuman as $png) : ?>
-							<form method="post" action="<?php echo base_url().'admin/pengumuman/update' ?>" enctype="multipart/form-data">
+							<form method="post" action="<?php echo base_url().'admin/Pengumuman/update' ?>" enctype="multipart/form-data">
 								<div class= "row">
 									<dt for="inputNama" class="col-sm-2 col-form-label">Judul</dt>
 										<div class="col-sm-5 mb-3">
@@ -45,7 +45,7 @@
 										</div>
 								</div>
 								<button type="submit" class="btn btn-primary btn-sm mt-3 mr-2"> Simpan</button>
-								<a href="<?php echo base_url('admin/pengumuman') ?>"><div class="btn btn-sm btn-secondary mt-3">Kembali</div></a>
+								<a href="<?php echo base_url('admin/Pengumuman') ?>"><div class="btn btn-sm btn-secondary mt-3">Kembali</div></a>
 							</form>
 						<?php endforeach; ?>
 					</table>

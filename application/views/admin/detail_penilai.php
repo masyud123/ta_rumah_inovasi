@@ -17,7 +17,7 @@
 				</button>
 		  <?php } ?>
   		<?php endforeach; ?>
-		<a href="<?php echo base_url('admin/data_penilai/') ?>"><div class="btn btn-sm btn-warning ml-sm-2">Kembali</div></a>
+		<a href="<?php echo base_url('admin/Data_penilai/') ?>"><div class="btn btn-sm btn-warning ml-sm-2">Kembali</div></a>
 	</div>
 	<div class="card shadow">
 		<div
@@ -64,7 +64,7 @@
 				<h5 class="modal-title"  id="exampleModalLabel">Tambah Penilai</h5>
 			</div>
 			<div class="modal-body">
-				<form action="<?php echo base_url(). 'admin/data_penilai/tambah_penilai/'; ?>" method="post" enctype="multipart/form-data" >
+				<form action="<?php echo base_url(). 'admin/Data_penilai/tambah_penilai/'; ?>" method="post" enctype="multipart/form-data" >
 					<div class="d-md-flex justify-content-between">
 						<dt class="col-md-4">Sub Event</dt>
 						<input type="text" name="subevent" class="form-control col-md-8" value="<?= $subevent->subevent ?>" readonly>
@@ -100,7 +100,7 @@
 				</div>
 				<div class="modal-body">
 					<p>Apakah Anda yakin akan menghapus data ini?</p>
-					<form enctype="multipart/form-data" method="post" action="<?= base_url('admin/data_penilai/hapus/') ?>">
+					<form enctype="multipart/form-data" method="post" action="<?= base_url('admin/Data_penilai/hapus/') ?>">
 						<div hidden="">
 							id_user<input value="<?php echo $setpnl->id_usr?>" type="text" name="id_user"><br>
 							id_penilai<input value="<?php echo $setpnl->id?>" type="text" name="id_penilai">

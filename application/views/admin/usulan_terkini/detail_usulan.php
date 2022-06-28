@@ -216,7 +216,7 @@
         $('#kembali-usulan-terkini').on('click', function(){
             $.ajax({
                 type: "GET",
-                url: "<?= base_url('admin/usulan_terkini/semua_usulan/')?>",
+                url: "<?= base_url('admin/Usulan_terkini/semua_usulan/')?>",
                 success: function (response) {
                     $('#tempel_data').html(response);
                 }

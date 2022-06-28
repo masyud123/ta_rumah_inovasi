@@ -172,7 +172,7 @@
         $('#semua_usulan').on('click', function(){
             $.ajax({
                 type: "GET",
-                url: "<?= base_url('admin/usulan_terkini/semua_usulan/')?>",
+                url: "<?= base_url('admin/Usulan_terkini/semua_usulan/')?>",
                 success: function (response) {
                     $('#tempel_data').html(response);
                 }
@@ -182,7 +182,7 @@
         $('#usulan_verif').on('click', function(){
             $.ajax({
                 type: "GET",
-                url: "<?= base_url('admin/usulan_terkini/usulan_verif/')?>",
+                url: "<?= base_url('admin/Usulan_terkini/usulan_verif/')?>",
                 success: function (response) {
                     $('#tempel_data').html(response);
                 }
@@ -192,7 +192,7 @@
         $('#usulan_blm').on('click', function(){
             $.ajax({
                 type: "GET",
-                url: "<?= base_url('admin/usulan_terkini/usulan_blm/')?>",
+                url: "<?= base_url('admin/Usulan_terkini/usulan_blm/')?>",
                 success: function (response) {
                     $('#tempel_data').html(response);
                 }
@@ -205,7 +205,7 @@
 
             $.ajax({
             type: "GET",
-            url: "<?= base_url('admin/usulan_terkini/edit_status_usulan/')?>"+value+"/"+id,
+            url: "<?= base_url('admin/Usulan_terkini/edit_status_usulan/')?>"+value+"/"+id,
             success: function (response) {
                 return sukses_edit(<?=$filter?>);
             }
@@ -216,7 +216,7 @@
             var id = $(this).data('id');
             $.ajax({
                 type: "GET",
-                url: "<?= base_url('admin/usulan_terkini/detail_usulan/')?>"+id,
+                url: "<?= base_url('admin/Usulan_terkini/detail_usulan/')?>"+id,
                 success: function (response) {
                     $('#tempel_data').html(response);
                 }
@@ -247,7 +247,7 @@
         if(filter == 1){
             $.ajax({
                 type: "GET",
-                url: "<?= base_url('admin/usulan_terkini/semua_usulan/')?>",
+                url: "<?= base_url('admin/Usulan_terkini/semua_usulan/')?>",
                 success: function (response) {
                     $('#tempel_data').html(response);
                 }
@@ -255,7 +255,7 @@
         }else if(filter == 2){
             $.ajax({
                 type: "GET",
-                url: "<?= base_url('admin/usulan_terkini/usulan_verif/')?>",
+                url: "<?= base_url('admin/Usulan_terkini/usulan_verif/')?>",
                 success: function (response) {
                     $('#tempel_data').html(response);
                 }
@@ -263,7 +263,7 @@
         }else if(filter == 3){
             $.ajax({
                 type: "GET",
-                url: "<?= base_url('admin/usulan_terkini/usulan_blm/')?>",
+                url: "<?= base_url('admin/Usulan_terkini/usulan_blm/')?>",
                 success: function (response) {
                     $('#tempel_data').html(response);
                 }

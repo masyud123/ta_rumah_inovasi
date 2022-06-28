@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	
-	<form action="<?php echo base_url('admin/data_nominator/nominator')?>" method="post">
+	<form action="<?php echo base_url('admin/Data_nominator/nominator')?>" method="post">
   		<?php foreach ($indikator_penilaian_pemenang as $indpnl) : ?>
 		<input type="text" hidden name="back" value="<?php echo $indpnl->id_subevent ?>">
 		<button class="btn btn-sm btn-warning mb-3"><i class="fas fa-arrow-left"></i> Kembali</button>
@@ -14,7 +14,7 @@
             <div class="col-md-12">
 					<table class="table">
 						<?php foreach ($indikator_penilaian_pemenang as $indpnl) : ?>
-							<form method="post" action="<?php echo base_url().'admin/data_nominator/update' ?>">
+							<form method="post" action="<?php echo base_url().'admin/Data_nominator/update' ?>">
 								<div class= "row">
 									<dt for="inputNama" class="col-sm-2 col-form-label">Indikator</dt>
 										<div class="col-sm-5 mb-3">

@@ -21,7 +21,7 @@
 				<div class="col-md-12">
 					<table class="table">
 						<?php foreach ($data_user as $user) : ?>
-							<form id="update_user_profil" method="post" action="<?php echo base_url() . 'admin/data_user/update' ?>">
+							<form id="update_user_profil" method="post" action="<?php echo base_url() . 'admin/Data_user/update' ?>">
 								<div class="row ">
 									<dt for="inputNama" class="col-sm-2 col-form-label">Nama</dt>
 									<div class="col-sm-5 mb-3">
@@ -102,7 +102,7 @@
 
 								<button onclick="cek_pwd()" type="button" class="btn btn-primary btn-sm mt-3 mr-2"> Simpan</button>
 								
-									<a href="<?php echo base_url('admin/data_user') ?>" class="btn btn-sm btn-secondary mt-3" >Kembali</div>
+									<a href="<?php echo base_url('admin/Data_user') ?>" class="btn btn-sm btn-secondary mt-3" >Kembali</div>
 								</a>
 							</form>
 						<?php endforeach; ?>

@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="align-items-center" align="center">
-                            <button type="button" onclick="window.location.href='<?= base_url('admin/data_verifikasi/daftar_nilai/'.$tampil['id'])?>'" class="btn btn-light btn-icon-split">
+                            <button type="button" onclick="window.location.href='<?= base_url('admin/Data_verifikasi/daftar_nilai/'.$tampil['id'])?>'" class="btn btn-light btn-icon-split">
                                 <span class="icon text-gray-600">
                                     <i class="fa fa-search-plus"></i>
                                 </span>

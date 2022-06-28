@@ -30,7 +30,7 @@
             <tr>
               <td class="text-center"><?php echo $no++ ?></td>
               <td><?php echo $evt->event ?></td>
-              <td align="center" style="width: 50"><?php echo anchor('admin/data_event/edit/' .$evt->id, '<div class="btn btn-sm btn-primary btn"><i class="fa fa-edit"></i> Edit</div>') ?></td>
+              <td align="center" style="width: 50"><?php echo anchor('admin/Data_event/edit/' .$evt->id, '<div class="btn btn-sm btn-primary btn"><i class="fa fa-edit"></i> Edit</div>') ?></td>
             </tr>
             <?php endforeach; ?>
          </table>
@@ -51,7 +51,7 @@
         <h5 class="modal-title"  id="exampleModalLabel">Tambah Event</h5>
       </div>
       <div class="modal-body">
-        <form action="<?php echo base_url(). 'admin/data_event/tambah_event'; ?>" method="post" enctype="multipart/form-data" >
+        <form action="<?php echo base_url(). 'admin/Data_event/tambah_event'; ?>" method="post" enctype="multipart/form-data" >
          <div class="form-group row ml-1">
             <dt class="mr-4 text-size 25">Nama Event</dt>
             <input type="text" name="event" style="position: absolute; left: 138px; width: 60%" class="form-control col-sm-8 ml-3" required oninvalid="this.setCustomValidity('Data wajib diisi!')" oninput="setCustomValidity('')">
@@ -79,8 +79,8 @@
         <p>Apakah Anda yakin akan menghapus data ini?</p>
 
         <div class="modal-footer">
-          <?php echo anchor('admin/data_event/hapus/' .$evt->id, '<div class="btn btn-danger btn">Hapus</div>') ?>
-          <a href="<?php echo base_url('admin/data_event') ?>"><div class="btn btn-secondary">Batal</div></a>
+          <?php echo anchor('admin/Data_event/hapus/' .$evt->id, '<div class="btn btn-danger btn">Hapus</div>') ?>
+          <a href="<?php echo base_url('admin/Data_event') ?>"><div class="btn btn-secondary">Batal</div></a>
         </div>
     </div>
   </div>

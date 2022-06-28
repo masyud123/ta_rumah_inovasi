@@ -29,7 +29,7 @@
 				<span class="text">Tambah Indikator</span>
 			</button>
 		<?php endif; ?>
-		<button class="btn btn-warning btn-sm btn-icon-split ml-2" type="button" onclick="window.location.href='<?= base_url('admin/data_nominator/') ?>'"> 
+		<button class="btn btn-warning btn-sm btn-icon-split ml-2" type="button" onclick="window.location.href='<?= base_url('admin/Data_nominator/') ?>'"> 
 			<span class="icon text-white-50">
 				<i class="fas fa-arrow-left"></i>
 			</span>
@@ -77,7 +77,7 @@
 								</td>
 							<?php elseif($sudah_dinilai == 'kosong'): ?>
 								<td class="text-center align-middle" width="101">
-									<!-- <?php echo anchor('admin/data_nominator/edit_indikator/' .$indpnl->id, '<div class="btn btn-sm btn-warning btn"><i class="mr-1 fa fa-edit"></i>Edit</div>') ?> -->
+									<!-- <?php echo anchor('admin/Data_nominator/edit_indikator/' .$indpnl->id, '<div class="btn btn-sm btn-warning btn"><i class="mr-1 fa fa-edit"></i>Edit</div>') ?> -->
 									<button class="btn btn-sm btn-warning modal_edit" data-id="<?= $indpnl->id ?>" type="button" data-toggle="modal" data-target="#edit_nominator<?php echo $indpnl->id ?>">
 										<i class="mr-1 fa fa-edit"></i>Edit
 									</button>
@@ -104,7 +104,7 @@
 				<h5 class="modal-title"  id="exampleModalLabel">Tambah Indikator Nominator</h5>
 			</div>
 			<div class="modal-body">
-				<form action="<?php echo base_url(). 'admin/data_nominator/tambah_nominator/'; ?>" method="post" enctype="multipart/form-data" >
+				<form action="<?php echo base_url(). 'admin/Data_nominator/tambah_nominator/'; ?>" method="post" enctype="multipart/form-data" >
 					<div class="form-group mb-4 align-items-center d-md-flex">
 						<dt class="col-md-4">Sub Event</dt>
 						<input type="text" name="subevent" class="form-control" value="<?php echo $subevent->subevent ?>" disabled>
@@ -153,7 +153,7 @@
 				<p>Apakah Anda yakin akan menghapus data ini?</p>
 			</div>
 			<div class="modal-footer">
-				<?php echo anchor('admin/data_nominator/hapus/' .$indpnl->id,   '<div class="btn btn-danger btn">Hapus</div>') ?>
+				<?php echo anchor('admin/Data_nominator/hapus/' .$indpnl->id,   '<div class="btn btn-danger btn">Hapus</div>') ?>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 			</div>
 		</div>
@@ -168,7 +168,7 @@
 				<h5 class="modal-title"  id="exampleModalLabel">Edit Indikator Nominator</h5>
 			</div>
 			<div class="modal-body">
-				<form action="<?php echo base_url(). 'admin/data_nominator/update/'; ?>" method="post" enctype="multipart/form-data" >
+				<form action="<?php echo base_url(). 'admin/Data_nominator/update/'; ?>" method="post" enctype="multipart/form-data" >
 					<div class="form-group mb-4 align-items-center d-md-flex">
 						<dt class="col-md-4">Sub Event</dt>
 						<input type="text" name="subevent" class="form-control" value="<?= $subevent->subevent ?>" disabled>

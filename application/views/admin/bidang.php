@@ -98,7 +98,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= base_url('admin/data_bidang/tambah_bidang/'.$subev['id'])?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('admin/Data_bidang/tambah_bidang/'.$subev['id'])?>" method="post" enctype="multipart/form-data">
                         <div class="form-group row align-items-center">
                             <span class="col-lg-4">Nama Sub Event</span>
                             <input disabled type="text" class="form-control col-lg-7" value="<?= $subev['subevent']?>">
@@ -136,7 +136,7 @@
                     </button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= base_url('admin/data_bidang/edit_bidang/'.$dt_bidang['id'])?>" method="post" enctype="multipart/form-data">
+                        <form action="<?= base_url('admin/Data_bidang/edit_bidang/'.$dt_bidang['id'])?>" method="post" enctype="multipart/form-data">
                             <div class="form-group row align-items-center">
                                 <span class="col-lg-4">Nama Sub Event</span>
                                 <input disabled type="text" class="form-control col-lg-7" value="<?= $subev['subevent']?>">
@@ -184,7 +184,7 @@
                 cancelButtonText: 'Tidak'
             }).then((result) => {
                 if (result.isConfirmed) {
-                window.location = "<?php echo base_url('admin/data_bidang/hapus_bidang/') ?>" + id_bidang;
+                window.location = "<?php echo base_url('admin/Data_bidang/hapus_bidang/') ?>" + id_bidang;
                 }
             });
         });

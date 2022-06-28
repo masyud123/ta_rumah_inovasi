@@ -42,7 +42,7 @@
                                 <div class="form-group">
                                     <div class="btn btn-sm btn-info btn col-10 mb-2" data-toggle="modal" data-target="#lihat_pengumuman<?php echo $png->id_pengumuman ?>"><i class="fa fa-search-plus mr-1"></i> Lihat File
                                     </div><br>
-                                    <?php echo anchor('admin/pengumuman/edit/' . $png->id_pengumuman, '<div class="btn btn-sm btn-warning btn col-10 mb-2"><i class="fa fa-edit mr-1"></i> Edit</div>') ?><br>
+                                    <?php echo anchor('admin/Pengumuman/edit/' . $png->id_pengumuman, '<div class="btn btn-sm btn-warning btn col-10 mb-2"><i class="fa fa-edit mr-1"></i> Edit</div>') ?><br>
                                     <div class="btn btn-sm btn-danger btn col-10 " data-toggle="modal" data-target="#hapus_pengumuman<?php echo $png->id_pengumuman ?>"><i class="fa fa-trash mr-1"></i> Hapus</div>
                                 </div>
                             </td>
@@ -67,7 +67,7 @@
         <h5 class="modal-title"  id="exampleModalLabel">Tambah Pengumuman</h5>
       </div>
       <div class="modal-body">
-        <form action="<?php echo base_url(). 'admin/pengumuman/tambah_pengumuman'; ?>" method="post" enctype="multipart/form-data" >
+        <form action="<?php echo base_url(). 'admin/Pengumuman/tambah_pengumuman'; ?>" method="post" enctype="multipart/form-data" >
             <div class="form-group">
               <dt class="">Judul</dt>
               <input type="text" name="judul" class="form-control" required oninvalid="this.setCustomValidity('Data wajib diisi!')" oninput="setCustomValidity('')">
@@ -124,7 +124,7 @@
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
                 </div>
-                <form action="<?php echo base_url('admin/pengumuman/hapus/') ?>" enctype="multipart/form-data" method="post">
+                <form action="<?php echo base_url('admin/Pengumuman/hapus/') ?>" enctype="multipart/form-data" method="post">
                     <input hidden value="<?php echo $png->id_pengumuman ?>" type="text" name="id">
                     <div class="modal-body">
                         <p>Apakah Anda yakin akan menghapus data ini?</p>
