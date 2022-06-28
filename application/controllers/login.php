@@ -50,7 +50,7 @@ class Login extends CI_Controller {
 	                        <span aria-hidden="true">&times;</span>
 	                      </button>
 	                    </div>');
-					redirect('login');
+					redirect('Login');
 				}else {
 					$this->session->set_userdata('email',$auth->email);
 					$this->session->set_userdata('hak_akses',$auth->hak_akses);
@@ -58,11 +58,11 @@ class Login extends CI_Controller {
 					$this->session->set_userdata('id_usr',$auth->id_usr);
 
 					switch($auth->hak_akses){
-						case 'Admin_Bappeda' : redirect('admin/dashboard');
+						case 'Admin_Bappeda' : redirect('admin/Dashboard');
 							break;
-						case 'Peserta' : redirect('peserta/riwayat'); 
+						case 'Peserta' : redirect('peserta/Riwayat'); 
 							break;
-						case 'Penilai' : redirect('penilai/dashboard');
+						case 'Penilai' : redirect('penilai/Dashboard');
 							break;
 						default: break;
 					}
@@ -77,14 +77,14 @@ class Login extends CI_Controller {
 					</button>
 				</div>'
 			);
-			redirect('login');
+			redirect('Login');
 		}
 	}
 
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('login');
+		redirect('Login');
 	}
 
 	public function lupa_password()
@@ -103,7 +103,7 @@ class Login extends CI_Controller {
 					Swal.fire("Gagal","Email tidak boleh kosong!","error")  
 				</script>'
 			);
-			redirect('login/lupa_password');
+			redirect('Login/lupa_password');
 		}else{
 			$get_data = $this->db->get_where('user', array('email' => $email))->row();
 			if($get_data == null){
@@ -112,7 +112,7 @@ class Login extends CI_Controller {
 						Swal.fire("Gagal","Email tidak ditemukan!","error")  
 					</script>'
 				);
-				redirect('login/lupa_password');
+				redirect('Login/lupa_password');
 			}else{
 				// insert data ke dalam penyimpanan sementara
 				$token = md5(rand(111111, 999999));
@@ -136,7 +136,7 @@ class Login extends CI_Controller {
                 //             Swal.fire("Gagal","Mohon maaf reset password gagal dilakukan dikarenakan sistem tidak bisa mengirim link ke nomor whatsapp Anda. Silakan coba beberapa saat lagi.","error")  
                 //         </script>'  
                 //     );
-                //     redirect('login/lupa_password');
+                //     redirect('Login/lupa_password');
                 // }else{
                     //Pengiriman kode kepada user via WA
                     $ch = curl_init();
@@ -162,14 +162,14 @@ class Login extends CI_Controller {
                                 Swal.fire("Gagal","Sistem tidak bisa mengirim pesan ke nomor Anda. Pastikan nomor Anda sudah terdaftar pada aplikasi Whatsapp.","error")  
                             </script>'  
                         );
-						redirect('login/lupa_password');
+						redirect('Login/lupa_password');
                     }else{
 						$this->session->set_flashdata('pesan_lupa_pwd',
                             '<script type ="text/JavaScript">  
                                 Swal.fire("Sukses","Pesan berhasil terkirim ke nomor whatsapp Anda. Silakan Anda buka pesan tersebut dan ikuti langkah selanjutnya.","success")  
                             </script>'  
                         );
-						redirect('login/lupa_password');
+						redirect('Login/lupa_password');
 						// echo "<pre>"; print_r($data);
                     }
                 // }
@@ -222,7 +222,7 @@ class Login extends CI_Controller {
 						Swal.fire("Sukses","Password berhasil diubah. Silakan login kembali untuk masuk.","success")  
 					</script>'
 				);
-				redirect('login');
+				redirect('Login');
 			}
 		}else{
 			$this->session->set_flashdata('pesan_reset_pwd',

@@ -9,14 +9,14 @@ class Data_subevent extends CI_Controller{
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  Anda belum Login, silahkan login!
 														 </div>');
-			redirect('login');
+			redirect('Login');
 		}
 	}
 
 	public function index()
 	{
-		$data['subevent']      = $this->model_subevent->view_subevent();
-		$data['list_event']    = $this->model_subevent->list_nama_event();
+		$data['subevent']      = $this->Model_subevent->view_subevent();
+		$data['list_event']    = $this->Model_subevent->list_nama_event();
 		$this->load->view('temp_data_table/header'); 
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/subevent',$data);
@@ -27,7 +27,7 @@ class Data_subevent extends CI_Controller{
 	public function edit($id)
 	{ 
 		$where = array('id' =>$id);
-		$data['subevent'] = $this->model_subevent->edit_subevent($where, 'subevent')->result();
+		$data['subevent'] = $this->Model_subevent->edit_subevent($where, 'subevent')->result();
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/edit_subevent', $data);
@@ -57,14 +57,14 @@ class Data_subevent extends CI_Controller{
 			'id' => $id 
 		);
 
-		$this->model_subevent->update_subevent($where,$data, 'subevent');
+		$this->Model_subevent->update_subevent($where,$data, 'subevent');
 		$this->session->set_flashdata('message','<div class="alert alert-success alert-dismissible fade show" role="alert"><i class="fas fa-check-circle"></i>
   				Data berhasil diupdate!
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		    <span aria-hidden="true">&times;</span>
 		  </button>
 		</div>');
-		redirect('admin/data_subevent'); 
+		redirect('admin/Data_subevent'); 
 	}
 
 	public function hapus()
@@ -121,14 +121,14 @@ class Data_subevent extends CI_Controller{
 			'status_pendaftaran'=> $status_pendaftaran,
 		);
 
-		$this->model_subevent->tambah_subevent($data, 'subevent');
+		$this->Model_subevent->tambah_subevent($data, 'subevent');
 		$this->session->set_flashdata('message','<div class="alert alert-success alert-dismissible fade show" role="alert"><i class="fas fa-check-circle"></i>
   				Data berhasil ditambahkan!
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		    <span aria-hidden="true">&times;</span>
 		  </button>
 		</div>');
-		redirect('admin/data_subevent');
+		redirect('admin/Data_subevent');
 	}
 	
 } 

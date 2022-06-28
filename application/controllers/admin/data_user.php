@@ -11,13 +11,13 @@ class Data_user extends CI_Controller
 			$this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  Anda belum Login, silahkan login!
 														 </div>');
-			redirect('login');
+			redirect('Login');
 		}
 		date_default_timezone_set('Asia/Jakarta');
 	}
 	public function index()
 	{
-		$data['user'] = $this->model_user->tampil_user()->result();
+		$data['user'] = $this->Model_user->tampil_user()->result();
 		$data['user_non'] = $this->db->get_where('user', array('status' => 'Nonaktif'))->result();
 		$data['user_akf'] = $this->db->get_where('user', array('status' => 'Aktif'))->result();
 		$this->load->view('temp_data_table/header');
@@ -29,7 +29,7 @@ class Data_user extends CI_Controller
 	public function edit($id)
 	{
 		$where = array('id_usr' => $id);
-		$data['data_user'] = $this->model_user->edit_user($where, 'user')->result();
+		$data['data_user'] = $this->Model_user->edit_user($where, 'user')->result();
 		// echo json_encode($data); exit;
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');
@@ -67,7 +67,7 @@ class Data_user extends CI_Controller
 		            swal("Peringatan","Coba gunakan password lain","warning")  
 		            </script>'
 				);
-				redirect(base_url('admin/data_user/edit/' . $id));
+				redirect(base_url('admin/Data_user/edit/' . $id));
 			} else {
 				$data = array(
 					'nama' 			=> $nama,
@@ -89,7 +89,7 @@ class Data_user extends CI_Controller
 		    <span aria-hidden="true">&times;</span>
 		  </button>
 		</div>');
-		redirect('admin/data_user/index');
+		redirect('admin/Data_user/index');
 	}
 
 	public function tambah_user()
@@ -109,7 +109,7 @@ class Data_user extends CI_Controller
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>');
-			redirect(site_url('admin/data_user'));
+			redirect(site_url('admin/Data_user'));
 		} else {
 			$data = array(
 				'nama' 			=> $nama,
@@ -121,14 +121,14 @@ class Data_user extends CI_Controller
 				'created_at'	=> date('Y-m-d')
 			);
 
-			$this->model_user->tambah_user($data, 'user');
+			$this->Model_user->tambah_user($data, 'user');
 			$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert"><i class="fas fa-check-circle"></i>
   				Data berhasil ditambahkan!
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		    <span aria-hidden="true">&times;</span>
 		  </button>
 		</div>');
-			redirect('admin/data_user/');
+			redirect('admin/Data_user/');
 		}
 	}
 

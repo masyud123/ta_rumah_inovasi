@@ -64,7 +64,7 @@ class Riwayat extends CI_Controller{
 				swal("Sukses","Data usulan berhasil Dihapus","success")  
 			</script>'  
 		);
-		redirect('peserta/riwayat/index'); 
+		redirect('peserta/Riwayat/index'); 
 	}
 
 	public	function update_status_usulan()
@@ -83,7 +83,7 @@ class Riwayat extends CI_Controller{
 	                        <span aria-hidden="true">&times;</span>
 	                      </button>
 	                    </div>');
-		redirect('peserta/riwayat/'); 
+		redirect('peserta/Riwayat/'); 
 	}
 
 	public function detail_riwayat($id_peserta)

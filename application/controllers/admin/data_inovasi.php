@@ -9,13 +9,13 @@ class Data_inovasi extends CI_Controller{
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show"  role="alert">
 														  Anda belum Login, silahkan login!
 														 </div>');
-			redirect('login');
+			redirect('Login');
 		}
 	}
 
 	public function index()
 	{
-		$data['subevent'] 			= $this->model_subevent->tampil_subevent()->result();
+		$data['subevent'] 			= $this->Model_subevent->tampil_subevent()->result();
 		$get_formulasi 	= $this->db->get('formulasi_nilai')->result_array();
 		if($get_formulasi == null){
 			$data['formulasi_nilai'] = 'kosong';
@@ -67,10 +67,10 @@ class Data_inovasi extends CI_Controller{
 		$where = array('id_formulasi_nilai' => $id_formulasi);
 
 		//cek usulan dinilai atau belum
-		$getUsulan = $this->model_inovasi->getUsulan($id_subevent)->result_array();
+		$getUsulan = $this->Model_inovasi->getUsulan($id_subevent)->result_array();
 		if($getUsulan != null){
 			foreach($getUsulan as $subevent){
-				$get_total_nilai = $this->model_inovasi->getTotalNilai()->result_array();
+				$get_total_nilai = $this->Model_inovasi->getTotalNilai()->result_array();
 				foreach($get_total_nilai as $getTotalNilai){
 					$TotalNilai[] = $getTotalNilai['id_usulan'];
 				}
@@ -107,14 +107,14 @@ class Data_inovasi extends CI_Controller{
 	public function detail_inovasi($id_subevent) 
 	{
 		$data['id_subevent'] = $id_subevent;
-		$data['subevent'] = $this->model_inovasi->ambil_id_subevent($id_subevent);
-		$data['indikator_penilaian'] = $this->model_inovasi->ambil_id_inovasi($id_subevent);
+		$data['subevent'] = $this->Model_inovasi->ambil_id_subevent($id_subevent);
+		$data['indikator_penilaian'] = $this->Model_inovasi->ambil_id_inovasi($id_subevent);
 
 		//cek usulan dinilai atau belum
-		$getUsulan = $this->model_inovasi->getUsulan($id_subevent)->result_array();
+		$getUsulan = $this->Model_inovasi->getUsulan($id_subevent)->result_array();
 		if($getUsulan != null){
 			foreach($getUsulan as $subevent){
-				$get_total_nilai = $this->model_inovasi->getTotalNilai()->result_array();
+				$get_total_nilai = $this->Model_inovasi->getTotalNilai()->result_array();
 				foreach($get_total_nilai as $getTotalNilai){
 					$TotalNilai[] = $getTotalNilai['id_usulan'];
 				}
@@ -194,14 +194,14 @@ class Data_inovasi extends CI_Controller{
 	// keterangan indikator penilaian
 	public function detail_indikator($id_subevent, $id_indikator_penilaian)
 	{
-		$data['indikator_penilaian'] = $this->model_inovasi->ambil_id_indikator($id_indikator_penilaian);
-		$data['keterangan_indikator'] = $this->model_inovasi->ambil_id_keterangan($id_indikator_penilaian);
+		$data['indikator_penilaian'] = $this->Model_inovasi->ambil_id_indikator($id_indikator_penilaian);
+		$data['keterangan_indikator'] = $this->Model_inovasi->ambil_id_keterangan($id_indikator_penilaian);
 
 		//cek usulan dinilai atau belum
-		$getUsulan = $this->model_inovasi->getUsulan($id_subevent)->result_array();
+		$getUsulan = $this->Model_inovasi->getUsulan($id_subevent)->result_array();
 		if($getUsulan != null){
 			foreach($getUsulan as $subevent){
-				$get_total_nilai = $this->model_inovasi->getTotalNilai()->result_array();
+				$get_total_nilai = $this->Model_inovasi->getTotalNilai()->result_array();
 				foreach($get_total_nilai as $getTotalNilai){
 					$TotalNilai[] = $getTotalNilai['id_usulan'];
 				}

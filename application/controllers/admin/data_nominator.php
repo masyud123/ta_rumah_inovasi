@@ -9,13 +9,13 @@ class Data_nominator extends CI_Controller{
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show"  role="alert">
 														  Anda belum Login, silahkan login!
 														 </div>');
-			redirect('login');
+			redirect('Login');
 		}
 	}
 
 	public function index()
 	{
-		$data['subevent'] = $this->model_subevent->tampil_subevent()->result();
+		$data['subevent'] = $this->Model_subevent->tampil_subevent()->result();
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/nominator', $data);
@@ -24,9 +24,9 @@ class Data_nominator extends CI_Controller{
 
 	public function detail_nominator($id_subevent)
 	{
-		$data['subevent'] = $this->model_nominator->ambil_id_subevent($id_subevent);
-		$data['indikator_penilaian_pemenang'] = $this->model_nominator->ambil_id_nominator($id_subevent);
-		$data['sudah_dinilai'] = $this->model_nominator->cek_data_nilai_nominator($id_subevent);
+		$data['subevent'] = $this->Model_nominator->ambil_id_subevent($id_subevent);
+		$data['indikator_penilaian_pemenang'] = $this->Model_nominator->ambil_id_nominator($id_subevent);
+		$data['sudah_dinilai'] = $this->Model_nominator->cek_data_nilai_nominator($id_subevent);
 		//echo "<pre>"; print_r($data); exit;
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');
@@ -51,7 +51,7 @@ class Data_nominator extends CI_Controller{
 			'nilai_komponen_max' 	=> $nilai_komponen_max,
 		);
 
-		$this->model_nominator->tambah_nominator($data, 'indikator_penilaian_pemenang');
+		$this->Model_nominator->tambah_nominator($data, 'indikator_penilaian_pemenang');
 		$this->session->set_flashdata('message3',
 			'<script>
 				Swal.fire("Sukses", "Data berhasil diperbarui", "success");
@@ -63,7 +63,7 @@ class Data_nominator extends CI_Controller{
 	public function hapus ($id)
 	{
 		$where = array('id' => $id);
-		$this->model_nominator->hapus_nominator($where, 'indikator_penilaian_pemenang');
+		$this->Model_nominator->hapus_nominator($where, 'indikator_penilaian_pemenang');
 		$this->session->set_flashdata('message',
 			'<script>
 				Swal.fire("Sukses", "Data berhasil diperbarui", "success");
@@ -74,12 +74,12 @@ class Data_nominator extends CI_Controller{
 
 	public function nominator(){
 		$back			= $this->input->post('back');
-		redirect (base_url()."admin/data_nominator/detail_nominator/".$back);
+		redirect (base_url()."admin/Data_nominator/detail_nominator/".$back);
 	}
 
 	public function edit_indikator($id){
 		$where = array('id' => $id);
-		$data['indikator_penilaian_pemenang'] = $this->model_nominator->edit_indikator($where, 'indikator_penilaian_pemenang')->result();
+		$data['indikator_penilaian_pemenang'] = $this->Model_nominator->edit_indikator($where, 'indikator_penilaian_pemenang')->result();
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/edit_penilaian_pemenang', $data);
@@ -105,13 +105,13 @@ class Data_nominator extends CI_Controller{
 			'id' => $id
 		);
 
-		$this->model_nominator->update_indikator($where,$data, 'indikator_penilaian_pemenang');
+		$this->Model_nominator->update_indikator($where,$data, 'indikator_penilaian_pemenang');
 		$this->session->set_flashdata('message',
 			'<script>
 				Swal.fire("Sukses", "Data berhasil diperbarui", "success");
 			</script>'
 		);
-		redirect('admin/data_nominator/detail_nominator/'.$id_subevent); 
+		redirect('admin/Data_nominator/detail_nominator/'.$id_subevent); 
 	}
 	
 }

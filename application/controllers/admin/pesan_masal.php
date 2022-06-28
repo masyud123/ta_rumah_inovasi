@@ -11,14 +11,14 @@ class Pesan_masal extends CI_Controller
                     Anda belum Login, silahkan login!
                 </div>'
             );
-			redirect('login');
+			redirect('Login');
 		}
 		date_default_timezone_set("Asia/Jakarta");
 	}
 
 	public function index()
 	{
-		$data['peserta'] = $this->model_pesan->nomor_peserta()->result_array();
+		$data['peserta'] = $this->Model_pesan->nomor_peserta()->result_array();
 
 		$this->load->view('temp_data_table/header');
 		$this->load->view('templates_admin/sidebar');

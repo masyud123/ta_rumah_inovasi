@@ -53,7 +53,7 @@ class Dashboard extends CI_Controller{
 						Swal.fire("Sukses","Data profil berhasil diupdate.","success")  
 					</script>'  
 				);
-				redirect('peserta/dashboard/profil');
+				redirect('peserta/Dashboard/profil');
 			}else{ 
 				$this->db->update('user', $data, $where);
 				$this->session->set_flashdata('pesan',
@@ -61,7 +61,7 @@ class Dashboard extends CI_Controller{
 						Swal.fire("Sukses","Data profil berhasil diupdate. Silakan login kembali untuk masuk.","success")  
 					</script>'  
 				);
-				redirect('login');
+				redirect('Login');
 			}
 		}else{
 			if($nama == ''){$inputan = "Nama ";}
@@ -73,7 +73,7 @@ class Dashboard extends CI_Controller{
 					Swal.fire("Peringatan","'.$inputan.'tidak boleh kosong!","warning")  
 				</script>'  
 			);
-			redirect('peserta/dashboard/profil');
+			redirect('peserta/Dashboard/profil');
 		}
 	}
 	
@@ -96,14 +96,14 @@ class Dashboard extends CI_Controller{
 						Swal.fire("Sukses","Password berhasil diubah. Silakan login kembali untuk masuk.","success")  
 					</script>'  
 				);
-				redirect('login');
+				redirect('Login');
 			}else{
 				$this->session->set_flashdata('pesan_profil',
 					'<script>  
 						Swal.fire("Gagal","Password yang anda masukkan harus berbeda dengan sebelumnya.","error")  
 					</script>'  
 				);
-				redirect('peserta/dashboard/profil');
+				redirect('peserta/Dashboard/profil');
 			}
 		}else{
 			$this->session->set_flashdata('pesan_profil',
@@ -111,7 +111,7 @@ class Dashboard extends CI_Controller{
 					Swal.fire("Gagal","Password tidak boleh kosong","error")  
 				</script>'  
 			);
-			redirect('peserta/dashboard/profil');
+			redirect('peserta/Dashboard/profil');
 		}
 	}
 }

@@ -9,18 +9,18 @@ class Data_bidang extends CI_Controller{
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  Anda belum Login, silahkan login!
 														 </div>');
-			redirect('login');
+			redirect('Login');
 		}
 	}
 
 	public function index()
 	{
-		$subevent = $this->model_bidang2->get_subevent()->result_array();
+		$subevent = $this->Model_bidang2->get_subevent()->result_array();
 		foreach($subevent as $subev):
 			$jumlah[] = array(
 				'id_subevent' 	=> $subev['id'],
-				'aktif' 		=> count($this->model_bidang2->get_bidang_aktif($subev['id'])->result_array()),
-				'tdk_aktif' 	=> count($this->model_bidang2->get_bidang_tdk_aktif($subev['id'])->result_array()),
+				'aktif' 		=> count($this->Model_bidang2->get_bidang_aktif($subev['id'])->result_array()),
+				'tdk_aktif' 	=> count($this->Model_bidang2->get_bidang_tdk_aktif($subev['id'])->result_array()),
 			);
 		endforeach;
 		if($subevent != null){
@@ -29,7 +29,7 @@ class Data_bidang extends CI_Controller{
 			$data['jumlah'] 	= [];
 		}
 		$data['subevent'] 	= $subevent;
-		$data['bidang'] 	= $this->model_bidang2->get_bidang()->result_array();
+		$data['bidang'] 	= $this->Model_bidang2->get_bidang()->result_array();
 		// echo "<pre>"; print_r($data); exit;
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');

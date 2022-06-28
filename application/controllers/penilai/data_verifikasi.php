@@ -21,7 +21,7 @@ class Data_verifikasi extends CI_Controller
         $id_user    = $this->session->userdata('id_usr'); 
         $sql = $this->db->query("SELECT * FROM setting_penilai where id_usr ='$id_user'")->result(); 
         if (!$sql) {
-          	redirect('penilai/data_verifikasi/kosong');
+          	redirect('penilai/Data_verifikasi/kosong');
         }else {
 			$data['idSubevent'] 	= $this->Model_verifikasi->ambil_id_subevent_penilai()->result();
 			$data['usulan'] 		= $this->Model_verifikasi->ambil_usulan()->result();
@@ -78,7 +78,7 @@ class Data_verifikasi extends CI_Controller
 					Swal.fire("Sukses","Ulasan berhasil ditambahkan","success")  
 				</script>'  
 			);
-			redirect('penilai/data_verifikasi/view/'.$id_usulan);
+			redirect('penilai/Data_verifikasi/view/'.$id_usulan);
 		}else{
 			// Edit Ulasan
 			$data = array(
@@ -93,7 +93,7 @@ class Data_verifikasi extends CI_Controller
 					Swal.fire("Sukses","Ulasan berhasil diupdate","success")  
 				</script>'  
 			);
-			redirect('penilai/data_verifikasi/view/'.$id_usulan);
+			redirect('penilai/Data_verifikasi/view/'.$id_usulan);
 		}
 		
 	}
@@ -180,7 +180,7 @@ class Data_verifikasi extends CI_Controller
             	Swal.fire("Sukses","Nilai berhasil disimpan","success")  
             </script>'  
         );
-		redirect('penilai/data_verifikasi');
+		redirect('penilai/Data_verifikasi');
 	}
 
 	public function edit_nilai_verifikasi($id)
@@ -271,6 +271,6 @@ class Data_verifikasi extends CI_Controller
             swal("Sukses","Nilai berhasil diupdate","success")  
             </script>'  
         );
-		redirect('penilai/data_verifikasi');
+		redirect('penilai/Data_verifikasi');
 	}
 }

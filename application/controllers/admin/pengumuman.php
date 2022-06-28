@@ -11,13 +11,13 @@ class Pengumuman extends CI_Controller
 			$this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 														  Anda belum Login, silahkan login!
 														 </div>');
-			redirect('login');
+			redirect('Login');
 		}
 	}
 
 	public function index()
 	{
-		$data['pengumuman'] = $this->model_pengumuman->tampil_data_admin()->result();
+		$data['pengumuman'] = $this->Model_pengumuman->tampil_data_admin()->result();
 		$this->load->view('temp_data_table/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/pengumuman', $data);
@@ -53,14 +53,14 @@ class Pengumuman extends CI_Controller
 			'file_pengumuman'      		=> $file
 		);
 
-		$this->model_pengumuman->tambah_data($data, 'pengumuman');
+		$this->Model_pengumuman->tambah_data($data, 'pengumuman');
 		$this->session->set_flashdata('message','<div class="alert alert-success alert-dismissible fade show" role="alert"><i class="fas fa-check-circle"></i>
   				Data berhasil ditambahkan!
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		    <span aria-hidden="true">&times;</span>
 		  </button>
 		</div>');
-		redirect('admin/pengumuman'); 
+		redirect('admin/Pengumuman'); 
 	}
 
 	public function hapus()
@@ -80,7 +80,7 @@ class Pengumuman extends CI_Controller
 	public function edit($id_pengumuman)
 	{
 		$where = array('id_pengumuman' =>$id_pengumuman);
-		$data['pengumuman'] = $this->model_pengumuman->edit_data($where, 'pengumuman')->result();
+		$data['pengumuman'] = $this->Model_pengumuman->edit_data($where, 'pengumuman')->result();
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/edit_pengumuman', $data);
@@ -127,14 +127,14 @@ class Pengumuman extends CI_Controller
 			'id_pengumuman' => $id_pengumuman 
 		);
 
-		$this->model_pengumuman->update_data($where,$data, 'pengumuman');
+		$this->Model_pengumuman->update_data($where,$data, 'pengumuman');
 		$this->session->set_flashdata('message','<div class="alert alert-success alert-dismissible fade show"  role="alert"><i class="fas fa-check-circle"></i>
   				Data berhasil diupdate!
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		    <span aria-hidden="true">&times;</span>
 		  </button>
 		</div>');
-		redirect('admin/pengumuman'); 
+		redirect('admin/Pengumuman'); 
 	}
 
 }

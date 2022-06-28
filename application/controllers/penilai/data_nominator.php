@@ -89,7 +89,7 @@ class Data_nominator extends CI_Controller
             <script type ="text/JavaScript">  
             swal("Sukses","Nilai berhasil disimpan","success")  
             </script>' );
-		redirect('penilai/data_nominator');
+		redirect('penilai/Data_nominator');
 	}
 
 	public function edit_nilai_nominator($id)
@@ -137,6 +137,6 @@ class Data_nominator extends CI_Controller
             swal("Sukses","Nilai berhasil diupdate","success")  
             </script>'  
         );
-		redirect('penilai/data_nominator');
+		redirect('penilai/Data_nominator');
 	}
 }

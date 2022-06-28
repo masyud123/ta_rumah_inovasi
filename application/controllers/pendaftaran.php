@@ -33,7 +33,7 @@ class Pendaftaran extends CI_Controller {
                     swal("Gagal","Email atau password sudah digunakan!","error")  
                     </script>'  
                 );
-                redirect('pendaftaran');
+                redirect('Pendaftaran');
             }else{
                 $kode  = rand(111111, 999999);
                 $waktu = date('H:i:s');
@@ -63,7 +63,7 @@ class Pendaftaran extends CI_Controller {
                 //             swal("Gagal","Mohon maaf pendaftaran gagal dilakukan dikarenakan sistem tidak bisa mengirim kode OTP ke nomor whatsapp Anda. Silakan coba beberapa saat lagi.","error")  
                 //         </script>'  
                 //     );
-                //     redirect('pendaftaran');
+                //     redirect('Pendaftaran');
                 // }else{
                     //Pengiriman kode kepada user via WA
                     $ch = curl_init();
@@ -89,9 +89,9 @@ class Pendaftaran extends CI_Controller {
                                 swal("Gagal","Sistem tidak bisa mengirim pesan OTP ke nomor Anda. Pastikan nomor Anda sudah terdaftar pada aplikasi Whatsapp.","error")  
                             </script>'  
                         );
-                        redirect('pendaftaran');
+                        redirect('Pendaftaran');
                     }else{
-                        redirect('pendaftaran/halaman_otp/');
+                        redirect('Pendaftaran/halaman_otp/');
                     }
                 // }
             }
@@ -112,7 +112,7 @@ class Pendaftaran extends CI_Controller {
             $this->load->view('kode_otp');
             $this->load->view('templates_admin/footer');
         }else{
-            redirect('pendaftaran');
+            redirect('Pendaftaran');
         }
 	}
 
@@ -281,7 +281,7 @@ class Pendaftaran extends CI_Controller {
                             swal("Sukses","Akun berhasil dibuat. Silakan login untuk masuk","success")  
                         </script>'
                     );
-					redirect('login');
+					redirect('Login');
                 }
             }
         }else{

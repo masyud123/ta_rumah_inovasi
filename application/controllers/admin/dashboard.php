@@ -12,7 +12,7 @@ class Dashboard extends CI_Controller{
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>');
-			redirect('login');
+			redirect('Login');
 		}
 	}
 
@@ -26,11 +26,11 @@ class Dashboard extends CI_Controller{
 		$data['usulan'] 	= count($this->db->get_where('usulan', ['status!=' => 1])->result());
 
 		// data grafik usulan
-		$data['gr_usulan'] = $this->model_user->get_usulan();
+		$data['gr_usulan'] = $this->Model_user->get_usulan();
 		// data grafik peserta
-		$data['gr_peserta'] = $this->model_user->get_peserta();
+		$data['gr_peserta'] = $this->Model_user->get_peserta();
 		// data grafik penilai
-		$data['gr_penilai'] = $this->model_user->get_penilai();
+		$data['gr_penilai'] = $this->Model_user->get_penilai();
 		
 		// echo "<pre>"; print_r($data); exit;
 		$this->load->view('templates_admin/header');
