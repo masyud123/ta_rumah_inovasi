@@ -26,79 +26,45 @@
 
   </section><!-- End Hero -->
 
-  
-
-  <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-
     <div class="footer-top">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-5 col-md-12 footer-info">
-            <a href="index.html" class="logo d-flex align-items-center">
-              <!-- <img src="assets/img/logo.png" alt=""> -->
-              <span>FlexStart</span>
+      <div class="container-fluid px-5">
+        <div class="row align-items-center">
+          <div class="col-lg-5 col-md-12 py-4">
+            <a href="#">
+              <h2 style="color: #012970;"><b>Rumah Inovasi</b></h2>
             </a>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+            <p style="text-align: justify;">Merupakan aplikasi berbasis web yang digunakan oleh Pemerintah Kabupaten Magetan untuk mengadakan event perlombaan inovasi teknologi guna memberikan wadah untuk meningkatkan minat dan kreatifitas masyarakat di Kabupaten Magetan. </p>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="twitter"><i class="bi bi-twitter" style="width: 30px; height: auto;"></i></a>
               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
               <a href="#" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
               <a href="#" class="linkedin"><i class="bi bi-linkedin bx bxl-linkedin"></i></a>
             </div>
           </div>
 
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
+          <div class="col-lg-3 col-md-12 text-start py-4">
+              <h4>Kontak Kami</h4>
+              <p>
+                Jl. Basuki Rahmat Timur No.1,<br>
+                Dsn. Magetan, Magetan, Kec. Magetan<br>
+                Kab. Magetan, Jawa Timur 63361<br><br>
+                <strong>Phone:</strong> (0351) 895041<br>
+                <strong>Email:</strong> bappedalitbang@magetan.go.id<br>
+              </p>
           </div>
 
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
+          <div class="col-lg-4 col-md-12 text-center text-md-start py-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d988.5611574599017!2d111.3296391665755!3d-7.656825421764346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79937ece5afe2f%3A0x85268d86700e52b5!2sKantor%20Bappeda%20Litbang!5e0!3m2!1sid!2sid!4v1656499902597!5m2!1sid!2sid" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+            </div>
           </div>
-
-          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-            <h4>Contact Us</h4>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-
-          </div>
-
         </div>
       </div>
     </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+  </footer>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
