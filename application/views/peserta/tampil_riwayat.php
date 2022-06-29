@@ -55,11 +55,8 @@
 							<?php if ($riw->status == '1'): ?>
 								<td align="center">
 									<button class="col-10 btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#KirimKonfirmasi<?= $riw->id_usulan?>">
-										<i class="fa fa-save mr-1"></i> Kirim Usulan
+										<i class="fa fa-save mr-1"></i> Kirim data
 									</button>
-									<!-- <button onclick="window.location.href='<?= base_url('peserta/Riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="col-10 btn btn-sm btn-warning mb-2">
-										<i class="fa fa-edit mr-1"></i> Detail & Edit
-									</button> -->
 									<button onclick="window.location.href='<?= base_url('peserta/Riwayat/detail_riwayat/'.$riw->id_peserta) ?>'" class="col-10 btn btn-sm btn-warning mb-2">
 										<i class="fa fa-edit mr-1"></i> Detail & Edit
 									</button>
@@ -69,9 +66,6 @@
 								</td>
 							<?php elseif ($riw->status == '2' || $riw->status == '3' || $riw->status == '5'): ?>
 								<td align="center">
-									<!-- <button onclick="window.location.href='<?= base_url('peserta/Riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="btn btn-sm btn-warning col-10 mb-2">
-										<i class="fa fa-search mr-1"></i> View & Detail
-									</button> -->
 									<button disabled class="btn btn-sm btn-primary col-10 mb-2">
 										<i class="fa fa-save"></i> Kirim Data
 									</button>
@@ -84,8 +78,8 @@
 								</td>
 							<?php elseif ($riw->status == '4'): ?>
 								<td align="center">
-									<button onclick="window.location.href='<?= base_url('peserta/Riwayat/edit_riwayat1/'.$riw->id_peserta) ?>'" class="btn btn-sm btn-warning col-10 mb-2">
-										<i class="fa fa-search mr-1"></i> View & Detail
+									<button onclick="window.location.href='<?= base_url('peserta/Riwayat/detail_riwayat/'.$riw->id_peserta) ?>'" class="col-10 btn btn-sm btn-warning mb-2">
+										<i class="fa fa-edit mr-1"></i> View & Detail
 									</button>
 									<button class="btn btn-success btn-sm col-10" data-toggle="modal" data-target="#nilai<?= $riw->id_usulan?>">
 										<i class="fa fa-star mr-1"></i> Lihat Nilai

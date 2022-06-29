@@ -7,7 +7,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('Penilai') ?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('penilai/Dashboard') ?>">
                 <div class="sidebar-brand-icon">
                      <i class="far fa-lightbulb"></i>
                 </div>

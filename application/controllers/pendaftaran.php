@@ -23,14 +23,14 @@ class Pendaftaran extends CI_Controller {
         } else {    
             $email = $this->input->post('email'); 
             $password = $this->input->post('password_1');
-            $sql = $this->db->query("SELECT email,password FROM user where email='$email' or password='$password'");
+            $sql = $this->db->query("SELECT email FROM user where email='$email'");
             $cek_email = $sql->num_rows();
 
             if ($cek_email > 0) {
                 $this->session->set_flashdata('pesan',
                     '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
                     <script type ="text/JavaScript">  
-                    swal("Gagal","Email atau password sudah digunakan!","error")  
+                    swal("Gagal","Email sudah digunakan!","error")  
                     </script>'  
                 );
                 redirect('Pendaftaran');

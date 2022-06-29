@@ -18,11 +18,20 @@ class Dashboard extends CI_Controller{
 
 	public function index()
 	{
-		$data['profil_user'] = $this->db->get_where('user', ['id_usr' => $this->session->userdata('id_usr')])->row(); 
-		$this->load->view('templates_penilai/header');
-		$this->load->view('templates_penilai/sidebar');
-		$this->load->view('penilai/dashboard', $data);
-		$this->load->view('templates_penilai/footer');
+		$id_user    = $this->session->userdata('id_usr'); 
+        $sql = $this->db->query("SELECT * FROM setting_penilai where id_usr ='$id_user'")->result(); 
+        if (!$sql) {
+			$this->load->view('templates_penilai/header');
+			$this->load->view('templates_penilai/sidebar3');
+			$this->load->view('penilai/kosong');
+			$this->load->view('templates_penilai/footer');
+        }else {
+			$data['profil_user'] = $this->db->get_where('user', ['id_usr' => $this->session->userdata('id_usr')])->row(); 
+			$this->load->view('templates_penilai/header');
+			$this->load->view('templates_penilai/sidebar');
+			$this->load->view('penilai/dashboard', $data);
+			$this->load->view('templates_penilai/footer');
+		}
 	}
 	
 }
