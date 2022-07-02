@@ -191,7 +191,7 @@
             }
         }
     });
-
+ 
     $(document).ready(function() {
         $('#cek_semua_user').click(function() {
             if ($(this).is(':checked')) {
