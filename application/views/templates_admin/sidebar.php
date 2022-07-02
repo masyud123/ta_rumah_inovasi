@@ -97,6 +97,13 @@
                     <span><strong>Daftar User</strong></span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/Whatsapp') ?>">
+                    <i class="fa-brands fa-whatsapp mr-1"></i>
+                    <span><strong>Whatsapp</strong></span>
+                </a>
+            </li>
+
             <li <?=$this->uri->segment(2) == 'pengumuman' ? 'class="nav-item active"' : 'class="nav-item"'?>>
                 <a class="nav-link" href="<?= base_url('admin/Pengumuman') ?>">
                     <i class="fas fa-bullhorn"></i>
@@ -131,7 +138,31 @@
                     <!-- Topbar Search -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Messages -->
-                        <li id="notif_wa"></li>
+                        <li id="notif_wa">
+                            <?php if($this->session->userdata('whatsapp') == 'Terhubung'){
+                                $hasil = 1;
+                            }else{
+                                $hasil = 0; 
+                            }?>
+                            <li class="nav-item dropdown no-arrow mx-1 d-flex align-items-center">
+                                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa-brands fa-whatsapp-square fa-2x" style="color: green;"></i>
+                                    <b class="<?= $hasil == 1 ? 'text-success': 'text-danger'?> ml-1"><?=$this->session->userdata('whatsapp')?></b>
+                                </a>
+                                
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                                    <h6 class="dropdown-header">Informasi Whatsapp</h6>
+                                    <a class="dropdown-item d-flex align-items-center" href="<?= base_url('admin/Whatsapp') ?>">
+                                        <div class="dropdown-list-image mr-3">
+                                            <i class="fa-brands fa-whatsapp-square fa-3x" style="color: green;"></i>
+                                        </div>
+                                        <div class="font-weight-bold">
+                                            <b class="<?= $hasil == 1 ? 'text-success': 'text-danger'?>">Whatsapp <?=$this->session->userdata('whatsapp')?></b>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                        </li>
                         
                         <!-- Topbar Navbar -->
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -164,60 +195,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                        <script type="text/javascript">
-                            $.ajax({
-                                url: "<?= base_url("admin/Pesan_masal/get_session/")?>",
-                                success: function (response) {
-                                    if(response == 0){
-                                        $('#notif_wa').append(""+
-                                            '<li class="nav-item dropdown no-arrow mx-1">'+
-                                                '<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
-                                                '<i class="fa-brands fa-whatsapp-square fa-2x" style="color: green;"></i>'+
-                                                    '<span class="badge badge-danger badge-counter">'+
-                                                        '<i class="fa-solid fa-xmark"></i>'+
-                                                    '</span>'+
-                                                '</a>'+
-                                                '<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">'+
-                                                    '<h6 class="dropdown-header">Informasi Whatsapp</h6>'+
-                                                    '<a class="dropdown-item d-flex align-items-center" target="_blank" href="https://node-whatsapp-api.herokuapp.com">'+
-                                                        '<div class="dropdown-list-image mr-3">'+
-                                                            '<i class="fa-brands fa-whatsapp-square fa-3x" style="color: green;"></i>'+
-                                                        '</div>'+
-                                                        '<div class="font-weight-bold">'+
-                                                            '<b class="text-danger">Whatsapp Terputus</b>'+
-                                                        '</div>'+
-                                                    '</a>'+
-                                                '</div>'+
-                                            '</li>'+
-                                        "");
-                                    }else if(response == 1){
-                                        $('#notif_wa').append(""+
-                                            '<li class="nav-item dropdown no-arrow mx-1">'+
-                                                '<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
-                                                '<i class="fa-brands fa-whatsapp-square fa-2x" style="color: green;"></i>'+
-                                                    '<span class="badge badge-success badge-counter">'+
-                                                        '<i class="fa-solid fa-circle-check"></i>'+
-                                                    '</span>'+
-                                                '</a>'+
-                                                '<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">'+
-                                                    '<h6 class="dropdown-header">Informasi Whatsapp</h6>'+
-                                                    '<a class="dropdown-item d-flex align-items-center" target="_blank" href="https://node-whatsapp-api.herokuapp.com">'+
-                                                        '<div class="dropdown-list-image mr-3">'+
-                                                            '<i class="fa-brands fa-whatsapp-square fa-3x" style="color: green;"></i>'+
-                                                        '</div>'+
-                                                        '<div class="font-weight-bold">'+
-                                                            '<b class="text-success">Whatsapp Terhubung</b>'+
-                                                        '</div>'+
-                                                    '</a>'+
-                                                '</div>'+
-                                            '</li>'+
-                                        "");
-                                    }
-                                }
-                            });
-                        </script>
                     </ul>
                 </nav>
                 <!-- End of Topbar -->

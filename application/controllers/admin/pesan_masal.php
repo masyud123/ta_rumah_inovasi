@@ -18,8 +18,10 @@ class Pesan_masal extends CI_Controller
 
 	public function index()
 	{
-		$data['peserta'] = $this->Model_pesan->nomor_peserta()->result_array();
-
+		$data['semua_nomor'] 	= $this->Model_pesan->semua_nomor()->result_array();
+		$data['penilai'] 		= $this->Model_pesan->nomor_penilai()->result_array();	
+		$data['peserta'] 		= $this->Model_pesan->nomor_peserta()->result_array();
+		// echo "<pre>"; print_r($data); exit;
 		$this->load->view('temp_data_table/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/pesan_masal', $data);
@@ -40,52 +42,27 @@ class Pesan_masal extends CI_Controller
 			// remove data kosong
 			$nomor4 = array_diff($nomor3, [""]); 
 
-			// $content = json_decode(file_get_contents("https://node-whatsapp-api.herokuapp.com/AmbilStatus"));
-			// if($content == "kosong"){
-			// 	$this->session->set_flashdata('pesan_masal',
-			// 		'<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-			// 		<script type ="text/JavaScript">  
-			// 			swal("Gagal","Tidak bisa mengirim pesan karena sistem tidak terhubung dengan Whatsapp. Silakan hubungkan terlebih dahulu.","error")  
-			// 		</script>'  
-			// 	);
-			// 	header('Location: ' . $_SERVER['HTTP_REFERER']);
-			// }else{
-				$berhasil=0; $gagal=0;
+			$kondisi = $this->Model_user->get_kode_qr(); // kondisi sistem terhubung wa/tdk
+			if($kondisi->message != 'AUTHENTICATED'){
+				$this->session->set_flashdata('pesan_masal',
+					'<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+					<script type ="text/JavaScript">  
+						swal("Gagal","Tidak bisa mengirim pesan karena sistem tidak terhubung dengan Whatsapp. Silakan hubungkan terlebih dahulu.","error")  
+					</script>'  
+				);
+				header('Location: ' . $_SERVER['HTTP_REFERER']);
+			}else{
 				for($i=0; $i<count($nomor4); $i++){
-
-					$ch = curl_init();
-					curl_setopt($ch, CURLOPT_URL,"https://node-whatsapp-api.herokuapp.com/whatsapp_/send-message");
-					curl_setopt($ch, CURLOPT_POST, 1);
-					curl_setopt($ch, CURLOPT_POSTFIELDS, 
-						http_build_query(
-							array(
-								'token' => '1RtUp4y54T4NgN1N4yh4c4yTn1s3v0lDuYs4mH4Y5D4Mh4', 
-								'number' => $nomor4[$i], 
-								'message' => $pesan
-							)
-						)
-					);
-					
-					// Receive server response ...
-					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-					$server_output = json_decode(curl_exec($ch));
-					curl_close ($ch);
-
-					// Further processing ...
-					if ($server_output->status == 1) {
-						$berhasil++;
-					} else {
-						$gagal++;
-					}
+					$this->Model_user->kirim_pesan($nomor4[$i], $pesan);
 				}
 
 				$this->session->set_flashdata('pesan_masal',
 					'<script type="text/JavaScript">  
-						Swal.fire("Informasi","Pesan berhasil terkirim '.$berhasil.'.<br>Pesan gagal terkirim '.$gagal.'","info")
+						Swal.fire("Sukses","Pesan berhasil terkirim","success")
 					</script>'  
 				);
 				header('Location: ' . $_SERVER['HTTP_REFERER']);
-			// }
+			}
 		}else{
 			// nomor atau  pesan kosong redirect
 			if($nomor == '' && $pesan == ''){

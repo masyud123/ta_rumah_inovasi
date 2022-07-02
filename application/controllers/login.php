@@ -129,52 +129,48 @@ class Login extends CI_Controller {
                     'token_ori' => $token,
                 );
                 $this->cart->insert($data);
+				
+				$kondisi = $this->Model_user->get_kode_qr(); // kondisi sistem terhubung wa/tdk
+				if($kondisi->message == 'AUTHENTICATED'){
+					$cek_nomor = $this->Model_user->cek_nomor_wa($get_data->no_wa);
+					if($cek_nomor->status == 'valid'){
+						//Pengiriman kode kepada user via WA
+						$no_wa 	= 	$get_data->no_wa;
+						$pesan 	= 	'Hai, Anda menerima pesan ini karena ada permintaan untuk memperbarui password. Silakan Anda buka link berikut ini:
+									http://localhost/Rumah_Inovasi/login/view_reset_password/'.$token;
 
-				// get session whatsapp
-                // $content = json_decode(file_get_contents("https://node-whatsapp-api.herokuapp.com/AmbilStatus"));
-                // if($content == "kosong"){
-                //     $this->session->set_flashdata('pesan',
-                //         '<script type ="text/JavaScript">  
-                //             Swal.fire("Gagal","Mohon maaf reset password gagal dilakukan dikarenakan sistem tidak bisa mengirim link ke nomor whatsapp Anda. Silakan coba beberapa saat lagi.","error")  
-                //         </script>'  
-                //     );
-                //     redirect('Login/lupa_password');
-                // }else{
-                    //Pengiriman kode kepada user via WA
-                    $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL,"https://node-whatsapp-api.herokuapp.com/whatsapp_/send-message");
-                    curl_setopt($ch, CURLOPT_POST, 1);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, 
-                        http_build_query(
-                            array(
-                                'token' => '1RtUp4y54T4NgN1N4yh4c4yTn1s3v0lDuYs4mH4Y5D4Mh4', 
-                                'number' => $get_data->no_wa, 
-                                'message' => 'Hai, Anda menerima pesan ini karena ada permintaan untuk memperbaharui password. Silakan Anda buka link berikut ini:
-								http://localhost/Rumah_Inovasi/login/view_reset_password/'.$token.''
-                            )
-                        )
-                    );
-                    // Receive server response ...
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    $server_output = json_decode(curl_exec($ch));
-                    curl_close ($ch);
-                    if($server_output->status != true){
-                        $this->session->set_flashdata('pesan_lupa_pwd',
-                            '<script type ="text/JavaScript">  
-                                Swal.fire("Gagal","Sistem tidak bisa mengirim pesan ke nomor Anda. Pastikan nomor Anda sudah terdaftar pada aplikasi Whatsapp.","error")  
-                            </script>'  
-                        );
-						redirect('Login/lupa_password');
-                    }else{
+						$response = $this->Model_user->kirim_pesan($no_wa, $pesan);
+						if($response->message == "Sukses! Pesan telah terkirim"){
+							$this->session->set_flashdata('pesan_lupa_pwd',
+								'<script type ="text/JavaScript">  
+									Swal.fire("Sukses","Pesan berhasil terkirim ke nomor whatsapp Anda. Silakan Anda buka pesan tersebut dan ikuti langkah selanjutnya.","success")  
+								</script>'  
+							);
+							redirect('Login/lupa_password');
+						}else{
+							$this->session->set_flashdata('pesan_lupa_pwd',
+								'<script type ="text/JavaScript">  
+									Swal.fire("Gagal","Sistem tidak bisa mengirim pesan ke nomor Anda. Cobalah beberapa saat lagi","error")  
+								</script>'  
+							);
+							redirect('Login/lupa_password');
+						}
+					}else{
 						$this->session->set_flashdata('pesan_lupa_pwd',
-                            '<script type ="text/JavaScript">  
-                                Swal.fire("Sukses","Pesan berhasil terkirim ke nomor whatsapp Anda. Silakan Anda buka pesan tersebut dan ikuti langkah selanjutnya.","success")  
-                            </script>'  
-                        );
+							'<script type ="text/JavaScript">  
+								Swal.fire("Gagal","Nomor tidak terdaftar pada aplikasi whatsapp. Silakan hubungi Admin untuk konfirmasi lebih lanjut.","error")  
+							</script>'  
+						);
 						redirect('Login/lupa_password');
-						// echo "<pre>"; print_r($data);
-                    }
-                // }
+					}
+				}else{
+					$this->session->set_flashdata('pesan_lupa_pwd',
+						'<script type ="text/JavaScript">  
+							Swal.fire("Gagal","Mohon maaf saat ini sistem tidak terhubung dengan whatsapp. Cobalah beberapa saat lagi.","error")  
+						</script>'  
+					);
+					redirect('Login/lupa_password');
+				}
 			}
 		}
 	}
@@ -184,11 +180,15 @@ class Login extends CI_Controller {
 		foreach($this->cart->contents() as $items):
 			$token_ori = $items['token_ori'];
         endforeach;
-		$hasil = $token_ori == $token;
-		if($hasil){
-			$this->load->view('templates_admin/header');
-			$this->load->view('reset_password');
-			$this->load->view('templates_admin/footer');
+		if(count($this->cart->contents()) != 0){
+			$hasil = $token_ori == $token;
+			if($hasil){
+				$this->load->view('templates_admin/header');
+				$this->load->view('reset_password');
+				$this->load->view('templates_admin/footer');
+			}else{
+				$this->load->view('page_not_found');
+			}
 		}else{
 			$this->load->view('page_not_found');
 		}
@@ -219,6 +219,7 @@ class Login extends CI_Controller {
 				$where 	= array('email' => $email);
 				$data	= array('password' => md5($pwd1));
 				$this->db->update('user', $data, $where);
+				$this->cart->destroy();
 				$this->session->set_flashdata('pesan',
 					'<script type ="text/JavaScript">
 						Swal.fire("Sukses","Password berhasil diubah. Silakan login kembali untuk masuk.","success")  

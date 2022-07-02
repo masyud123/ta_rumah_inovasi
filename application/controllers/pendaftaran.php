@@ -5,6 +5,7 @@ class Pendaftaran extends CI_Controller {
 		parent::__construct();
         date_default_timezone_set('Asia/Jakarta');
         $this->load->library('cart');
+        error_reporting(0);
 	}
 
     public function index()
@@ -54,35 +55,28 @@ class Pendaftaran extends CI_Controller {
                 );
                 $this->cart->insert($data);
                 
-                // get session whatsapp
-                // $content = json_decode(file_get_contents("https://node-whatsapp-api.herokuapp.com/AmbilStatus"));
-                // if($content == "kosong"){
-                //     $this->session->set_flashdata('pesan',
-                //         '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-                //         <script type ="text/JavaScript">  
-                //             swal("Gagal","Mohon maaf pendaftaran gagal dilakukan dikarenakan sistem tidak bisa mengirim kode OTP ke nomor whatsapp Anda. Silakan coba beberapa saat lagi.","error")  
-                //         </script>'  
-                //     );
-                //     redirect('Pendaftaran');
-                // }else{
-                    //Pengiriman kode kepada user via WA
-                    $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL,"https://node-whatsapp-api.herokuapp.com/whatsapp_/send-message");
-                    curl_setopt($ch, CURLOPT_POST, 1);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, 
-                        http_build_query(
-                            array(
-                                'token' => '1RtUp4y54T4NgN1N4yh4c4yTn1s3v0lDuYs4mH4Y5D4Mh4', 
-                                'number' => $this->input->post('no_wa'), 
-                                'message' => 'Kode OTP Anda adalah '.$kode.'. Jika Anda merasa tidak mendaftar apapun, silakan abaikan.'
-                            )
-                        )
-                    );
-                    // Receive server response ...
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    $server_output = json_decode(curl_exec($ch));
-                    curl_close ($ch);
-                    if($server_output->status != true){
+                $kondisi = $this->Model_user->get_kode_qr(); // kondisi sistem terhubung wa/tdk
+				if($kondisi->message == 'AUTHENTICATED'){
+                    // cek nomor terdaftar/tidak
+                    $cek_nomor = $this->Model_user->cek_nomor_wa($this->input->post('no_wa'));
+					if($cek_nomor->status == 'valid'){
+                        //Pengiriman kode kepada user via WA
+                        $no_wa 	= 	$this->input->post('no_wa');
+						$pesan 	= 	'Kode OTP Anda adalah '.$kode.'. Jika Anda merasa tidak mendaftar apapun, silakan abaikan.';
+
+						$response = $this->Model_user->kirim_pesan($no_wa, $pesan);
+                        if($response->message == "Sukses! Pesan telah terkirim"){
+                            redirect('Pendaftaran/halaman_otp/');
+						}else{
+                            $this->session->set_flashdata('pesan',
+                                '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+                                <script type ="text/JavaScript">  
+                                    swal("Gagal","Sistem tidak bisa mengirim pesan OTP ke nomor Anda. Cobalah beberapa saat lagi","error")  
+                                </script>'  
+                            );
+                            redirect('Pendaftaran');
+                        }
+                    }else{
                         $this->session->set_flashdata('pesan',
                             '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
                             <script type ="text/JavaScript">  
@@ -90,10 +84,16 @@ class Pendaftaran extends CI_Controller {
                             </script>'  
                         );
                         redirect('Pendaftaran');
-                    }else{
-                        redirect('Pendaftaran/halaman_otp/');
                     }
-                // }
+                }else{
+                    $this->session->set_flashdata('pesan',
+                        '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+                        <script type ="text/JavaScript">  
+                            swal("Gagal","Mohon maaf saat ini sistem tidak terhubung dengan whatsapp. Cobalah beberapa saat lagi.","error")  
+                        </script>'  
+                    );
+                    redirect('Pendaftaran');
+                }
             }
         }
     } 
@@ -163,23 +163,9 @@ class Pendaftaran extends CI_Controller {
                 endforeach;
 
                 //Pengiriman kode kepada user via WA
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL,"https://node-whatsapp-api.herokuapp.com/whatsapp_/send-message");
-                curl_setopt($ch, CURLOPT_POST, 1);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, 
-                    http_build_query(
-                        array(
-                            'token' => '1RtUp4y54T4NgN1N4yh4c4yTn1s3v0lDuYs4mH4Y5D4Mh4', 
-                            'number' => $no_wa  , 
-                            'message' => 'Kode OTP Anda adalah '.$kode.'. Jika Anda merasa tidak mendaftar apapun, silakan abaikan.'
-                        )
-                    )
-                );
-                // Receive server response ...
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                $server_output = json_decode(curl_exec($ch));
-                curl_close ($ch);
-
+				$pesan 	= 	'Kode OTP Anda adalah '.$kode.'. Jika Anda merasa tidak mendaftar apapun, silakan abaikan.';
+				$this->Model_user->kirim_pesan($no_wa, $pesan);
+                
                 // batasan waktu create + 2 menit
                 $time         = [date('H:i:s'), '00:02:00'];
                 $sum          = strtotime('00:00:00');
@@ -270,7 +256,8 @@ class Pendaftaran extends CI_Controller {
                         'password'  => $password,
                         'no_wa'     => $no_wa,
                         'hak_akses' => "Peserta",
-                        'status'    => "Aktif",
+                        'status'    => "1",
+                        'created_at'=> date('Y-m-d'),
                     );
                     
                     $this->db->insert('user', $data);
