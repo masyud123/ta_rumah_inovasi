@@ -41,18 +41,18 @@
                 <div class="card-body">
                     <ul class="nav nav-pills mb-3 d-md-flex justify-content-center" id="pills-tab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link btn-sm active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><b>Semua User</b></a>
+                            <a class="nav-link btn-sm active" id="tab-user" data-toggle="pill" href="#pills-user" role="tab" aria-controls="pills-home" aria-selected="true"><b>Semua User</b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-sm" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><b>Penilai Lomba</b></a>
+                            <a class="nav-link btn-sm" id="tab-penilai" data-toggle="pill" href="#pills-penilai" role="tab" aria-controls="pills-contact" aria-selected="false"><b>Penilai Lomba</b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-sm" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><b>Peserta Lomba</b></a>
+                            <a class="nav-link btn-sm" id="tab-peserta" data-toggle="pill" href="#pills-peserta" role="tab" aria-controls="pills-profile" aria-selected="false"><b>Peserta Lomba</b></a>
                         </li>
                     </ul>
                     <div class="mb-3" style="background-color: lightgrey; height: 1px;"></div>
                     <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <div class="tab-pane fade show active" id="pills-user" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="table-responsive">
                                 <table id="dataTable" class="table table-bordered table-hover" width="100%" cellspacing="0">
                                     <thead>
@@ -63,7 +63,7 @@
                                             <th class="table-secondary text-center align-middle">No. Whatsapp</th>
                                             <th class="table-secondary text-center align-middle">
                                                 <span>Pilih Semua</span>
-                                                <input class="ml-2" type="checkbox" id="cek_semua" style="cursor: pointer;">
+                                                <input class="ml-2" type="checkbox" id="cek_semua_user" style="cursor: pointer;">
                                             </th>
                                         </tr>
                                     </thead>
@@ -76,7 +76,7 @@
                                                 <td class="text-center align-items-center"><?= $all_nomor['email']?></td>
                                                 <td class="text-center align-items-center"><?= $all_nomor['no_wa']?></td>
                                                 <td class="text-center align-items-center">
-                                                    <input value="<?= $all_nomor['no_wa']?>" type="checkbox" class="cek_nomor" style="cursor: pointer;">
+                                                    <input value="<?= $all_nomor['no_wa']?>" type="checkbox" class="cek_nomor_user" style="cursor: pointer;">
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -84,7 +84,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <div class="tab-pane fade" id="pills-penilai" role="tabpanel" aria-labelledby="pills-contact-tab">
                             <div class="table-responsive">
                                 <table id="dataTable2" class="table table-bordered table-hover" width="100%" cellspacing="0">
                                     <thead>
@@ -95,7 +95,7 @@
                                             <th class="table-secondary text-center align-middle">No. Whatsapp</th>
                                             <th class="table-secondary text-center align-middle">
                                                 <span>Pilih Semua</span>
-                                                <input class="ml-2" type="checkbox" id="cek_semua" style="cursor: pointer;">
+                                                <input class="ml-2" type="checkbox" id="cek_semua_penilai" style="cursor: pointer;">
                                             </th>
                                         </tr>
                                     </thead>
@@ -108,7 +108,7 @@
                                                 <td class="text-center align-items-center"><?= $all_penilai['email']?></td>
                                                 <td class="text-center align-items-center"><?= $all_penilai['no_wa']?></td>
                                                 <td class="text-center align-items-center">
-                                                    <input value="<?= $all_penilai['no_wa']?>" type="checkbox" class="cek_nomor" style="cursor: pointer;">
+                                                    <input value="<?= $all_penilai['no_wa']?>" type="checkbox" class="cek_nomor_penilai" style="cursor: pointer;">
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -116,7 +116,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="tab-pane fade" id="pills-peserta" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <div class="table-responsive">
                                 <table id="dataTable3" class="table table-bordered table-hover" width="100%" cellspacing="0">
                                     <thead>
@@ -127,7 +127,7 @@
                                             <th class="table-secondary text-center align-middle">No. Whatsapp</th>
                                             <th class="table-secondary text-center align-middle">
                                                 <span>Pilih Semua</span>
-                                                <input class="ml-2" type="checkbox" id="cek_semua" style="cursor: pointer;">
+                                                <input class="ml-2" type="checkbox" id="cek_semua_peserta" style="cursor: pointer;">
                                             </th>
                                         </tr>
                                     </thead>
@@ -140,7 +140,7 @@
                                                 <td class="text-center align-items-center"><?= $peserta1['email_ketua']?></td>
                                                 <td class="text-center align-items-center"><?= $peserta1['no_hp']?></td>
                                                 <td class="text-center align-items-center">
-                                                    <input value="<?= $peserta1['no_hp']?>" type="checkbox" class="cek_nomor" style="cursor: pointer;">
+                                                    <input value="<?= $peserta1['no_hp']?>" type="checkbox" class="cek_nomor_pesrta" style="cursor: pointer;">
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -193,9 +193,11 @@
     });
 
     $(document).ready(function() {
-        $('#cek_semua').click(function() {
+        $('#cek_semua_user').click(function() {
             if ($(this).is(':checked')) {
-                $('.cek_nomor').each(function(){
+                $("#tab-penilai").attr('class','nav-link btn-sm disabled');
+                $("#tab-peserta").attr('class','nav-link btn-sm disabled');
+                $('.cek_nomor_user').each(function(){
                     $(this).prop('checked', true);
                     $(this).attr('disabled', 'true');
                     var isi = $('#nomor').val();
@@ -208,15 +210,92 @@
                     }
                 });
             } else {
-                $('.cek_nomor').each(function(){
+                $("#tab-penilai").attr('class','nav-link btn-sm');
+                $("#tab-peserta").attr('class','nav-link btn-sm');
+                $('.cek_nomor_user').each(function(){
                     $(this).prop('checked', false);
                     $(this).removeAttr('disabled');
-                    $('#nomor').val('');
+                    var isi = $('#nomor').val();
+                    var data = isi.split(",");
+
+                    var myIndex = data.indexOf('' + $(this).val() + '');
+                    if (myIndex !== -1) {
+                        data.splice(myIndex, 1);
+                    }
+                    $('#nomor').val(data);
                 });
             }
         });
 
-        $('.cek_nomor').click(function(){
+        $('#cek_semua_penilai').click(function() {
+            if ($(this).is(':checked')) {
+                $("#tab-user").attr('class','nav-link btn-sm disabled');
+                $("#tab-peserta").attr('class','nav-link btn-sm disabled');
+                $('.cek_nomor_penilai').each(function(){
+                    $(this).prop('checked', true);
+                    $(this).attr('disabled', 'true');
+                    var isi = $('#nomor').val();
+                    var data = isi.split(",");
+                    var data2 = data.filter((e, i, a) => a.indexOf(e) === i);
+                    if(isi == ""){
+                        $('#nomor').val($(this).val())
+                    }else{
+                        $('#nomor').val(data2+","+$(this).val());
+                    }
+                });
+            } else {
+                $("#tab-user").attr('class','nav-link btn-sm');
+                $("#tab-peserta").attr('class','nav-link btn-sm');
+                $('.cek_nomor_penilai').each(function(){
+                    $(this).prop('checked', false);
+                    $(this).removeAttr('disabled');
+                    var isi = $('#nomor').val();
+                    var data = isi.split(",");
+
+                    var myIndex = data.indexOf('' + $(this).val() + '');
+                    if (myIndex !== -1) {
+                        data.splice(myIndex, 1);
+                    }
+                    $('#nomor').val(data);
+                });
+            }
+        });
+
+        $('#cek_semua_peserta').click(function() {
+            if ($(this).is(':checked')) {
+                $("#tab-user").attr('class','nav-link btn-sm disabled');
+                $("#tab-penilai").attr('class','nav-link btn-sm disabled');
+                $('.cek_nomor_peserta').each(function(){
+                    $(this).prop('checked', true);
+                    $(this).attr('disabled', 'true');
+                    var isi = $('#nomor').val();
+                    var data = isi.split(",");
+                    var data2 = data.filter((e, i, a) => a.indexOf(e) === i);
+                    if(isi == ""){
+                        $('#nomor').val($(this).val())
+                    }else{
+                        $('#nomor').val(data2+","+$(this).val());
+                    }
+                });
+            } else {
+                $("#tab-user").attr('class','nav-link btn-sm');
+                $("#tab-penilai").attr('class','nav-link btn-sm');
+                $('.cek_nomor_peserta').each(function(){
+                    $(this).prop('checked', false);
+                    $(this).removeAttr('disabled');
+                    var isi = $('#nomor').val();
+                    var data = isi.split(",");
+
+                    var myIndex = data.indexOf('' + $(this).val() + '');
+                    if (myIndex !== -1) {
+                        data.splice(myIndex, 1);
+                    }
+                    $('#nomor').val(data);
+                });
+            }
+        });
+
+        $('.cek_nomor_user').click(function(){
             if ($(this).is(':checked')) {
                 $(this).prop('checked', true);
                 var isi = $('#nomor').val();
@@ -235,6 +314,77 @@
                     data.splice(myIndex, 1);
                 }
                 $('#nomor').val(data);
+            }
+
+            var data = $('#nomor').val();
+            if (data == '') {
+                $("#tab-penilai").attr('class','nav-link btn-sm');
+                $("#tab-peserta").attr('class','nav-link btn-sm');
+            }else{
+                $("#tab-penilai").attr('class','nav-link btn-sm disabled');
+                $("#tab-peserta").attr('class','nav-link btn-sm disabled');
+            }
+        });
+
+        $('.cek_nomor_penilai').click(function(){
+            if ($(this).is(':checked')) {
+                $(this).prop('checked', true);
+                var isi = $('#nomor').val();
+                if(isi == ""){
+                    $('#nomor').val($(this).val())
+                }else{
+                    $('#nomor').val(isi+","+$(this).val());
+                }
+            } else {
+                $(this).prop('checked', false);
+                var isi = $('#nomor').val();
+                var data = isi.split(",");
+
+                var myIndex = data.indexOf('' + $(this).val() + '');
+                if (myIndex !== -1) {
+                    data.splice(myIndex, 1);
+                }
+                $('#nomor').val(data);
+            }
+
+            var data = $('#nomor').val();
+            if (data == '') {
+                $("#tab-user").attr('class','nav-link btn-sm');
+                $("#tab-peserta").attr('class','nav-link btn-sm');
+            }else{
+                $("#tab-user").attr('class','nav-link btn-sm disabled');
+                $("#tab-peserta").attr('class','nav-link btn-sm disabled');
+            }
+        });
+
+        $('.cek_nomor_peserta').click(function(){
+            if ($(this).is(':checked')) {
+                $(this).prop('checked', true);
+                var isi = $('#nomor').val();
+                if(isi == ""){
+                    $('#nomor').val($(this).val())
+                }else{
+                    $('#nomor').val(isi+","+$(this).val());
+                }
+            } else {
+                $(this).prop('checked', false);
+                var isi = $('#nomor').val();
+                var data = isi.split(",");
+
+                var myIndex = data.indexOf('' + $(this).val() + '');
+                if (myIndex !== -1) {
+                    data.splice(myIndex, 1);
+                }
+                $('#nomor').val(data);
+            }
+
+            var data = $('#nomor').val();
+            if (data == '') {
+                $("#tab-user").attr('class','nav-link btn-sm');
+                $("#tab-penilai").attr('class','nav-link btn-sm');
+            }else{
+                $("#tab-user").attr('class','nav-link btn-sm disabled');
+                $("#tab-penilai").attr('class','nav-link btn-sm disabled');
             }
         });
 
