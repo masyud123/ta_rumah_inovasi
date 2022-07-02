@@ -10,7 +10,8 @@ class Model_login extends CI_Model{
 		$this->input->post('password',$password);
 		$where = array(
 			'email' => $email,
-			'password' => md5($password));
+			'password' => md5($password)
+		);
 		
 		$result = $this->db->get_where('user',$where);
 		if($result->num_rows() > 0)
@@ -23,10 +24,10 @@ class Model_login extends CI_Model{
 				$this->session->set_flashdata('pesan',
                         '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
                         <script type ="text/JavaScript">  
-                        	swal("Peringatan","Akun anda saat ini dinonaktifkan, jika terjadi kesalahan silakan hubungi Admin Bappeda","warning")  
+                        	swal("Gagal Login","Akun anda saat ini dinonaktifkan, jika terjadi kesalahan silakan hubungi Admin Bappeda","error")  
                         </script>'  
                 );
-                redirect('login/index');
+                redirect('Login');
 			}
 		}else {
 			return array();

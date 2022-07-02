@@ -18,8 +18,8 @@ class Data_user extends CI_Controller
 	public function index()
 	{
 		$data['user'] = $this->Model_user->tampil_user()->result();
-		$data['user_non'] = $this->db->get_where('user', array('status' => 'Nonaktif'))->result();
-		$data['user_akf'] = $this->db->get_where('user', array('status' => 'Aktif'))->result();
+		$data['user_non'] = $this->db->get_where('user', array('status' => '0'))->result();
+		$data['user_akf'] = $this->db->get_where('user', array('status' => '1'))->result();
 		$this->load->view('temp_data_table/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/user', $data);

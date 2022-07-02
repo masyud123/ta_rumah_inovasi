@@ -1,5 +1,5 @@
 <?php 
-
+ob_start();
 class Data_subevent extends CI_Controller{
 
 	public function __construct(){
