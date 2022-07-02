@@ -30,13 +30,6 @@
 								</div>
 
 								<div class= "row">
-									<dt for="inputNama" class="col-sm-2 col-form-label">Bidang</dt>
-									<div class="col-sm-5 mb-3">
-										<input type="text" name="bidang" class="form-control" value="<?php echo $sbevt->bidang ?>">
-									</div>
-								</div>
-
-								<div class= "row">
 									<dt for="inputNama" class="col-sm-2 col-form-label">Tanggal Mulai</dt>
 									<div class="col-sm-5 mb-3">
 										<input type="date" name="mulai" class="form-control" id="tgl_mulai" value="<?php echo $sbevt->mulai ?>" onclick="tanggal()"> 

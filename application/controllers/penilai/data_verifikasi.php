@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 class Data_verifikasi extends CI_Controller
 {
 

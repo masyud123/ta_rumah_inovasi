@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 class Pengumuman extends CI_Controller
 {
 

@@ -1,4 +1,5 @@
 <?php
+ob_start();
 class Pesan_masal extends CI_Controller
 {
 	public function __construct()

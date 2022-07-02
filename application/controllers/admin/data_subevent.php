@@ -39,7 +39,6 @@ class Data_subevent extends CI_Controller{
 		$id 	 				= $this->input->post('id');
 		$tahun 	 				= $this->input->post('tahun');
 		$subevent 				= $this->input->post('subevent');
-		$bidang 				= $this->input->post('bidang');
 		$mulai					= $this->input->post('mulai');
 		$akhir 					= $this->input->post('akhir');
 		$status_pendaftaran 	= $this->input->post('status_pendaftaran');
@@ -47,7 +46,6 @@ class Data_subevent extends CI_Controller{
 		$data = array(
 			'tahun' 				=> $tahun,
 			'subevent' 				=> $subevent,
-			'bidang' 				=> $bidang,
 			'mulai' 				=> $mulai, 
 			'akhir' 				=> $akhir,
 			'status_pendaftaran'	=> $status_pendaftaran,
