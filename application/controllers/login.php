@@ -7,6 +7,7 @@ class Login extends CI_Controller {
 		parent::__construct();
         date_default_timezone_set('Asia/Jakarta');
 		$this->load->library('cart');
+		error_reporting(0);
 	}
 
     public function index()

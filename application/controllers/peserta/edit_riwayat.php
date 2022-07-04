@@ -11,6 +11,7 @@ class Edit_riwayat extends CI_Controller{
 														 </div>');
 			redirect('Login');
 		}
+		error_reporting(0);
 	}
 
 	public function simpan_riwayat_3($id_usulan)

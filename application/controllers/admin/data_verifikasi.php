@@ -12,6 +12,7 @@ class Data_verifikasi extends CI_Controller{
 			redirect('Login');
 		}
 		date_default_timezone_set('Asia/Jakarta');
+		error_reporting(0);
 	}
 
 	public function index()

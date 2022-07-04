@@ -13,6 +13,7 @@ class Pengumuman extends CI_Controller
 														 </div>');
 			redirect('Login');
 		}
+		error_reporting(0);
 	}
 
 	public function index()
