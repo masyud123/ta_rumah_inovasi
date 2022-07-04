@@ -48,8 +48,9 @@
 									<div class="col-sm-5 mb-3">
 									<?php $status = $sbevt->status_pendaftaran; ?>
 										<select name="status_pendaftaran" class="form-control">
+											<option <?php if($status == 0){echo "selected";}?> value="0">Belum Dibuka</option>
 											<option <?php if($status == 1){echo "selected";}?> value="1">Dibuka</option>
-											<option <?php if($status == 0){echo "selected";}?> value="0">Ditutup</option>
+											<option <?php if($status == 2){echo "selected";}?> value="2">Ditutup</option>
 										</select>
 									</div>
 								</div>

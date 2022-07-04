@@ -41,6 +41,8 @@
                               if($status == 1){
                                 echo "Dibuka";
                               }elseif($status == 0){
+                                echo "Belum Dibuka";
+                              }elseif($status == 2){
                                 echo "Ditutup";
                               }
                             ?>
@@ -102,8 +104,9 @@
                         <div class="form-group">
                           <dt>Status Pendaftaran</dt>
                           <select name="status_pendaftaran" class="form-control">
+                            <option value="0">Belum Dibuka</option>
                             <option value="1">Dibuka</option>
-                            <option value="0">Ditutup</option>
+                            <option value="2">Ditutup</option>
                           </select>
                         </div>
                     </div>

@@ -15,12 +15,14 @@
                                     <?= $this->session->flashdata('berhasil_daftar') ?>
                                     <form action="<?php echo base_url('Login/auth') ?>" class="user" method="post">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" name="email" required oninvalid="this.setCustomValidity('Data wajib diisi!')" oninput="setCustomValidity('')">
+                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" name="email"  oninvalid="this.setCustomValidity('Kolom email wajib diisi!')" oninput="setCustomValidity('')" >
+                                            <?php echo form_error('email', '<div class="text-danger small ml-2">', '</div>') ?>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="password" required oninvalid="this.setCustomValidity('Data wajib diisi!')" oninput="setCustomValidity('')">
+                                            <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="password"  oninvalid="this.setCustomValidity('Kolom password wajib diisi!')" oninput="setCustomValidity('')" >
                                             <i class="fa fa-eye toggle-password" style="cursor: pointer; margin-left: -35px;"></i>
-                                        </div><br>
+                                        </div>
+                                        <?php echo form_error('password', '<div class="text-danger small ml-2">', '</div>') ?><br>
                                         <div class="d-flex justify-content-center">
                                                 <?= $captcha ?>
                                         </div><br>

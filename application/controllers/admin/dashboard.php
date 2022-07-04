@@ -32,12 +32,6 @@ class Dashboard extends CI_Controller{
 		// data grafik penilai
 		$data['gr_penilai'] = $this->Model_user->get_penilai();
 
-		$kondisi = $this->Model_user->get_kode_qr();
-		if($kondisi->message == 'AUTHENTICATED'){
-			$this->session->set_userdata('whatsapp', 'Terhubung');
-		}else{
-			$this->session->set_userdata('whatsapp', 'Terputus');
-		}
 		// echo "<pre>"; print_r($data); exit;
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');

@@ -35,7 +35,7 @@
                                 <input type="text" class="form-control" value="<?= $profil_user->hak_akses; ?>" readonly>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-4">
-                                <a href="" data-toggle="modal" data-target="#reset_pwd">Reset password ?</a>
+                                <a href="" data-toggle="modal" data-target="#reset_pwd">Ubah password ?</a>
                                 <button id="edit_profil" class="btn btn-sm btn-warning" type="button">
                                     <i class="fa fa-edit" aria-hidden="true"></i> Edit Profil
                                 </button>
@@ -52,7 +52,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="my-modal-title">Reset Password</h5>
+                <h5 class="modal-title" id="my-modal-title">Ubah Password</h5>
                 <button class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

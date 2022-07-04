@@ -23,8 +23,8 @@ class Login extends CI_Controller {
 
     public function auth()
 	{
-		$this->form_validation->set_rules('email','Email','required');
-		$this->form_validation->set_rules('password','Password','required');
+		$this->form_validation->set_rules('email','mail','required', ['required' => 'Kolom email wajib diisi!']);
+		$this->form_validation->set_rules('password','password','required', ['required' => 'Kolom password wajib diisi!']);
 
 		$recaptcha	= $this->input->post('g-recaptcha-response');
 		$response 	= $this->recaptcha->verifyResponse($recaptcha);
@@ -60,7 +60,14 @@ class Login extends CI_Controller {
 					$this->session->set_userdata('id_usr',$auth->id_usr);
 
 					switch($auth->hak_akses){
-						case 'Admin_Bappeda' : redirect('admin/Dashboard');
+						case 'Admin_Bappeda' : 
+							$kondisi = $this->Model_user->get_kode_qr();
+							if($kondisi->message == 'AUTHENTICATED'){
+								$this->session->set_userdata('whatsapp', 'Terhubung');
+							}else{
+								$this->session->set_userdata('whatsapp', 'Terputus');
+							}
+							redirect('admin/Dashboard');
 							break;
 						case 'Peserta' : redirect('peserta/Riwayat'); 
 							break;

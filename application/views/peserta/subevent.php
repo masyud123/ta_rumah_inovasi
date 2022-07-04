@@ -8,14 +8,20 @@
                   <div class="card-body">
                      <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                           <?php if($sub->status_pendaftaran == 1): ?>
+                           <?php if($sub->status_pendaftaran == 0): ?>
+                              <a id="pendaftaran-blm" style="cursor: pointer;">
+                                 <div class="text-xl font-weight-bold text-primary text-uppercase mb-1">
+                                    <?= $sub->subevent ?>
+                                 </div>
+                              </a>
+                           <?php elseif($sub->status_pendaftaran == 1): ?>
                               <a href="<?php echo base_url('peserta/Daftar/daftar/'.$sub->id)?>">
                                  <div class="text-xl font-weight-bold text-primary text-uppercase mb-1">
                                     <?= $sub->subevent ?>
                                  </div>
                               </a>
-                           <?php elseif($sub->status_pendaftaran == 0): ?>
-                              <a id="notif_pendaftaran" style="cursor: pointer;">
+                           <?php elseif($sub->status_pendaftaran == 2): ?>
+                              <a id="pendaftaran-tutup" style="cursor: pointer;">
                                  <div class="text-xl font-weight-bold text-primary text-uppercase mb-1">
                                     <?= $sub->subevent ?>
                                  </div>
@@ -37,10 +43,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
    $(document).ready(function () {  
-      $('#notif_pendaftaran').on('click', function(){
+      $('#pendaftaran-blm').on('click', function(){
          Swal.fire(
             'Informasi',
-            'Saat ini pendaftaran belum dibuka atau sudah ditutup. Silakan hubungi Admin untuk info lebih lanjut.',
+            'Saat ini pendaftaran belum dibuka. Silahkan lihat pengumuman untuk mengetahui informasi seputar perlombaan.',
+            'info'
+         )
+      });
+      $('#pendaftaran-tutup').on('click', function(){
+         Swal.fire(
+            'Informasi',
+            'Saat ini pendaftaran sudah ditutup. Silahkan lihat pengumuman untuk mengetahui informasi seputar perlombaan.',
             'info'
          )
       });
