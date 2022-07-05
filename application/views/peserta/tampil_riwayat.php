@@ -61,7 +61,7 @@
 										<i class="fa fa-edit mr-1"></i> Detail & Edit
 									</button>
 									<button class="col-10 btn btn-sm btn-danger" data-toggle="modal" data-target="#KirimKonfirmasiHapus<?= $riw->id_usulan?>">
-										<i class="fa fa-trash mr-1"></i> Hapus Usulan
+										<i class="fa fa-trash mr-1"></i> Hapus Inovasi
 									</button>
 								</td>
 							<?php elseif ($riw->status == '2' || $riw->status == '3' || $riw->status == '5'): ?>
@@ -73,7 +73,7 @@
 										<i class="fa fa-search mr-1"></i> View & Detail
 									</button>
 									<button disabled class="col-10 btn btn-sm btn-danger">
-										<i class="fa fa-trash mr-1"></i> Hapus Usulan
+										<i class="fa fa-trash mr-1"></i> Hapus Inovasi
 									</button>
 								</td>
 							<?php elseif ($riw->status == '4'): ?>
@@ -110,7 +110,7 @@
 							<div class="form-group" align="center">
 								<div class="form-group" hidden >
 									<input type="text" name="id" value="<?= $riw->id_usulan ?>">
-									<input type="text" name="status" value="2">
+									<input type="text" name="status" value="5">
 								</div>
 								<h5>Apakah Anda yakin ingin mengirim data ini ?</h5>
 							</div><br>

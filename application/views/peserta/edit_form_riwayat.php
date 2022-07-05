@@ -782,7 +782,7 @@
     function sukses() {
         Swal.fire({
             title: 'Sukses',
-            text: "Data berhasil disimpan",
+            text: "Perubahan data berhasil disimpan",
             icon: 'success',
             confirmButtonText: 'Oke'
         }).then((result) => {

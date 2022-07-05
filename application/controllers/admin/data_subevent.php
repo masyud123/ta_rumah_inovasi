@@ -74,13 +74,15 @@ class Data_subevent extends CI_Controller{
 		$sql2 = $this->db->query("SELECT id_subevent FROM indikator_penilaian where id_subevent='$id'");
 		$sql3 = $this->db->query("SELECT id_subevent FROM indikator_penilaian_pemenang where id_subevent='$id'");
 		$sql4 = $this->db->query("SELECT id_subevent FROM usulan where id_subevent='$id'");
+		$sql5 = $this->db->query("SELECT id_subevent FROM bidang where id_subevent='$id'");
 
 
 		$cek_data1 = $sql1->num_rows();
 		$cek_data2 = $sql2->num_rows();
 		$cek_data3 = $sql3->num_rows();
 		$cek_data4 = $sql4->num_rows();
-		if ($cek_data1 > 0 || $cek_data2 > 0 || $cek_data3 > 0 || $cek_data4 > 0) {
+		$cek_data5 = $sql5->num_rows();
+		if ($cek_data1 > 0 || $cek_data2 > 0 || $cek_data3 > 0 || $cek_data4 > 0 || $cek_data5 > 0) {
 			$this->session->set_flashdata(
 				'message',
 				'<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>

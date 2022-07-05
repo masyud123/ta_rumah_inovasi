@@ -8,7 +8,7 @@
    </a>
 
 
-  <div class="card shadow mb-4">
+  <div class="card shadow mb-4 col-lg-8">
       <!-- Card Header - Dropdown -->
       <div
           class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -30,7 +30,16 @@
             <tr>
               <td class="text-center"><?php echo $no++ ?></td>
               <td><?php echo $evt->event ?></td>
-              <td align="center" style="width: 50"><?php echo anchor('admin/Data_event/edit/' .$evt->id, '<div class="btn btn-sm btn-primary btn"><i class="fa fa-edit"></i> Edit</div>') ?></td>
+              <td align="center" style="width: 30%">
+                <div class="d-lg-flex">
+                  <div class="p-1 col-lg-6">
+                    <?php echo anchor('admin/Data_event/edit/' .$evt->id, '<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Edit</div>') ?>
+                  </div>
+                  <div class="p-1 col-lg-6">
+                    <?php echo anchor('admin/Data_event/hapus/' .$evt->id, '<div class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</div>') ?>
+                  </div>
+                </div>
+              </td>
             </tr>
             <?php endforeach; ?>
          </table>

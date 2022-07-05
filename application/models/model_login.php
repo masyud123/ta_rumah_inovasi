@@ -16,21 +16,26 @@ class Model_login extends CI_Model{
 		$result = $this->db->get_where('user',$where);
 		if($result->num_rows() > 0)
 		{
-			$cek = $this->db->get_where('user',$where)->result_array();
-			foreach($cek as $cek2);
-			if ($cek2['status'] == 1) {
-				return $result->row();
+			$hasil = $result->row();
+			if($hasil->email === $email){
+				$cek = $this->db->get_where('user',$where)->result_array();
+				foreach($cek as $cek2);
+				if ($cek2['status'] == 1) {
+					return $hasil;
+				}else{
+					$this->session->set_flashdata('pesan',
+							'<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+							<script type ="text/JavaScript">  
+								swal("Gagal Login","Akun anda saat ini dinonaktifkan, jika terjadi kesalahan silakan hubungi Admin Bappeda","error")  
+							</script>'  
+					);
+					redirect('Login');
+				}
 			}else{
-				$this->session->set_flashdata('pesan',
-                        '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-                        <script type ="text/JavaScript">  
-                        	swal("Gagal Login","Akun anda saat ini dinonaktifkan, jika terjadi kesalahan silakan hubungi Admin Bappeda","error")  
-                        </script>'  
-                );
-                redirect('Login');
+				return array(); //case email sensitif
 			}
 		}else {
-			return array();
+			return array(); //email/pwd tidak ditemukan
 		}
 	}
 }

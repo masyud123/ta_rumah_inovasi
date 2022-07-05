@@ -77,15 +77,27 @@ class Data_event extends CI_Controller{
 	}
 	public function hapus($id)
 	{
-		$where = array('id' => $id);
-		$this->Model_event->hapus_event($where, 'event');
-		$this->session->set_flashdata('message','<div class="alert alert-success alert-dismissible fade show" style="width: 60%;" role="alert"><i class="fas fa-trash-alt"></i>
-  				Data berhasil dihapus!
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		    <span aria-hidden="true">&times;</span>
-		  </button>
-		</div>');
-		redirect('admin/Data_event');
+		$sql = $this->db->query("SELECT id_subevent FROM bidang where id_subevent='$id'");
+		$cek_data = $sql->num_rows();
+		if ($cek_data > 0 ) {
+			$this->session->set_flashdata('message','<div class="alert alert-danger alert-dismissible fade show" style="width: 100%;" role="alert"><i class="fas fa-trash-alt"></i>
+					Data event tidak bisa dihapus karena terhubung dengan subevent!
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</div>');
+			redirect('admin/Data_event');
+		}else{
+			$where = array('id' => $id);
+			$this->Model_event->hapus_event($where, 'event');
+			$this->session->set_flashdata('message','<div class="alert alert-success alert-dismissible fade show" style="width: 60%;" role="alert"><i class="fas fa-trash-alt"></i>
+					Data berhasil dihapus!
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</div>');
+			redirect('admin/Data_event');
+		}
 	}
 	
 }
