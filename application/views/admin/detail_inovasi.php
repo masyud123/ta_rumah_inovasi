@@ -38,8 +38,8 @@
 					<tr>
 						<th class="text-center table-secondary">No</th>
 						<th class="text-center table-secondary" style="width: 60%;">Indikator</th>
-						<th class="text-center table-secondary">Detail Indikator</th>
-						<th colspan="2" class="text-center table-secondary">Aksi</th>
+						<!-- <th class="text-center table-secondary">Detail Nilai</th> -->
+						<th colspan="3" class="text-center table-secondary">Aksi</th>
 					</tr>
 
 					<?php $no=1;
@@ -47,7 +47,7 @@
 						<tr>
 							<td align="center"><?php echo $no++ ?></td>
 							<td><?php echo $id_pen->indikator ?></td>
-							<td align="center"><?php echo anchor('admin/Data_inovasi/detail_indikator/'.$id_subevent.'/'.$id_pen->id_indikator_penilaian,'<div class="btn btn-warning btn-sm"><i class="fa fa-search-plus mr-2"></i> Detail</div>') ?></td>
+							<td align="center"><?php echo anchor('admin/Data_inovasi/detail_indikator/'.$id_subevent.'/'.$id_pen->id_indikator_penilaian,'<div class="btn btn-warning btn-sm"><i class="fa fa-search-plus mr-2"></i> Detail Nilai</div>') ?></td>
 							<?php if ($hasil_cek == "ada") :?>
 								<td align="center" style="width: 50"> <div class="btn btn-sm btn-secondary"><i class="mr-2 fa fa-edit"></i> <a>Edit</a></div></td>
 								<td align="center" style="width: 50"> <div class="btn btn-sm btn-secondary"><i class="mr-2 fa fa-trash"></i> <a>Hapus</a></div></td>

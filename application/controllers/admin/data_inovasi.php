@@ -72,17 +72,27 @@ class Data_inovasi extends CI_Controller{
 		if($getUsulan != null){
 			foreach($getUsulan as $subevent){
 				$get_total_nilai = $this->Model_inovasi->getTotalNilai()->result_array();
-				foreach($get_total_nilai as $getTotalNilai){
-					$TotalNilai[] = $getTotalNilai['id_usulan'];
-				}
-				$cek[] = in_array($subevent['id'], $TotalNilai);
-				if($cek[0]){
-					$this->session->set_flashdata('formulasi_nilai',
-						'<script>
-							Swal.fire("Gagal", "Data tidak bisa dirubah. User Penilai sudah melakukan penilaian", "error");
-						</script>'
-					);
-					header('Location: ' . $_SERVER['HTTP_REFERER']);
+				if($get_total_nilai != null){
+					foreach($get_total_nilai as $getTotalNilai){
+						$TotalNilai[] = $getTotalNilai['id_usulan'];
+					}
+					$cek[] = in_array($subevent['id'], $TotalNilai);
+					if($cek[0]){
+						$this->session->set_flashdata('formulasi_nilai',
+							'<script>
+								Swal.fire("Gagal", "Data tidak bisa dirubah. User Penilai sudah melakukan penilaian", "error");
+							</script>'
+						);
+						header('Location: ' . $_SERVER['HTTP_REFERER']);
+					}else{
+						$this->db->update('formulasi_nilai', $data, $where);
+						$this->session->set_flashdata('formulasi_nilai',
+							'<script>
+								Swal.fire("Sukses", "Data berhasil diperbarui", "success");
+							</script>'
+						);
+						header('Location: ' . $_SERVER['HTTP_REFERER']);
+					}
 				}else{
 					$this->db->update('formulasi_nilai', $data, $where);
 					$this->session->set_flashdata('formulasi_nilai',
@@ -116,12 +126,16 @@ class Data_inovasi extends CI_Controller{
 		if($getUsulan != null){
 			foreach($getUsulan as $subevent){
 				$get_total_nilai = $this->Model_inovasi->getTotalNilai()->result_array();
-				foreach($get_total_nilai as $getTotalNilai){
-					$TotalNilai[] = $getTotalNilai['id_usulan'];
-				}
-				$cek[] = in_array($subevent['id'], $TotalNilai);
-				if($cek[0]){
-					$data['hasil_cek'] = "ada";
+				if($get_total_nilai != null){
+					foreach($get_total_nilai as $getTotalNilai){
+						$TotalNilai[] = $getTotalNilai['id_usulan'];
+					}
+					$cek[] = in_array($subevent['id'], $TotalNilai);
+					if($cek[0]){
+						$data['hasil_cek'] = "ada";
+					}else{
+						$data['hasil_cek'] = "kosong";
+					}
 				}else{
 					$data['hasil_cek'] = "kosong";
 				}
@@ -203,12 +217,16 @@ class Data_inovasi extends CI_Controller{
 		if($getUsulan != null){
 			foreach($getUsulan as $subevent){
 				$get_total_nilai = $this->Model_inovasi->getTotalNilai()->result_array();
-				foreach($get_total_nilai as $getTotalNilai){
-					$TotalNilai[] = $getTotalNilai['id_usulan'];
-				}
-				$cek[] = in_array($subevent['id'], $TotalNilai);
-				if($cek[0]){
-					$data['hasil_cek'] = "ada";
+				if($get_total_nilai != null){
+					foreach($get_total_nilai as $getTotalNilai){
+						$TotalNilai[] = $getTotalNilai['id_usulan'];
+					}
+					$cek[] = in_array($subevent['id'], $TotalNilai);
+					if($cek[0]){
+						$data['hasil_cek'] = "ada";
+					}else{
+						$data['hasil_cek'] = "kosong";
+					}
 				}else{
 					$data['hasil_cek'] = "kosong";
 				}

@@ -50,7 +50,7 @@ class Data_verifikasi extends CI_Controller{
 		$var = [];
 		foreach ($usulan as $usl){
 			$var[] = [
-				'id' => $usl->id,
+				'id' => $usl->id_usulan,
 				'id_subevent' => $usl->id_subevent,
 				'user' => $usl->nama_ketua,
 				'judul' => $usl->judul,
@@ -58,8 +58,8 @@ class Data_verifikasi extends CI_Controller{
 				'subevent' => $usl->subevent,
 				'alamat_ketua' => $usl->alamat_ketua,
 				'kategori_peserta' => $usl->kategori_peserta,
-				'nilai_verifikasi' => $this->Model_verifikasi->tot_nilai_verifikasi($usl->id),
-				'total' => $this->Model_verifikasi->total($usl->id)->tot,
+				'nilai_verifikasi' => $this->Model_verifikasi->tot_nilai_verifikasi($usl->id_usulan),
+				'total' => $this->Model_verifikasi->total($usl->id_usulan)->tot,
 			];
 		}
 		$data['total_nilai'] = $var;
@@ -69,7 +69,7 @@ class Data_verifikasi extends CI_Controller{
 		$var2 = [];
 		foreach ($usulan2 as $usl2){
 			$var2[] = [
-				'id' => $usl2->id,
+				'id' => $usl2->id_usulan,
 				'id_subevent' => $usl2->id_subevent,
 				'user' => $usl2->nama_ketua,
 				'judul' => $usl2->judul,
@@ -77,8 +77,8 @@ class Data_verifikasi extends CI_Controller{
 				'subevent' => $usl2->subevent,
 				'alamat_ketua' => $usl2->alamat_ketua,
 				'kategori_peserta' => $usl2->kategori_peserta,
-				'nilai_verifikasi' => $this->Model_verifikasi->tot_nilai_verifikasi($usl2->id),
-				'total' => $this->Model_verifikasi->total($usl2->id)->tot,
+				'nilai_verifikasi' => $this->Model_verifikasi->tot_nilai_verifikasi($usl2->id_usulan),
+				'total' => $this->Model_verifikasi->total($usl2->id_usulan)->tot,
 			];
 		}
 		$data['nilai_total'] = $var2;
@@ -88,7 +88,7 @@ class Data_verifikasi extends CI_Controller{
 		$data['nama_penilai']		= $this->Model_verifikasi->get_nama_penilai($id_subevent)->result_array();
 		$data['cek_status_pelajar'] = $this->Model_verifikasi->get_usulan_pelajar_status_2($id_subevent)->result_array();
 		$data['cek_status_umum'] 	= $this->Model_verifikasi->get_usulan_umum_status_2($id_subevent)->result_array();
-		// echo "<pre>"; print_r($usulan);exit;
+		// echo "<pre>"; print_r($data['total_nilai']);exit;
 		$this->load->view('templates_rangking/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/verifikasi2', $data);

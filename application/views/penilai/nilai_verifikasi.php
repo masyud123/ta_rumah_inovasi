@@ -35,6 +35,7 @@ input[type=number] {
                 <tr>
                   <td style="width: 530px;">
                     <strong class="ml-3">Nilai Makalah</strong>
+                    <span>(Maksimal 100)</span>
                   </td>
                   <td style="width: 240px;" align="center">
                     <input type="number" name="nilai_proposal" id="nil_makalah"  onkeyup="b()" class="form-control text-center" style="width: 38%;" min="0" max="100" required oninvalid="this.setCustomValidity('Masukkan nilai sesuai aturan!')" oninput="setCustomValidity('')">

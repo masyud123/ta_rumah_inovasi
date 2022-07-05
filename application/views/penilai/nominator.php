@@ -53,20 +53,20 @@
             <td><?php echo $usl->subevent ?></td>
             <td><?php echo $usl->judul ?></td>
             <td><?php echo $usl->nama_ketua ?></td>
-            <td align="center" style="width: 50"><?php echo anchor('penilai/Data_nominator/view/' .$usl->id, '<div class="btn btn-sm btn-warning btn"><i class="fa fa-search-plus"></i> Lihat</div>') ?>
+            <td align="center" style="width: 50"><?php echo anchor('penilai/Data_nominator/view/' .$usl->id_usulan, '<div class="btn btn-sm btn-warning btn"><i class="fa fa-search-plus"></i> Lihat</div>') ?>
             </td>
             <td align="center" style="width: 50">
               <?php if ($ganti_warna2 != null): ?>
                   <?php foreach ($ganti_warna2 as $wrn):
-                      $gatel[] = $wrn->id_usulan;
+                      $cek_btn[] = $wrn->id_usulan;
                    endforeach; ?>
-                    <?php if (in_array($usl->id, $gatel)) :?>
-                       <button onclick="window.location.href='<?php echo base_url('penilai/Data_nominator/edit_nilai_nominator/' .$usl->id) ?>'" class="btn btn-sm btn-success"><i class="far fa-edit"></i> Edit Nilai</button>
+                    <?php if (in_array($usl->id_usulan, $cek_btn)) :?>
+                       <button onclick="window.location.href='<?php echo base_url('penilai/Data_nominator/edit_nilai_nominator/' .$usl->id_usulan) ?>'" class="btn btn-sm btn-success"><i class="far fa-edit"></i> Edit Nilai</button>
                     <?php else :?>
-                        <button onclick="window.location.href='<?php echo base_url('penilai/Data_nominator/nilai_nominator/' .$usl->id) ?>'" class="btn btn-sm btn-primary"><i class="far fa-edit"></i> Nilai</button>
+                        <button onclick="window.location.href='<?php echo base_url('penilai/Data_nominator/nilai_nominator/' .$usl->id_usulan) ?>'" class="btn btn-sm btn-primary"><i class="far fa-edit"></i> Beri Nilai</button>
                   <?php endif;?> 
               <?php else: ?>
-                  <button onclick="window.location.href='<?php echo base_url('penilai/Data_nominator/nilai_nominator/' .$usl->id) ?>'" class="btn btn-sm btn-primary"><i class="far fa-edit"></i> Nilai</button>
+                  <button onclick="window.location.href='<?php echo base_url('penilai/Data_nominator/nilai_nominator/' .$usl->id_usulan) ?>'" class="btn btn-sm btn-primary"><i class="far fa-edit"></i> Beri Nilai</button>
               <?php endif;?>
             </td>
           </tr>
