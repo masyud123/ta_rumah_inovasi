@@ -16,7 +16,7 @@
                                         <?php echo form_error('nama', '<div class="text-danger small ml-2">', '</div>') ?>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" placeholder="No WA..." name="no_wa" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <input type="text" class="form-control form-control-user" placeholder="No. Whatsapp" name="no_wa" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         <?php echo form_error('no_wa', '<div class="text-danger small ml-2">', '</div>') ?>
                                     </div>
                                     <div class="form-group">
@@ -24,9 +24,9 @@
                                         <?php echo form_error('email', '<div class="text-danger small ml-2">', '</div>') ?>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user"
-                                                id="password_1" placeholder="Password" name="password_1" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Password harus lebih dari 8 karakter, mengandung huruf BESAR, huruf kecil dan angka" required>
-                                          <?php echo form_error('password_1', '<div class="text-danger small ml-2">', '</div>') ?>
+                                        <input type="password" class="form-control form-control-user" id="password_1" placeholder="Password" name="password_1" >
+                                          <?php echo form_error('password_1', '<div class="text-danger small ml-2">', '</div>')?>
+                                          <?=$this->session->flashdata('pwd_lemah');?>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" id="password_2" placeholder="Ulangi Password" name="password_2">
@@ -63,22 +63,4 @@
             }
         });
     });
-
-    var myInput = document.getElementById("password_1");
-    myInput.onkeyup = function() {
-        // Validate lowercase letters
-        var lowerCaseLetters = /[a-z]/g;
-        myInput.value.match(lowerCaseLetters);
-        
-        // Validate capital letters
-        var upperCaseLetters = /[A-Z]/g;
-        myInput.value.match(upperCaseLetters);
-
-        // Validate numbers
-        var numbers = /[0-9]/g;
-        myInput.value.match(numbers);
-        
-        // Validate length
-        myInput.value.length >= 8;
-    }
 </script>

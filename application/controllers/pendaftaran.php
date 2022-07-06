@@ -25,54 +25,72 @@ class Pendaftaran extends CI_Controller {
         } else {    
             $email = $this->input->post('email'); 
             $password = $this->input->post('password_1');
-            $sql = $this->db->query("SELECT email FROM user where email='$email'");
-            $cek_email = $sql->num_rows();
 
-            if ($cek_email > 0) {
-                $this->session->set_flashdata('pesan',
-                    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-                    <script type ="text/JavaScript">  
-                    swal("Gagal","Email sudah digunakan!","error")  
-                    </script>'  
-                );
-                redirect('Pendaftaran');
+            $uppercase = preg_match('@[A-Z]@', $password);
+			$lowercase = preg_match('@[a-z]@', $password);
+			$number    = preg_match('@[0-9]@', $password);
+
+			if(!$uppercase || !$lowercase || !$number || strlen($password) < 8){
+                $this->session->set_flashdata('pwd_lemah','<small class="text-danger">Password harus lebih dari 8 karakter, mengandung huruf BESAR, huruf kecil dan angka</small>');
+                redirect('Pendaftaran/');
             }else{
-                $kode  = rand(111111, 999999);
-                $waktu = date('H:i:s');
-                
-                // insert data ke dalam penyimpanan sementara
-                $data = array(
-                    // data cart wajib ada
-                    'id'      => 'sku_123ABC',
-                    'qty'     => 1,
-                    'price'   => 39.95,
-                    // kebutuhan inti
-                    'name'          => $this->input->post('nama'),
-                    'email'         => $this->input->post('email'),
-                    'password'      => md5($this->input->post('password_1')),
-                    'no_wa'         => $this->input->post('no_wa'),
-                    'kode_ori'      => $kode,
-                    'waktu_create'  => $waktu
-                );
-                $this->cart->insert($data);
-                
-                $kondisi = $this->Model_user->get_kode_qr(); // kondisi sistem terhubung wa/tdk
-				if($kondisi->message == 'AUTHENTICATED'){
-                    // cek nomor terdaftar/tidak
-                    $cek_nomor = $this->Model_user->cek_nomor_wa($this->input->post('no_wa'));
-					if($cek_nomor->status == 'valid'){
-                        //Pengiriman kode kepada user via WA
-                        $no_wa 	= 	$this->input->post('no_wa');
-						$pesan 	= 	'Kode OTP Anda adalah '.$kode.'. Jika Anda merasa tidak mendaftar apapun, silakan abaikan.';
+                $sql = $this->db->query("SELECT email FROM user where email='$email'");
+                $cek_email = $sql->num_rows();
 
-						$response = $this->Model_user->kirim_pesan($no_wa, $pesan);
-                        if($response->message == "Sukses! Pesan telah terkirim"){
-                            redirect('Pendaftaran/halaman_otp/');
-						}else{
+                if ($cek_email > 0) {
+                    $this->session->set_flashdata('pesan',
+                        '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+                        <script type ="text/JavaScript">  
+                        swal("Gagal","Email sudah digunakan!","error")  
+                        </script>'  
+                    );
+                    redirect('Pendaftaran');
+                }else{
+                    $kode  = rand(111111, 999999);
+                    $waktu = date('H:i:s');
+                    
+                    // insert data ke dalam penyimpanan sementara
+                    $data = array(
+                        // data cart wajib ada
+                        'id'      => 'sku_123ABC',
+                        'qty'     => 1,
+                        'price'   => 39.95,
+                        // kebutuhan inti
+                        'name'          => $this->input->post('nama'),
+                        'email'         => $this->input->post('email'),
+                        'password'      => md5($this->input->post('password_1')),
+                        'no_wa'         => $this->input->post('no_wa'),
+                        'kode_ori'      => $kode,
+                        'waktu_create'  => $waktu
+                    );
+                    $this->cart->insert($data);
+                    
+                    $kondisi = $this->Model_user->get_kode_qr(); // kondisi sistem terhubung wa/tdk
+                    if($kondisi->message == 'AUTHENTICATED'){
+                        // cek nomor terdaftar/tidak
+                        $cek_nomor = $this->Model_user->cek_nomor_wa($this->input->post('no_wa'));
+                        if($cek_nomor->status == 'valid'){
+                            //Pengiriman kode kepada user via WA
+                            $no_wa 	= 	$this->input->post('no_wa');
+                            $pesan 	= 	'Kode OTP Anda adalah '.$kode.'. Jika Anda merasa tidak mendaftar apapun, silakan abaikan.';
+
+                            $response = $this->Model_user->kirim_pesan($no_wa, $pesan);
+                            if($response->message == "Sukses! Pesan telah terkirim"){
+                                redirect('Pendaftaran/halaman_otp/');
+                            }else{
+                                $this->session->set_flashdata('pesan',
+                                    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+                                    <script type ="text/JavaScript">  
+                                        swal("Gagal","Sistem tidak bisa mengirim pesan OTP ke nomor Anda. Cobalah beberapa saat lagi","error")  
+                                    </script>'  
+                                );
+                                redirect('Pendaftaran');
+                            }
+                        }else{
                             $this->session->set_flashdata('pesan',
                                 '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
                                 <script type ="text/JavaScript">  
-                                    swal("Gagal","Sistem tidak bisa mengirim pesan OTP ke nomor Anda. Cobalah beberapa saat lagi","error")  
+                                    swal("Gagal","Sistem tidak bisa mengirim pesan OTP ke nomor Anda. Pastikan nomor Anda sudah terdaftar pada aplikasi Whatsapp.","error")  
                                 </script>'  
                             );
                             redirect('Pendaftaran');
@@ -81,19 +99,11 @@ class Pendaftaran extends CI_Controller {
                         $this->session->set_flashdata('pesan',
                             '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
                             <script type ="text/JavaScript">  
-                                swal("Gagal","Sistem tidak bisa mengirim pesan OTP ke nomor Anda. Pastikan nomor Anda sudah terdaftar pada aplikasi Whatsapp.","error")  
+                                swal("Gagal","Mohon maaf saat ini sistem tidak terhubung dengan whatsapp. Cobalah beberapa saat lagi.","error")  
                             </script>'  
                         );
                         redirect('Pendaftaran');
                     }
-                }else{
-                    $this->session->set_flashdata('pesan',
-                        '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-                        <script type ="text/JavaScript">  
-                            swal("Gagal","Mohon maaf saat ini sistem tidak terhubung dengan whatsapp. Cobalah beberapa saat lagi.","error")  
-                        </script>'  
-                    );
-                    redirect('Pendaftaran');
                 }
             }
         }

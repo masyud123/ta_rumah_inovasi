@@ -16,7 +16,7 @@
                                             Untuk melakukan reset password, silakan masukkan email yang anda gunakan untuk login pada form di bawah ini!
                                         </h6>
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" placeholder="Email" name="email" required oninvalid="this.setCustomValidity('Data wajib diisi!')" oninput="setCustomValidity('')">
+                                            <input type="email" class="form-control form-control-user" placeholder="Email" name="email" required oninvalid="this.setCustomValidity('Email tidak boleh kosong!')" oninput="setCustomValidity('')">
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block"><i class="fas fa-sign-in-alt"></i> Selanjutnya</button>
                                     </form><hr>
