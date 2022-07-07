@@ -79,14 +79,24 @@ class Data_bidang extends CI_Controller{
 
 	public function hapus_bidang($id_bidang)
 	{
-		$where = array('id' => $id_bidang);
-		$this->db->delete('bidang', $where);
-		$this->session->set_flashdata('bidang',
-			'<script>
-				Swal.fire("Sukses", "Data berhasil dihapus", "success");
-			</script>'
-		);
-		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		$sql = $this->db->query("SELECT id_bidang FROM peserta where id_bidang='$id_bidang'");
+		if($sql->num_rows() > 0){
+			$this->session->set_flashdata('bidang',
+				'<script>
+					Swal.fire("Gagal", "Data tidak bisa dihapus karena terhubung dengan data usulan", "error");
+				</script>'
+			);
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
+		}else{
+			$where = array('id' => $id_bidang);
+			$this->db->delete('bidang', $where);
+			$this->session->set_flashdata('bidang',
+				'<script>
+					Swal.fire("Sukses", "Data berhasil dihapus", "success");
+				</script>'
+			);
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
+		}
 	}
 }
 ?>

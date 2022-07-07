@@ -97,13 +97,6 @@
                     <span><strong>Daftar User</strong></span></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('admin/Whatsapp') ?>">
-                    <i class="fa-brands fa-whatsapp mr-1"></i>
-                    <span><strong>Whatsapp</strong></span>
-                </a>
-            </li>
-
             <li <?=$this->uri->segment(2) == 'pengumuman' ? 'class="nav-item active"' : 'class="nav-item"'?>>
                 <a class="nav-link" href="<?= base_url('admin/Pengumuman') ?>">
                     <i class="fas fa-bullhorn"></i>
@@ -114,6 +107,13 @@
                 <a class="nav-link" href="<?= base_url('admin/Pesan_masal') ?>">
                     <i class="fas fa-comment mr-1"></i>
                     <span><strong>Pesan Masal</strong></span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/Whatsapp') ?>">
+                    <i class="fa-brands fa-whatsapp mr-1"></i>
+                    <span><strong>Pengaturan WA</strong></span>
+                </a>
             </li>
 
             <!-- Sidebar Toggler (Sidebar) -->

@@ -37,7 +37,7 @@
 								</div>
 
 								<div class="row">
-									<dt for="inputEmail" class="col-sm-2 col-form-label">Email</dt>
+									<dt for="inputEmail" class="col-sm-2 col-form-label">No. Whatsapp</dt>
 									<div class="col-sm-5 mb-3">
 										<input type="number" name="no_wa" id="no_wa" class="form-control" value="<?= $user->no_wa ?>" required>
 									</div>
