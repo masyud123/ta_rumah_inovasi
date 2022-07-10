@@ -36,7 +36,7 @@ class Daftar extends CI_Controller{
 
 	public function daftar($id_subevent)
 	{
-		$subevent = $this->Model_bidang->tampil_sub($id_subevent)->row();
+		$subevent = $this->Model_bidang->tampil_subevent($id_subevent);
 		$mulai 	= $subevent->mulai;
 		$akhir 	= $subevent->akhir;
 		$sekarang = date('Y-m-d');
@@ -51,7 +51,7 @@ class Daftar extends CI_Controller{
 			$this->load->view('peserta/form_pendaftaran', $data);
 			$this->load->view('templates_peserta/footer');
 		}else{
-			redirect('peserta/Daftar/subevent'.$id_subevent);
+			redirect('peserta/Daftar/subevent/'.$id_subevent);
 		}
 	}
 

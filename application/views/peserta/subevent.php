@@ -1,8 +1,8 @@
 <div class="container-fluid">
 <h1 class="h3 mb-3 text-gray-800">Silahkan Pilih Daftar Sub Event</h1>
-   <?php foreach($subevent as $sub) : 
-      if (strtotime($sub->mulai) <= time() AND strtotime($sub->akhir) >= time()) : ?>
-         <div class="row">
+   <div class="row">
+      <?php foreach($subevent as $sub) : 
+         if (strtotime($sub->mulai) <= time() AND strtotime($sub->akhir) >= time()) : ?>
             <div class="col-xl-3 col-md-6 mb-4">
                <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
@@ -35,9 +35,9 @@
                   </div>
                </div>
             </div>
-         </div>
-      <?php  endif; ?>
-   <?php endforeach;?>      
+         <?php  endif; ?>
+      <?php endforeach;?>    
+   </div>  
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
