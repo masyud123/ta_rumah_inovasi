@@ -134,22 +134,45 @@ class Model_user extends CI_Model{
 
     public function kirim_pesan($no_wa, $pesan)
     {
-        $dt_wa = $this->db->get('whatsapp')->row_array();
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'http://nusagateway.com/api/send-message.php',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('token' => $dt_wa['token'], 'phone' => $no_wa, 'message' => $pesan),
-        ));
+        // $dt_wa = $this->db->get('whatsapp')->row_array();
+        // $curl = curl_init();
+        // curl_setopt_array($curl, array(
+        //     CURLOPT_URL => 'http://nusagateway.com/api/send-message.php',
+        //     CURLOPT_RETURNTRANSFER => true,
+        //     CURLOPT_ENCODING => '',
+        //     CURLOPT_MAXREDIRS => 10,
+        //     CURLOPT_TIMEOUT => 0,
+        //     CURLOPT_FOLLOWLOCATION => true,
+        //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //     CURLOPT_CUSTOMREQUEST => 'POST',
+        //     CURLOPT_POSTFIELDS => array('token' => $dt_wa['token'], 'phone' => $no_wa, 'message' => $pesan),
+        // ));
 
-        $response = curl_exec($curl);
-        curl_close($curl);
+        // $response = curl_exec($curl);
+        // curl_close($curl);
+        // return json_decode($response);
+
+        $post = [
+            'token' => '1RtUp4y54T4NgN1N4yh4c4yTn1s3v0lDuYs4mH4Y5D4Mh4', 
+            'number' => $no_wa, 
+            'message' => $pesan
+        ];
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL,"http://localhost:5000/whatsapp_/send-message");
+        curl_setopt($ch, CURLOPT_POST, 1);
+
+        // In real life you should use something like:
+        curl_setopt($ch, CURLOPT_POSTFIELDS, 
+                 http_build_query($post));
+
+        // Receive server response ...
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        
+        // execute!
+        $response = curl_exec($ch);
+        curl_close($ch);
         return json_decode($response);
     }
 }

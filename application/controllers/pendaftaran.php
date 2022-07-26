@@ -66,7 +66,8 @@ class Pendaftaran extends CI_Controller {
                     $this->cart->insert($data);
                     
                     $kondisi = $this->Model_user->get_kode_qr(); // kondisi sistem terhubung wa/tdk
-                    if($kondisi->message == 'AUTHENTICATED'){
+                    // if($kondisi->message == 'AUTHENTICATED'){
+                    if($kondisi->status == 1){	
                         // cek nomor terdaftar/tidak
                         $cek_nomor = $this->Model_user->cek_nomor_wa($this->input->post('no_wa'));
                         if($cek_nomor->status == 'valid'){

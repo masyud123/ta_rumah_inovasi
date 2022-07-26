@@ -55,7 +55,7 @@ class Pesan_masal extends CI_Controller
 				header('Location: ' . $_SERVER['HTTP_REFERER']);
 			}else{
 				for($i=0; $i<count($nomor4); $i++){
-					$this->Model_user->kirim_pesan($nomor4[$i], $pesan);
+					$data = $this->Model_user->kirim_pesan($nomor4[$i], $pesan);
 				}
 
 				$this->session->set_flashdata('pesan_masal',

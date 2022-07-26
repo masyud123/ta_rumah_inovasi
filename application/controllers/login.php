@@ -152,7 +152,8 @@ http://localhost/Rumah_Inovasi/login/view_reset_password/'.$token;
 // https://rumah-inovasi.aeritechnology.com/login/view_reset_password/'.$token;
 
 						$response = $this->Model_user->kirim_pesan($no_wa, $pesan);
-						if($response->message == "Sukses! Pesan telah terkirim"){
+						// if($response->message == "Sukses! Pesan telah terkirim"){
+						if($response->status == 1){	
 							$this->session->set_flashdata('pesan_lupa_pwd',
 								'<script type ="text/JavaScript">  
 									Swal.fire("Sukses","Pesan berhasil terkirim ke nomor whatsapp Anda. Silakan Anda buka pesan tersebut dan ikuti langkah selanjutnya.","success")  
